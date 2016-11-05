@@ -19,4 +19,4 @@ script:
   - mvn clean install sonar:sonar -Dsonar.login=2f777ce5faa3651de36bc6ed889e637c205b1187
 
 notifications:
-  slack:
+  slack: codinplayproject:qHwyvthUIY8Je62ipcTtteoz
