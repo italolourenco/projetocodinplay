@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html lang="pt-br">
+
+	<head>
+
+		<title> CodinPlay - Editar Perfil </title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="../resources/css/estilo_telaPrincipal.css" />
+		<script type="text/javascript" src="../resources/js/funcao.js"></script>
+
+	</head>
+
+	<body onload="inserirLog()";>
+
+		<header id="ID_cabecalho">
+			<div id="ID_areaCabecalho">
+				<h1 id="ID_logoCabecalho"> <span class="CLASS_branco">Codin</span><span class="CLASS_red">Play</span></h1>
+				<div id="ID_menuCabecalho">
+					<a id="ID_bottonSair" href="index.html"></a>
+				</div>
+			</div>
+		</header>
+
+		<nav id="ID_navPrincipal">
+			<ul>
+				<li ><a class="CLASS_bottonNav" href="tela_principal.html">HOME</a></li>
+				<li ><a class="CLASS_bottonNav" href="tela_progressaoUsuario.html">JOGAR</a></li>
+				<li ><a class="CLASS_bottonNav" href="tela_ranking.html">RANKING</a></li>
+				<li ><a class="CLASS_bottonNav" href="tela_contato.html">CONTATO</a></li>
+				<li ><a class="CLASS_bottonNav" href="tela_sobre.html">SOBRE</a></li>
+
+			</ul>
+		</nav>
+
+		<div id="ID_areaPrincipal">
+
+			<section class="CLASS_blocoPrincipal2">
+				<h2 class="CLASS_red"> Editar Pefil </h2>
+				<span class="CLASS_linhaSeparadora"></span>
+				<div class="CLASS_blocoRight.descricao">
+					<form name="editar" id="ID_form">
+						<label for="nome">Nome:</label>	
+						<input class="input" type="text" id="nome" placeholder="Nome">
+						<br><br>
+						<label for="instituicao">Instituição:</label>
+						<select class="input-gamb" id="instituicao">
+							<option value="IFES">IFES</option>
+							<option value="UFES">UFES</option>
+							<option value="UVV">UVV</option>
+						</select>
+						<br><br>
+						<label for="sexo">Sexo:</label>
+						<select class="input-gamb" id="sexo">
+							<option value="feminino">Femino</option>
+							<option value="Masculino">Masculino</option>
+						</select>
+						<br><br>
+						<label  for="data">Data Nascimento:</label>
+						<input class="input" type="text" id="data" onblur="validaData(this.value);" placeholder="Data Nascimento">
+						<br><br>
+						<label  for="email">E-mail:</label>
+						<input class="input" type="text" id="email" onblur="verificaEmail(this.value);" placeholder="E-mail">
+						<br><br>
+						<label  for="telefone">Telefone:</label>
+						<input class="input" type="text" id="telefone" placeholder="Telefone">
+						<br><br>
+						<label  for="senha">Senha:</label>
+						<input class="input" type="password" id="senha" placeholder="Senha">
+						<br><br>
+						<label  for="con_senha">Confirmar Senha:</label>
+						<input class="input" type="password" id="con_senha" onblur="validarSenhaIgual();" placeholder="Confirmar Senha">
+						<br><br>	
+						<button class="CLASS_bottonContato" type="submit" onclick="validarEditarCadastrar()";>Salvar</button>
+						<button class="CLASS_bottonContato" type="button">Cancelar</button>
+					</form>
+				</div>
+
+			</section>
+
+		</div>
+
+		<footer id="ID_footer"> <p>&copy; 2016 - CodinPlay<p> </footer>
+
+	</body>
+
+</html>

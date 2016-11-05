@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html lang="pt-br">
+
+	<head>
+
+		<title> CodinPlay - Cadastro </title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="../resources/css/estilo_telaPrincipal.css" />
+		<script type="text/javascript" src="../resources/js/funcao.js"></script>
+
+	</head>
+
+	<body>
+
+		<div>
+			<img id="ID_imgLogo" src="resources/img/logo.png" alt="CodinPlay Logo">
+		</div>
+			
+		<section id="ID_blocoPrincipalCadastro">
+
+			<form name="cadastro" id="ID_formCadastro">
+				<header class="CLASS_label">
+					<h1 id="ID_cabecalhoCadastro">Cadastro</h1>
+				</header>
+				<br><br>
+				<label class="CLASS_label" for="nome">Nome:</label>
+				<input class="input" type="text" id="nome" placeholder="Nome">
+				<br><br>
+				<label class="CLASS_label" for="instituicao">Instituição:</label>
+				<select class="input-gamb" id="instituicao">
+					<option value="IFES">IFES</option>
+					<option value="UFES">UFES</option>
+					<option value="UVV">UVV</option>
+				</select>
+				<br><br>
+				<label class="CLASS_label" for="sexo">Sexo:</label>
+				<select class="input-gamb" id="sexo">
+					<option value="feminino">Femino</option>
+					<option value="Masculino">Masculino</option>
+				</select>
+				<br><br>
+				<label class="CLASS_label" for="data">Data Nascimento:</label>
+				<input class="input" type="text" id="data" onblur = "validaData(this.value);" placeholder="Data de Nascimento">
+				<br><br>
+				<label class="CLASS_label" for="email">E-mail:</label>
+				<input class="input" type="text" id="email" onblur="verificaEmail(this.value);" placeholder="E-mail">
+				<br><br>
+				<label class="CLASS_label" for="telefone">Telefone:</label>
+				<input class="input" type="text" id="telefone" placeholder="Telefone">
+				<br><br>
+				<label class="CLASS_label" for="senha">Senha:</label>
+				<input class="input" type="password" id="senha" placeholder="Senha">
+				<br><br>
+				<label class="CLASS_label" for="con_senha">Confirmar Senha:</label>
+				<input class="input" type="password" id="con_senha" onblur="validarSenhaIgual();" placeholder="Confirmar Senha">
+				<br><br>
+			    <button class="CLASS_bottonContato" type="submit" onclick="validarEditarCadastrar()";>Confirmar</button>
+			    <button class="CLASS_bottonContato" type="button" onclick="ir_telaLogin();">Cancelar</button>	
+			</form>
+		</section>
+
+	</body>
+
+</html>

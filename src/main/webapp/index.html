@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html lang="pt-br">
+
+	<head>
+
+		<title> CodinPlay - Entrar </title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="resources/css/estilo_telaPrincipal.css" />
+		<script type="text/javascript" src="resources/js/funcao.js"></script>
+
+	</head>
+
+	<body>
+
+		<div>
+			<img id="ID_imgLogo" src="resources/img/logo.png" alt="CodinPlay Logo" />
+		</div>
+
+		<section id="ID_blocoPrincipalLogin">
+			<header class="CLASS_alinhaText">
+				<h1 id="ID_cabecalhoLogin">Entrar</h1>
+			</header>
+			<form id="ID_formLogin">
+
+				<label class="CLASS_labelLogin" for="login">Login:</label>
+				<input class="CLASS_inputLogin" type="text" id="login" autofocus placeholder="Login">
+				<br><br>
+
+				<label class="CLASS_labelLogin" for="senha">Senha:</label>
+				<input class="CLASS_inputLogin" type="password" id="senha" placeholder="Senha">
+				<br><br>
+
+				<button class="CLASS_bottonLogin" type="button" onclick="fazerLogin();">Entrar</button>
+				<button class="CLASS_bottonLogin" type="button" onclick="ir_telaCadastro();">Cadastro</button>
+
+			</form>
+		</section>
+
+	</body>
+
+</html>

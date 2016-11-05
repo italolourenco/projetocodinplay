@@ -1,0 +1,121 @@
+<!doctype html>
+
+<html lang="pt-br">
+
+	<head>
+
+		<title> CodinPlay - Ranking Administrador </title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="../resources/css/estilo_telaPrincipal.css" />
+		<script type="text/javascript" src="../resources/js/funcao.js"></script>
+
+	</head>
+
+	<body onload="inserirLog()";>
+
+		<header id="ID_cabecalho">
+			<div id="ID_areaCabecalho">
+				<h1 id="ID_logoCabecalho"> <span class="CLASS_branco">Codin</span><span class="CLASS_red">Play</span></h1>
+				<div id="ID_menuCabecalho">
+					<a id="ID_bottonSair" href="index.html"></a>
+				</div>
+			</div>
+		</header>
+
+		<nav id="ID_navPrincipal">
+			<ul>
+				<li ><a class="CLASS_bottonNav" href="tela_principalAdmin.html">HOME</a></li>
+				<li ><a class="CLASS_bottonNav" href="tela_cadastroTarefa.html">NOVA TAREFA</a></li>
+				<li ><a class="CLASS_bottonNav" href="tela_rankingAdmin.html">RANKING</a></li>
+				<li ><a class="CLASS_bottonNav" href="tela_cadastroInstituicao.html">NOVA INSTITUIÇÃO</a></li>
+				<li ><a class="CLASS_bottonNav" href="tela_sobre.html">SOBRE</a></li>
+			</ul>
+		</nav>
+		<br>
+
+		<div id="ID_areaPrincipal">
+
+			<section class="CLASS_blocoPrincipal2">
+				<h2 class="CLASS_red"> Ranking </h2>
+				<span class="CLASS_linhaSeparadora"></span>
+			    <h3 class="CLASS_red"> Relatorios </h3><br>
+
+			    <div class="CLASS_blocoRight.descricao">
+				<form name="editar" id="ID_formPesquisa">
+					<label id="ID_labelPesquisa" for="email">Pesquisar</label>
+					<select class="input-gamb" id="instituicao">
+							<option value="usuario">Usuário</option>
+							<option value="intituicao">Instituição</option>
+						</select>
+					<br>
+					<label id="ID_labelPesquisa" for="email">Nome</label>
+					<input class="input" type="text" id="email" placeholder="Nome">
+					<br>
+					<label id="ID_labelPesquisa" for="email">Filtro</label>
+					<select class="input-gamb" id="instituicao">
+							<option value="usuario">Patente</option>
+							<option value="intituicao">Nível</option>
+							<option value="pontuacao">Pontuacao</option>
+						</select>
+					<button id="ID_bottonBuscar">Buscar</button>
+					<br><br>
+							 <!--retirar isso depois quando tiver o backend-->
+								<table>
+								  <tr>
+								    <th>Nome</th>
+								    <th>Patente</th>
+								    <th>Nível</th>
+								    <th>Pontuação</th>
+								    <th>Instituição</th>
+								  </tr>
+								  <tr>
+								    <td>Italo</td>
+								    <td>Programador</td>
+								    <td>28</td>
+								    <td>254</td>
+								    <td>IFES</td>
+								  </tr>
+								  <tr>
+								    <td>Igor</td>
+								    <td>Programador</td>
+								    <td>22</td>
+								    <td>254</td>
+								    <td>IFES</td>
+								  </tr>
+								   <tr>
+								    <td>Gustavo</td>
+								    <td>Estagiário</td>
+								    <td>5</td>
+								    <td>25</td>
+								    <td>IFES</td>
+								  </tr>
+								  <tr>
+								    <td>Brasil</td>
+								    <td>Programador</td>
+								    <td>55</td>
+								    <td>201</td>
+								    <td>IFES</td>
+								  </tr>
+								   <tr>
+								    <td>Bruno</td>
+								    <td>Analista</td>
+								    <td>12</td>
+								    <td>251</td>
+								    <td>IFES</td>
+								  </tr>
+								  
+								</table>
+				
+				</form>
+
+				</div>
+
+			</section>
+
+		</div>
+
+		<footer id="ID_footer"> <p>&copy; 2016 - CodinPlay<p> </footer>
+
+	</body>
+
+</html>
