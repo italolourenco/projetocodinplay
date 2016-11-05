@@ -15,7 +15,6 @@ before_script:
 
 
 script:
-  - cd 04.Codigo/OptaPlanner-Solution
   - mvn clean install sonar:sonar -Dsonar.login=2f777ce5faa3651de36bc6ed889e637c205b1187
 
 notifications:
