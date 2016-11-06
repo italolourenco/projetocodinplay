@@ -1,22 +1,3 @@
-#Author: your.email@your.domain.com
-#Keywords Summary :
-#Feature: List of scenarios.
-#Scenario: Business rule through list of steps with arguments.
-#Given: Some precondition step
-#When: Some key actions
-#Then: To observe outcomes or validation
-#And,But: To enumerate more Given,When,Then steps
-#Scenario Outline: List of steps for data-driven as an Examples and <placeholder>
-#Examples: Container for s table
-#Background: List of steps run before each of the scenarios
-#""" (Doc Strings)
-#| (Data Tables)
-#@ (Tags/Labels):To group Scenarios 
-#<> (placeholder)
-#""
-## (Comments)
-
-#Sample Feature Definition Template
 @tag
 Feature: Cadastro de usuário
 ##Historia 001 - Usuário realiza Cadastro
@@ -52,7 +33,7 @@ Given Usuario esta na tela de cadastro
 When  Preenche os campos nome com "Italo", instituicao com "IFES", sexo com "Masculino", data de nascimento com "30/03/1994", email com "italolt10@gmail.com", telefone com "9999999999", senha com "1234", confirmar senha com "1234"
 And   Usuario clica em confirmar
 And   campos invalidos
-Then  Deve ser exibida uma mensagem de erro informando que existe um campo com dado invalido
+Then  Deve ser exibida uma mensagem de erro informando o(s) campo(s) com dado invalido
 
 @tag1
 Scenario: Testar Cancelamento de Cadastro
