@@ -10,6 +10,7 @@ Given Administrador logado no sistema
 When  Administrador seleciona a opcao NOVA INSTITUICAO
 Then  Administrador deve ser direcionado para tela nova instituicao
 
+
 @tag2
 Scenario: Administrador Cadastra Instituicao com Sucesso
 Given Administrador logado no sistema
