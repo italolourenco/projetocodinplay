@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<link rel="stylesheet" type="text/css" href="../resources/css/estilo_telaPrincipal.css" />
+		<script type="text/javascript" src="../resources/js/funcao.js"></script>
+		
+		<ui:insert name = "titulo_pagina" > </ui:insert>
+
+	</head>
+	
+	<h:body>
+	
+		<ui:insert name = "cabecalho">
+			<ui:include src="cabecalho.xhtml"></ui:include>
+		</ui:insert>
+		
+		<ui:insert name = "pagina">
+		
+		</ui:insert>
+		
+		<ui:insert name = "footer">
+			<ui:include src="footer.xhtml"></ui:include>
+		</ui:insert>
+
+	</h:body>
+</html>
