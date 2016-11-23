@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<head>	
+		<ui:define name = "titulo_pagina"><title> CodinPlay - Editar Perfil</title> </ui:define>
+	</head>
+
+	<h:body>
+		
+		<ui:composition template="../resources/templates/pagina.xhtml">
+
+			<ui:define name="pagina">
+				
+
+		<div id="ID_areaPrincipal">
+
+			<section class="CLASS_blocoPrincipal2">
+				<h2 class="CLASS_red"> Editar Pefil </h2>
+				<span class="CLASS_linhaSeparadora"></span>
+				<div class="CLASS_blocoRight.descricao">
+					<h:form name="editar" id="ID_form">
+						<h:outputLabel for="nome">Nome:</h:outputLabel>	
+						<h:inputTextarea class="input" type="text" id="nome" placeholder="Nome">
+						</h:inputTextarea>
+						<br />
+						<h:outputLabel for="instituicao">Instituição:</h:outputLabel>
+						<h:selectOneMenu class="input-gamb" id="instituicao">
+							<f:selectItem itemValue="1" itemLabel="IFES"/>
+							<f:selectItem itemValue="2" itemLabel="UFES"/>
+							<f:selectItem itemValue="3" itemLabel="UVV"/> 
+						</h:selectOneMenu>
+						<br />
+						<h:outputLabel for="sexo">Sexo:</h:outputLabel>
+						<h:selectOneMenu class="input-gamb" id="sexo">
+							 <f:selectItem itemValue="1" itemLabel = "Feminino"/>
+							<f:selectItem itemValue="2" itemLabel = "Masculino"/> 
+						</h:selectOneMenu>
+						<br />
+						<h:outputLabel  for="data">Data Nascimento:</h:outputLabel>
+						<h:inputTextarea class="input" type="text" id="data" onblur="validaData(this.value);" placeholder="Data Nascimento">
+						</h:inputTextarea>
+						<br />
+						<h:outputLabel  for="email">E-mail:</h:outputLabel>
+						<h:inputTextarea class="input" type="text" id="email" onblur="verificaEmail(this.value);" placeholder="E-mail">
+						</h:inputTextarea>
+						<br />
+						<h:outputLabel  for="telefone">Telefone:</h:outputLabel>
+						<h:inputTextarea class="input" type="text" id="telefone" placeholder="Telefone">
+						</h:inputTextarea>
+						<br />
+						<h:outputLabel  for="senha">Senha:</h:outputLabel>
+						<h:inputTextarea class="input" type="password" id="senha" placeholder="Senha">
+						</h:inputTextarea>
+						<br />
+						<h:outputLabel  for="con_senha">Confirmar Senha:</h:outputLabel>
+						<h:inputTextarea class="input" type="password" id="con_senha" onblur="validarSenhaIgual();" placeholder="Confirmar Senha">
+						</h:inputTextarea>
+						<br />
+						<h:commandButton class="CLASS_bottonContato" value="Salvar"></h:commandButton>
+						<h:commandButton class="CLASS_bottonContato" value="Cancelar"></h:commandButton>
+					</h:form>
+				</div>
+
+			</section>
+
+			</div>
+			</ui:define>
+		</ui:composition>
+	</h:body>
+
+</html>
