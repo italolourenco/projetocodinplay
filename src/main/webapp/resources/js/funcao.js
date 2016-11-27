@@ -32,7 +32,7 @@ function ir_telaDesafio(){
 nome="";
 
 function fazerLogin() {
-	if((document.getElementById("email") == null) || (document.getElementById("email") == null)){
+	if((document.getElementById("email") == null) || (document.getElementById("senha") == null)){
 		alert('Favor informar todos os campos');
 	}
 }

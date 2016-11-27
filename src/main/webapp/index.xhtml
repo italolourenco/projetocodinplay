@@ -35,8 +35,8 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 				<h:inputText class="CLASS_inputLogin" id="senha" label= "Senha" ></h:inputText>
 				<br />
 
-				<h:commandButton class="CLASS_bottonLogin" value = "Entrar" onclick="fazerLogin();"></h:commandButton>
-				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.cadastro}" value = "Cadastro"></h:commandButton>
+				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.entrar}" value = "Entrar" onclick="fazerLogin();"> </h:commandButton>
+				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.cadastro}" value = "Cadastro"> </h:commandButton>
 
 			</h:form>
 		</section>

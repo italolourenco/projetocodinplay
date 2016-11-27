@@ -1,7 +1,7 @@
 package persistence.crud;
 import persistence.pojo.Instituicao;
 
-
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -33,6 +33,40 @@ public class InstituicaoDAO extends DAO {
 		}
 		close();
 		return instituicoes;
+		
+		
+	}
+	
+	public boolean consulta(String abreviacao) throws Exception {
+		
+		Instituicao instituicao = null;
+		String sql = "SELECT * from instituicao where instituicao.abreviacao = '" + abreviacao + "';";
+		open();
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
+		
+		while(rs.next()){
+			
+			instituicao = new Instituicao();
+			
+			instituicao.setId_instituicao(rs.getInt("id_instituicao"));
+			instituicao.setNome(rs.getString("nome"));
+			instituicao.setAbreviacao(rs.getString("abreviacao"));
+			instituicao.setEstado(rs.getString("estado"));
+			instituicao.setTelefone(rs.getString("telefone"));
+			instituicao.setSite(rs.getString("site"));
+		
+		}
+		close();
+		
+		if(instituicao == null){
+			return false;
+		}
+		else
+			return true;
+	}
+	
+	public void inserirInstituicao(Instituicao instituicao){
 		
 		
 	}
