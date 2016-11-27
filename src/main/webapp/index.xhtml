@@ -5,15 +5,15 @@ xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core"
 xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<head>
+	<h:head>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-		<link rel="stylesheet" type="text/css" href="resources/css/estilo_telaPrincipal.css" />
-		<script type="text/javascript" src="resources/js/funcao.js"></script>
+		<h:outputStylesheet library="css" name="estilo_telaPrincipal.css" />
+		<h:outputScript library="js" name="funcao.js" />
 		
 		<title> CodinPlay - Entrar </title>
 
-	</head>
+	</h:head>
 
 	<body>
 
@@ -27,15 +27,15 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 			</header>
 			<h:form id="ID_formLogin">
 
-				<h:outputLabel class="CLASS_labelLogin" value = "Login" for="login"></h:outputLabel>
-				<h:inputText class="CLASS_inputLogin" id="login" label= "Login"  autofocus="Login" placeholder="Login"></h:inputText>
+				<h:outputLabel class="CLASS_labelLogin" value = "Email" for="email"></h:outputLabel>
+				<h:inputText class="CLASS_inputLogin" id="email" label= "Email"  autofocus="Login" placeholder="Login"></h:inputText>
 				<br />
 
 				<h:outputLabel class="CLASS_labelLogin" value = "Senha" for="senha"></h:outputLabel>
 				<h:inputText class="CLASS_inputLogin" id="senha" label= "Senha" ></h:inputText>
 				<br />
 
-				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.entrar}" value = "Entrar" onclick="fazerLogin();"></h:commandButton>
+				<h:commandButton class="CLASS_bottonLogin" value = "Entrar" onclick="fazerLogin();"></h:commandButton>
 				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.cadastro}" value = "Cadastro"></h:commandButton>
 
 			</h:form>

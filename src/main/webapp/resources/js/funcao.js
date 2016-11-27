@@ -32,30 +32,9 @@ function ir_telaDesafio(){
 nome="";
 
 function fazerLogin() {
-	var login = document.getElementById("login").value;
-	var senha = document.getElementById("senha").value;
-	
-    if ((login == "admin@codinplay.com" && senha == "123"))    
-    {
-		logado = "Administrador";
-        criarlocalStorage(logado);
-		window.location = "paginas/tela_principalAdmin.html";
-		return true;		
-    } else if (login=="igor@codinplay.com" && senha == "123"){
-    	logado = "Igor Soares";
-        criarlocalStorage(logado);
-    	window.location = "paginas/tela_principal.html";
-        return true;
-    }else if (login=="italo@codinplay.com" && senha == "123"){
-        logado = "OLÁ, ITALO";
-        criarlocalStorage(logado);
-        window.location = "paginas/tela_principal.html";
-        return true;
-    }
-    else{
-    	alert("usuário ou senha incorretos");
-		return false;	
-    }
+	if((document.getElementById("email") == null) || (document.getElementById("email") == null)){
+		alert('Favor informar todos os campos');
+	}
 }
 
 function verificaEmail(email) {

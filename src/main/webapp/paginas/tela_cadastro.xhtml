@@ -33,8 +33,8 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 				<br />
 						
 				<h:outputLabel class="CLASS_label" value = "Instituição" for="instituicao"></h:outputLabel>
-				<h:selectOneMenu class="input-gamb" id="instituicao" >
-					<f:selectItems  />
+				<h:selectOneMenu class="input-gamb" id="instituicao"  value = "#{cadastroBean.cod}" >
+					<f:selectItems value = "#{cadastroBean.instituicoes}" var = "li" itemLabel = "#{li.abreviacao}" itemValue="#{li.id_instituicao}" />
 				</h:selectOneMenu>
 				<br />
 						
