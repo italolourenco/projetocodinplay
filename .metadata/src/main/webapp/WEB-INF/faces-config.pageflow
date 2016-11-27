@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14802091723900" configfile="/Codinplay/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="562" id="pf14802146687770" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14802146687771 pf14802149489569 pf148021667678713" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="178" id="pf14802146687774" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14802146687771" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_cadastro.xhtml" id="pf148021494895610" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf14802149489569" path="/paginas/tela_cadastro.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_principal.xhtml" id="pf148021667678814" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf148021667678713" path="/paginas/tela_principal.xhtml"/>
+  <links id="pf14802146687771" target="pf14802146687774" source="pf14802146687770" outcome="inicio"/>
+  <links id="pf14802149489569" target="pf148021494895610" source="pf14802146687770" outcome="cadastro"/>
+  <links id="pf148021667678713" target="pf148021667678814" source="pf14802146687770" outcome="entrar"/>
+</pageflow:Pageflow>

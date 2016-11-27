@@ -6,15 +6,13 @@ xmlns:f="http://java.sun.com/jsf/core"
 xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-	<head>
+	<h:head>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-		<link rel="stylesheet" type="text/css" href="../resources/css/estilo_telaPrincipal.css" />
-		<script type="text/javascript" src="../resources/js/funcao.js"></script>
 		
-		<ui:insert name = "titulo_pagina" > </ui:insert>
+		<title><ui:insert name = "titulo_pagina" > </ui:insert></title>
 
-	</head>
+	</h:head>
 	
 	<h:body>
 	
@@ -30,5 +28,6 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 			<ui:include src="footer.xhtml"></ui:include>
 		</ui:insert>
 
+		<h:outputStylesheet library="css" name="estilo_telaPrincipal.css" />
 	</h:body>
 </html>

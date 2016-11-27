@@ -28,15 +28,15 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 			<h:form id="ID_formLogin">
 
 				<h:outputLabel class="CLASS_labelLogin" value = "Login" for="login"></h:outputLabel>
-				<h:inputText class="CLASS_inputLogin" id="login" label= "Login" value="#{usuario.pessoa.nome}" autofocus="Login" placeholder="Login"></h:inputText>
+				<h:inputText class="CLASS_inputLogin" id="login" label= "Login"  autofocus="Login" placeholder="Login"></h:inputText>
 				<br />
 
 				<h:outputLabel class="CLASS_labelLogin" value = "Senha" for="senha"></h:outputLabel>
-				<h:inputText class="CLASS_inputLogin" id="senha" label= "Senha" value="#{usuario.pessoa.senha}"></h:inputText>
+				<h:inputText class="CLASS_inputLogin" id="senha" label= "Senha" ></h:inputText>
 				<br />
 
-				<h:commandButton class="CLASS_bottonLogin" action="#{usuario.entrar}" value = "Entrar" onclick="fazerLogin();"></h:commandButton>
-				<h:commandButton class="CLASS_bottonLogin" action="#{usuario.novo}" value = "Cadastro"></h:commandButton>
+				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.entrar}" value = "Entrar" onclick="fazerLogin();"></h:commandButton>
+				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.cadastro}" value = "Cadastro"></h:commandButton>
 
 			</h:form>
 		</section>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<h:head>
+			
+	</h:head>
+
+	<h:body>
+		
+		<ui:composition template="../resources/templates/pagina.xhtml">
+
+			<ui:define name = "titulo_pagina"> CodinPlay - Home </ui:define>
+			
+			<ui:define name="pagina">
+			
+				<div id="ID_areaPrincipal">
+
+					<section class="CLASS_blocoPrincipal">
+						<h2 class="CLASS_red"> Painel do Usuário </h2>
+						<span class="CLASS_linhaSeparadora"></span>
+			    		<h3 class="CLASS_red"> Perfil </h3>
+				
+						<div class="CLASS_blocoLeft">
+							<div class="CLASS_blocoImg">
+								<h:graphicImage class="CLASS_tamanhoImg" value = "resources/img/avatar.png" alt="Perfil Imagem CodinPlay" />
+							</div>
+							<div class="CLASS_centraliza">
+								<a class="CLASS_linkPag" href="tela_editarPerfil.html">Editar Perfil</a>
+							</div>
+				
+						</div>
+
+						<div class="CLASS_blocoRight">
+							<h3 class="CLASS_margin5">Igor Soares</h3> <br />
+							<h4>Instituto Federal Do Espirito Santo</h4> <br/>
+							<h4>Calouro</h4> <br/>
+							<h4>20 / 60 XP</h4>
+						</div>
+					</section>
+
+					<section class="CLASS_blocoPrincipal">
+						<span class="CLASS_linhaSeparadora"></span>
+			    		<h3 class="CLASS_red"> Progressão </h3> <br />
+						<div class="CLASS_blocoLeft">
+							<h4 class="CLASS_red"> Geral </h4><br />
+							<h4>Pontuação Geral: 20 XP</h4><br />
+							<h4>Atividades Realizadas: 1</h4><br />
+							<h4>Desafios Realizados: 0</h4>
+						</div>
+
+						<div class="CLASS_blocoRight">
+							<h4 class="CLASS_red"> Semanal </h4> <br/>
+							<h4>Pontos Na Semana: 20 XP</h4> <br/>
+							<h4>Atividades Realizadas: 1</h4> <br/>
+							<h4>Desafio Semanal: Disponível !</h4>
+						</div>
+					</section>
+
+					<section class="CLASS_blocoPrincipal">
+						<span class="CLASS_linhaSeparadora"></span>
+			    		<h3 class="CLASS_red"> Desafio Semanal </h3> <br />
+						<div class="CLASS_blocoLeft">
+							<h4>Nome Desafio</h4> <br />
+							<h4>Status: Disponível !</h4>
+							<button id="ID_bottonEnviar" onclick="ir_telaDesafio();">Iniciar</button>
+						</div>
+						<div class="CLASS_blocoRight">
+							<h4 class="CLASS_red"> Historico Desafios Semanais </h4> <br/>
+									 <!--retirar isso depois quando tiver o backend-->
+								<table>
+								  <tr>
+								    <th>Nome</th>
+								    <th>Nível</th>
+								    <th>Pontuação</th>
+								    <th>Status</th>
+								  </tr>
+								  <tr>
+								    <td>Desafio 1</td>
+								    <td>Calouro</td>
+								    <td>20 XP</td>
+								    <td>Não Realizado</td>
+								  </tr>
+								  <tr>
+								    <td>Desafio 2</td>
+								    <td>Calouro</td>
+								    <td>20 XP</td>
+								    <td>Disponível</td>
+								  </tr>  
+								</table>
+
+						</div>
+
+					</section>
+				</div>
+				
+			</ui:define>
+		</ui:composition>
+	</h:body>
+
+</html>

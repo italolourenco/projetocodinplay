@@ -6,13 +6,11 @@ xmlns:f="http://java.sun.com/jsf/core"
 xmlns:ui="http://java.sun.com/jsf/facelets">
 
 
-	<head>	
-		<ui:define name = "titulo_pagina"><title> CodinPlay - Contato</title> </ui:define>
-	</head>
-
 	<h:body>
 		
 		<ui:composition template="../resources/templates/pagina.xhtml">
+			
+			<ui:define name = "titulo_pagina"> CodinPlay - Contato </ui:define>
 
 			<ui:define name="pagina">
 				
@@ -26,11 +24,11 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 
 			    <div class="CLASS_blocoRight.descricao">
 					<h:form name="editar" id="ID_formContato">
-						<h:outputLabel class="ID_labelContato" for="email">E-mail:</h:outputLabel>
+						<h:outputLabel class="ID_labelContato" for="email" value = "E-maail:"></h:outputLabel>
 						<h:inputText class="input" type="text" id="email" onblur="verificaEmail(this.value);" placeholder="E-mail">
 						</h:inputText>
 						<br />
-						<h:outputLabel class="ID_labelContato" for="email">Dicas e sugestões:</h:outputLabel>
+						<h:outputLabel class="ID_labelContato" value = "Dicas e sugestões:" for="email"></h:outputLabel>
 						<h:inputTextarea class= "input2" id="dicas"></h:inputTextarea>
 						<br />
 						<h:commandButton class="CLASS_bottonContato" value="Enviar"></h:commandButton>
