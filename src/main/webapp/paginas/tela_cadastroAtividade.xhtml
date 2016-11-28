@@ -54,8 +54,10 @@ xmlns:p="http://primefaces.org/ui">
 						
 						<h:outputLabel value = "Tarefa:" for="nivel"> </h:outputLabel>
 						<br />
-						<h:selectOneMenu class="input-gamb" id="tarefa"  value = "#{cadastroAtividadeBean.codTarefa}" >
-							<f:selectItems value = "#{cadastroAtividadeBean.tarefas}" var = "y" itemLabel = "#{y.nome}" itemValue="#{y.id_tarefa}" />
+						<h:selectOneMenu class="input-gamb" id="tarefa" value = "#{cadastroAtividadeBean.codTarefa}" >
+							<f:selectItem itemValue="1" itemLabel = "NewBie"/>
+							<f:selectItem itemValue="2" itemLabel = "Amador"/> 
+							<f:selectItem itemValue="3" itemLabel = "Leda"/> 
 						</h:selectOneMenu>
 						<br />
 						
