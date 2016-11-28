@@ -33,8 +33,9 @@ public class CadastroInstituicaoBean implements Serializable {
 	
 	public String inserir() throws Exception{
 		//Tem que entrar algum tipo de validação aki se o js não funcionar
-		if(objInstituicaoDAO.consulta(instituicao.getAbreviacao())){
+		if(!objInstituicaoDAO.consulta(instituicao.getAbreviacao())){
 			objInstituicaoDAO.inserirInstituicao(instituicao);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Istituicao Cadastrada !."));
 			return "sucesso";
 			
 		}

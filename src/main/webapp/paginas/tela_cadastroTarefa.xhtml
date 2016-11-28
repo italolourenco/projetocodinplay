@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+
+	<h:head>
+			
+	</h:head>
+
+	<h:body>
+		
+		<ui:composition template="../resources/templates/paginaAdmin.xhtml">
+
+			<ui:define name = "titulo_pagina"> CodinPlay - Cadastro Tarefa </ui:define>
+			
+			<ui:define name="pagina">
+			
+		<div id="ID_areaPrincipal">
+
+			<section class="CLASS_blocoPrincipal3">
+				<h2 class="CLASS_red"> Cadastro de Tarefas </h2>
+				<span class="CLASS_linhaSeparadora"></span>
+				<div class="CLASS_blocoRight.descricao">
+				
+					<h:form name="editar" id="ID_form">
+					
+						<h:outputText value = "Escolha o Tipo:" for="optTarefa"> </h:outputText>
+						<br />
+						
+						<h:selectOneRadio value="#{cadastroAtividade.tipo}">
+			    			
+			    			<f:selectItem itemValue="Atividade" itemLabel="Atividade"></f:selectItem>
+			    			<f:selectItem itemValue="Desafio" itemLabel="Desafio Semanal"></f:selectItem>
+			    				
+						</h:selectOneRadio>
+						<br />
+						
+						<h:outputLabel value = "Descrição da Pergunta:" for="descricao"> </h:outputLabel>
+						<br />
+						<h:inputTextarea class= "input2" name="descricao" id="descricao"></h:inputTextarea>
+						<br /> <br />
+						
+						<h:outputLabel value = "Nível" for="nivel"> </h:outputLabel>
+						<br />
+						
+						<h:selectOneMenu class="input-gamb" id="nivel"  value = "#{cadastroAtividadeBean.codNivel}" >
+							<f:selectItems value = "#{cadastroAtividadeBean.niveis}" var = "n" itemLabel = "#{n.nome}" itemValue="#{n.id_nivel}" />
+						</h:selectOneMenu>
+						<br />
+						
+						<h:outputLabel value = "Tarefa:" for="nivel"> </h:outputLabel>
+						<br />
+						<h:selectOneMenu class="input-gamb" id="tarefa"  value = "#{cadastroAtividadeBean.codTarefa}" >
+							<f:selectItems value = "#{cadastroAtividadeBean.tarefas}" var = "y" itemLabel = "#{y.nome}" itemValue="#{y.id_tarefa}" />
+						</h:selectOneMenu>
+						<br />
+						
+						<h3 class="CLASS_red"> Respostas </h3>
+						<br/>
+						
+						<h5>Escreva as Respostas</h5>
+						<br />
+						
+						<h:outputLabel value = "Letra A:"  for="letraA"></h:outputLabel>
+						<h:inputTextarea class= "input" name="letraA" id="letraA" value = "#{cadastroAtividadeBean.atividade.respostaA}"></h:inputTextarea>
+						<br />
+						
+						<h:outputLabel value = "Letra B:"  for="letraB"></h:outputLabel>
+						<h:inputTextarea class= "input" name="letraB" id="letraB" value = "#{cadastroAtividadeBean.atividade.respostaB}"></h:inputTextarea>
+						<br />
+						
+						<h:outputLabel value = "Letra C:"  for="letraC"></h:outputLabel>
+						<h:inputTextarea class= "input" name="letraC" id="letraC" value = "#{cadastroAtividadeBean.atividade.respostaC}"></h:inputTextarea>
+						<br />
+						
+						<h:outputLabel value = "Letra D:"  for="letraD"></h:outputLabel>
+						<h:inputTextarea class= "input" name="letraD" id="letraD" value = "#{cadastroAtividadeBean.atividade.respostaD}"></h:inputTextarea>
+						<br />
+						
+						<h:outputLabel value = "Letra E:"  for="letraE"></h:outputLabel>
+						<h:inputTextarea class= "input" name="letraE" id="letraE" value = "#{cadastroAtividadeBean.atividade.respostaE}"></h:inputTextarea>
+						<br />
+						
+						<h:outputText value = "Escolha a Resposta Correta" for="optcorreta"> </h:outputText>
+						<h:selectOneRadio value="#{cadastroAtividade.respostaCerta}">
+			    			
+			    			<f:selectItem itemValue="Letra A" itemLabel="A"></f:selectItem>
+			    			<f:selectItem itemValue="Letra B" itemLabel="B"></f:selectItem>
+			    			<f:selectItem itemValue="Letra C" itemLabel="C"></f:selectItem>
+			    			<f:selectItem itemValue="Letra D" itemLabel="D"></f:selectItem>
+			    			<f:selectItem itemValue="Letra E" itemLabel="E"></f:selectItem>
+			    				
+						</h:selectOneRadio>
+						<br />
+											
+						<h:commandButton class="CLASS_bottonContato" action="#{cadastroAtividadeBean.inserir}" value = "Salvar"> </h:commandButton>
+						<h:commandButton class="CLASS_bottonContato" action="#{cadastroAtividadeBean.cancelar}" value = "Cancelar"> </h:commandButton>
+						
+					</h:form>
+				</div>
+
+			</section>
+
+		</div>
+				
+			</ui:define>
+		</ui:composition>
+	</h:body>
+
+</html>

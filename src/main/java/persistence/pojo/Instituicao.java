@@ -1,6 +1,13 @@
 package persistence.pojo;
 
-public class Instituicao {
+import java.io.Serializable;
+
+public class Instituicao implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7144536186358487387L;
 	
 	private Integer id_instituicao;
 	private String nome;

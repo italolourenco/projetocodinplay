@@ -1,7 +1,13 @@
 package persistence.pojo;
 
-public class Patente {
+import java.io.Serializable;
+
+public class Patente implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5978685280814947728L;
 	private Integer id_patente;
 	private String nome;
 	private Integer pontuacao_min;

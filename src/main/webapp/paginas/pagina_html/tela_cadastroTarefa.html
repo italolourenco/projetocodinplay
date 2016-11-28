@@ -39,9 +39,15 @@
 				<h2 class="CLASS_red"> Cadastro de Tarefas </h2>
 				<span class="CLASS_linhaSeparadora"></span>
 				<div class="CLASS_blocoRight.descricao">
-					<form name="editar" id="ID_form">
-						<label for="optTarefa">Tipo:</label>
-						<br>
+					<h:form name="editar" id="ID_form">
+					
+					<h:outputLabel  class="Class_label" value = "Email" for="email"></h:outputLabel>
+					<h:inputText class="input" id="email" onblur="verificaEmail(this.value);" placeholder="E-mail" value="#{usuario.pessoa.email}" ></h:inputText>
+					<br />
+					
+					
+						<h:outputLabel value = "Escolha o Tipo:" for="optTarefa"> </h:outputLabel>
+						<br />
 						<input type="radio" name="optTarefa" id="optTarefa">Tarefa
 						<input type="radio" name="optTarefa" id="optTarefaD">Desafio Semanal
 						<br><br>
@@ -83,7 +89,7 @@
 						<br><br>	
 						<button class="CLASS_bottonContato" type="submit" onclick="validarFormCadastroTarefa()";>Salvar</button>
 						<button class="CLASS_bottonContato" type="button">Cancelar</button>
-					</form>
+					</h:form>
 				</div>
 
 			</section>

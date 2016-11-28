@@ -36,21 +36,17 @@ xmlns:p="http://primefaces.org/ui">
 						<h:outputLabel value = "Abreviação:" for="abreviacao"> </h:outputLabel>
 						<h:inputText class="input" id="abreviacao" placeholder="Abreviação" value="#{cadastroInstituicaoBean.instituicao.abreviacao}"> </h:inputText>
 						<br /><br />
-						
-						<h:outputLabel value ="Cidade:" for="cidade"> </h:outputLabel>
-						<h:inputText class="input" id="cidade" placeholder="Cidade" value="#{cadastroInstituicaoBean.instituicao.abreviacao}"></h:inputText>
-						<br /><br />
-						
+								
 						<h:outputLabel value="Estado:"  for="estado"> </h:outputLabel>
-						<h:inputText class="input" id="estado" placeholder="Estado" value="#{cadastroInstituicaoBean.instituicao.abreviacao}"></h:inputText>
+						<h:inputText class="input" id="estado" placeholder="Estado" value="#{cadastroInstituicaoBean.instituicao.estado}"></h:inputText>
 						<br /><br />
 						
 						<h:outputLabel value="Telefone:" for="telefone"> </h:outputLabel>
-						<h:inputText class="input" id="telefone" placeholder="Telefone" value="#{cadastroInstituicaoBean.instituicao.abreviacao}"></h:inputText>
+						<h:inputText class="input" id="telefone" placeholder="Telefone" value="#{cadastroInstituicaoBean.instituicao.telefone}"></h:inputText>
 						<br /><br />
 						
 						<h:outputLabel value="Site:"  for="site"></h:outputLabel>
-						<h:inputText class="input" id="site" placeholder="Site" value="#{cadastroInstituicaoBean.instituicao.abreviacao}"></h:inputText>
+						<h:inputText class="input" id="site" placeholder="Site" value="#{cadastroInstituicaoBean.instituicao.site}"></h:inputText>
 						<br /><br />	
 						
 						<h:commandButton class="CLASS_bottonContato" action="#{cadastroInstituicaoBean.inserir}" value = "Salvar"> </h:commandButton>
