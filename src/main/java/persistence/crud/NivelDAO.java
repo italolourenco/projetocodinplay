@@ -2,6 +2,7 @@ package persistence.crud;
 
 import java.util.ArrayList;
 
+import persistence.pojo.Instituicao;
 import persistence.pojo.Nivel;
 
 public class NivelDAO extends DAO{
@@ -20,7 +21,7 @@ public class NivelDAO extends DAO{
 			
 			nivel = new Nivel();
 			
-			nivel.setId_nivel(rs.getInt("id_instituicao"));
+			nivel.setId_nivel(rs.getInt("id_nivel"));
 			nivel.setNome(rs.getString("nome"));
 			nivel.setPontuacaoTotal(rs.getInt("pontuacaototal"));
 			nivel.setDescricaoTema(rs.getString("descricaotema"));
@@ -30,6 +31,25 @@ public class NivelDAO extends DAO{
 		return niveis;
 		
 		
+	}
+	
+	public Nivel consulta(int id_nivel) throws Exception{
+		
+		Nivel nivel = null;
+		String sql = "SELECT * from nivel where nivel.id_nivel = '" + id_nivel + "';";
+		open();
+		
+		while(rs.next()){
+			
+			nivel = new Nivel();
+			
+			nivel.setId_nivel(rs.getInt("id_nivel"));
+			nivel.setNome(rs.getString("nome"));
+			nivel.setPontuacaoTotal(rs.getInt("pontuacaototal"));
+			nivel.setDescricaoTema(rs.getString("descricaotema"));
+		}
+		close();
+		return nivel;
 	}
 
 }

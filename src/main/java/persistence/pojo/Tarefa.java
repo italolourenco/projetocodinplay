@@ -12,7 +12,7 @@ public class Tarefa  implements Serializable{
 	private String nome;
 	private Integer pontuacao_max;
 	private String descricao;
-	private Nivel nivel;
+	private Nivel objNivel;
 	public Integer getId_tarefa() {
 		return id_tarefa;
 	}
@@ -38,10 +38,10 @@ public class Tarefa  implements Serializable{
 		this.descricao = descricao;
 	}
 	public Nivel getNivel() {
-		return nivel;
+		return objNivel;
 	}
 	public void setNivel(Nivel nivel) {
-		this.nivel = nivel;
+		this.objNivel = nivel;
 	}
 	
 	
