@@ -97,12 +97,14 @@ public Instituicao consulta(int id) throws Exception {
 		
 		open();
 		stmt = con.prepareStatement("INSERT INTO instituicao (nome, abreviacao, estado, telefone, site) VALUES (?,?,?,?,?);");
+		
 		stmt.setString(1, instituicao.getNome());
 		stmt.setString(2, instituicao.getAbreviacao());
 		stmt.setString(3, instituicao.getEstado());
 		stmt.setString(4, instituicao.getTelefone());
 		stmt.setString(5, instituicao.getSite());
 		stmt.execute();
+		close();
 	}
 
 }

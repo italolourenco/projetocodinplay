@@ -46,5 +46,28 @@ version="2.1">
 			<from-outcome>cancelar</from-outcome>
 			<to-view-id>/paginas/tela_principalAdmin.xhtml</to-view-id>
 		</navigation-case>
+		
 	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/paginas/tela_cadastroAtividade.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>erro</from-outcome>
+			<to-view-id>/paginas/tela_cadastroAtividade.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/paginas/tela_cadastroAtividade.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cancelar</from-outcome>
+			<to-view-id>/paginas/tela_principalAdmin.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	
+	
+	
 </faces-config>

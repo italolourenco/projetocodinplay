@@ -46,7 +46,7 @@ xmlns:p="http://primefaces.org/ui">
 						
 						<h:outputLabel value = "Descrição da Pergunta:" for="descricao"> </h:outputLabel>
 						<br />
-						<h:inputTextarea class= "input2" name="descricao" id="descricao"></h:inputTextarea>
+						<h:inputTextarea class= "input2" name="descricao" id="descricao" value = "#{cadastroAtividadeBean.atividade.descricaoProblema}"></h:inputTextarea>
 						<br /> <br />
 						
 						<h:outputLabel value = "Nível" for="nivel"> </h:outputLabel>
@@ -64,6 +64,10 @@ xmlns:p="http://primefaces.org/ui">
 							<f:selectItem itemValue = "2" itemLabel = "Amador"/> 
 							<f:selectItem itemValue = "3" itemLabel = "Lenda"/> 
 						</h:selectOneMenu>
+						<br />
+						
+						<h:outputLabel value = "Pontuação:"  for="pontuacao"></h:outputLabel>
+						<h:inputText class= "input" name="Pontuacao" id="pontuacao" value = "#{cadastroAtividadeBean.atividade.pontuacao}"></h:inputText>
 						<br />
 						
 						<h3 class="CLASS_red"> Respostas </h3>
