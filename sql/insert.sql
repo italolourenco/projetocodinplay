@@ -18,3 +18,7 @@ INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Lenda', 5
 INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Newbie', 20, 'Repeticao', 3);
 INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Amador', 30, 'Repeticao', 3);
 INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Lenda', 50, 'Repeticao', 3);
+
+INSERT INTO patente (nome,pontuacao_min , pontuacao_max) VALUES ('Junior', 0, 10);
+INSERT INTO patente (nome,pontuacao_min, pontuacao_max) VALUES ('Pleno',10, 20);
+INSERT INTO patente (nome,pontuacao_min, pontuacao_max) VALUES ('Senior',20,30);
