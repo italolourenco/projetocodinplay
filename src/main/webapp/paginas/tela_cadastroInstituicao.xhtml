@@ -21,13 +21,13 @@ xmlns:p="http://primefaces.org/ui">
 			
 		<div id="ID_areaPrincipal">
 
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
 			<section class="CLASS_blocoPrincipal2">
 				<h2 class="CLASS_red"> Cadastro Instituição </h2>
 				<span class="CLASS_linhaSeparadora"></span>
 				<div class="CLASS_blocoRight.descricao">
+				<p:tooltip />
 					<h:form name="editar" id="ID_form">
-					
-						<p:messages id="messages" showDetail="true" autoUpdate="true"/>
 						
 						<h:outputLabel value="Nome:" for="nome"> </h:outputLabel>	
 						<h:inputText class="input" id="nome" placeholder="Nome" value="#{cadastroInstituicaoBean.instituicao.nome}"> </h:inputText>
