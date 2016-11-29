@@ -28,15 +28,20 @@ xmlns:p="http://primefaces.org/ui">
 				
 					<h:form name="editar" id="ID_form">
 					
+						<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
 						<h:outputText value = "Escolha o Tipo:" for="optTarefa"> </h:outputText>
 						<br />
 						
-						<h:selectOneRadio value="#{cadastroAtividade.tipo}">
+						<h:selectOneRadio value="#{cadastroAtividadeBean.atividade.tipoAtividade}">
 			    			
-			    			<f:selectItem itemValue="Atividade" itemLabel="Atividade"></f:selectItem>
-			    			<f:selectItem itemValue="Desafio" itemLabel="Desafio Semanal"></f:selectItem>
+			    			<f:selectItem itemValue = "1" itemLabel="Atividade"></f:selectItem>
+			    			<f:selectItem itemValue = "2" itemLabel="Desafio Semanal"></f:selectItem>
 			    				
 						</h:selectOneRadio>
+						<br />
+						
+						<h:outputLabel value = "Nome:"  for="nome"></h:outputLabel>
+						<h:inputText class= "input" name="Nome" id="nome" value = "#{cadastroAtividadeBean.atividade.nome}"></h:inputText>
 						<br />
 						
 						<h:outputLabel value = "Descrição da Pergunta:" for="descricao"> </h:outputLabel>
@@ -55,9 +60,9 @@ xmlns:p="http://primefaces.org/ui">
 						<h:outputLabel value = "Tarefa:" for="nivel"> </h:outputLabel>
 						<br />
 						<h:selectOneMenu class="input-gamb" id="tarefa" value = "#{cadastroAtividadeBean.codTarefa}" >
-							<f:selectItem itemValue="1" itemLabel = "NewBie"/>
-							<f:selectItem itemValue="2" itemLabel = "Amador"/> 
-							<f:selectItem itemValue="3" itemLabel = "Leda"/> 
+							<f:selectItem itemValue = "1" itemLabel = "NewBie"/>
+							<f:selectItem itemValue = "2" itemLabel = "Amador"/> 
+							<f:selectItem itemValue = "3" itemLabel = "Lenda"/> 
 						</h:selectOneMenu>
 						<br />
 						
@@ -88,18 +93,18 @@ xmlns:p="http://primefaces.org/ui">
 						<br />
 						
 						<h:outputText value = "Escolha a Resposta Correta" for="optcorreta"> </h:outputText>
-						<h:selectOneRadio value="#{cadastroAtividade.respostaCerta}">
+						<h:selectOneRadio value="#{cadastroAtividadeBean.atividade.respostaCerta}">
 			    			
-			    			<f:selectItem itemValue="Letra A" itemLabel="A"></f:selectItem>
-			    			<f:selectItem itemValue="Letra B" itemLabel="B"></f:selectItem>
-			    			<f:selectItem itemValue="Letra C" itemLabel="C"></f:selectItem>
-			    			<f:selectItem itemValue="Letra D" itemLabel="D"></f:selectItem>
-			    			<f:selectItem itemValue="Letra E" itemLabel="E"></f:selectItem>
+			    			<f:selectItem itemValue = "1" itemLabel="A"></f:selectItem>
+			    			<f:selectItem itemValue = "2" itemLabel="B"></f:selectItem>
+			    			<f:selectItem itemValue = "3" itemLabel="C"></f:selectItem>
+			    			<f:selectItem itemValue = "4" itemLabel="D"></f:selectItem>
+			    			<f:selectItem itemValue = "5" itemLabel="E"></f:selectItem>
 			    				
 						</h:selectOneRadio>
 						<br />
 											
-						<h:commandButton class="CLASS_bottonContato" action="#{cadastroAtividadeBean.inserir}" value = "Salvar"> </h:commandButton>
+						<h:commandButton class="CLASS_bottonContato" action="#{cadastroAtividadeBean.cadastroAtividade}" value = "Salvar"> </h:commandButton>
 						<h:commandButton class="CLASS_bottonContato" action="#{cadastroAtividadeBean.cancelar}" value = "Cancelar"> </h:commandButton>
 						
 					</h:form>

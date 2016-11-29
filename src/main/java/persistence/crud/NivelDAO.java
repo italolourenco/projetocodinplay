@@ -39,6 +39,8 @@ public class NivelDAO extends DAO{
 		String sql = "SELECT * from nivel where nivel.id_nivel = '" + id_nivel + "';";
 		open();
 		
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
 		while(rs.next()){
 			
 			nivel = new Nivel();

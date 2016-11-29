@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS instituicao (
-  id_instituicao INT NOT NULL,
+  id_instituicao SERIAL,
   nome VARCHAR(45) NULL,
   abreviacao VARCHAR(45) NULL,
   estado VARCHAR(45) NULL,
@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS atividade (
   respostaD VARCHAR(45) NULL,
   respostaE VARCHAR(45) NULL,
   respostaCerta INT NULL,
+  tipo INT NULL,
   id_tarefa INT NOT NULL,
   id_nivel INT NOT NULL,
   PRIMARY KEY (id_atividade),

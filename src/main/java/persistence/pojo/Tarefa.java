@@ -8,11 +8,13 @@ public class Tarefa  implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 4185941214039254370L;
+	
 	private Integer id_tarefa;
 	private String nome;
 	private Integer pontuacao_max;
 	private String descricao;
 	private Nivel objNivel;
+	
 	public Integer getId_tarefa() {
 		return id_tarefa;
 	}

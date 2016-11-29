@@ -4,10 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
+import persistence.crud.AtividadeDAO;
 import persistence.crud.NivelDAO;
+import persistence.crud.TarefaDAO;
 import persistence.pojo.Atividade;
 import persistence.pojo.Nivel;
 
@@ -26,6 +30,8 @@ public class CadastroAtividadeBean implements Serializable {
 	private Integer codTarefa = null;
 	private Atividade atividade;
 	
+	AtividadeDAO objAtividadeDAO = new AtividadeDAO();
+	TarefaDAO objTarefaDAO = new TarefaDAO();
 
 	public Atividade getAtividade() {
 		return atividade;
@@ -77,4 +83,21 @@ public class CadastroAtividadeBean implements Serializable {
 			e.printStackTrace();
 		}
 	}
-}
+	
+	public String cadastroAtividade() throws Exception{
+		
+		atividade.setObjNivel(objNivelDAO.consulta(codNivel));
+		atividade.setObjTarefa(objTarefaDAO.consulta(codTarefa));
+		if(!objAtividadeDAO.consulta(this.atividade)){
+			
+			//objAtividadeDAO.inserir(this.atividade);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Atividade Cadastrada !."));
+			return "sucesso";
+					
+				}
+				else
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Erro!", "Atividade Ja Cadastrada!"));
+				
+				return "erro";
+			}
+	}

@@ -7,14 +7,14 @@ INSERT INTO nivel (nome, pontuacaototal, descricaotema) VALUES ('Nivel 1', 100, 
 INSERT INTO nivel (nome, pontuacaototal, descricaotema) VALUES ('Nivel 2', 150, 'Teste de mesa');
 INSERT INTO nivel (nome, pontuacaototal, descricaotema) VALUES ('Nivel 3', 200, 'Estruturas Condicionais');
 
-INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Newbie', 20, 'Operadores Logicos', 7);
-INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Amador', 30, 'Operadores Logicos', 7);
-INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Lenda', 50, 'Operadores Logicos', 7);
+INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Newbie', 20, 'Operadores Logicos', 1);
+INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Amador', 30, 'Operadores Logicos', 1);
+INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Lenda', 50, 'Operadores Logicos', 1);
 
-INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Newbie', 20, 'Estruturas', 8);
-INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Amador', 30, 'Estruturas', 8);
-INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Lenda', 50, 'Estruturas', 8);
+INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Newbie', 20, 'Estruturas', 2);
+INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Amador', 30, 'Estruturas', 2);
+INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Lenda', 50, 'Estruturas', 2);
 
-INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Newbie', 20, 'Repeticao', 9);
-INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Amador', 30, 'Repeticao', 9);
-INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Lenda', 50, 'Repeticao', 9);
+INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Newbie', 20, 'Repeticao', 3);
+INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Amador', 30, 'Repeticao', 3);
+INSERT INTO tarefa (nome, pontuacao_max, descricao, id_nivel) VALUES ('Lenda', 50, 'Repeticao', 3);

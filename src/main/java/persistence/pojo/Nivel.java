@@ -8,6 +8,7 @@ public class Nivel implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 7042923987599619282L;
+	
 	private Integer id_nivel;
 	private String nome;
 	private Integer pontuacaoTotal;

@@ -8,6 +8,7 @@ public class Atividade implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 852138787547096354L;
+	
 	private Integer id_atividade;
 	private String nome;
 	private String descricaoProblema;
@@ -19,6 +20,8 @@ public class Atividade implements Serializable {
 	private String respostaE;
 	private Integer respostaCerta;
 	private Integer tipoAtividade;
+	private Tarefa objTarefa;
+	private Nivel objNivel;
 	
 	public Integer getId_atividade() {
 		return id_atividade;
@@ -98,7 +101,5 @@ public class Atividade implements Serializable {
 	public void setObjNivel(Nivel objNivel) {
 		this.objNivel = objNivel;
 	}
-	private Tarefa objTarefa;
-	private Nivel objNivel;
 
 }
