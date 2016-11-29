@@ -90,7 +90,7 @@ public class CadastroAtividadeBean implements Serializable {
 		atividade.setObjTarefa(objTarefaDAO.consulta(codTarefa));
 		if(!objAtividadeDAO.consulta(this.atividade)){
 			
-			//objAtividadeDAO.inserir(this.atividade);
+			objAtividadeDAO.inserir(this.atividade);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Atividade Cadastrada !."));
 			return "sucesso";
 					
@@ -100,4 +100,8 @@ public class CadastroAtividadeBean implements Serializable {
 				
 				return "erro";
 			}
+	
+	public String cancelar(){
+		return "cancelar";
+	}
 	}
