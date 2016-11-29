@@ -4,10 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import persistence.crud.InstituicaoDAO;
-import persistence.crud.UsuarioDAO;
-import persistence.pojo.Instituicao;
-import persistence.pojo.Usuario;
+import persistence.crud.*;
+import persistence.pojo.*;
 
 
 import javax.annotation.PostConstruct;
@@ -27,8 +25,12 @@ public class CadastroBean implements Serializable {
 	
 	private Usuario usuario;
 	private Instituicao instituicao;
+	private Nivel nivel = new Nivel();
+	private NivelDAO objNivelDAO = new NivelDAO();
 	private UsuarioDAO objUsuarioDao = new UsuarioDAO();
 	private InstituicaoDAO objInstituicaoDAO = new InstituicaoDAO();
+	private PatenteDAO objPatenteDAO = new PatenteDAO();
+	private Patente patente = new Patente();
 	
 	private Integer cod;
 	private ArrayList<Instituicao> instituicoes = new ArrayList<Instituicao>();
@@ -80,9 +82,30 @@ public class CadastroBean implements Serializable {
 		this.instituicoes = instituicoes;
 	}
 
-	public String cadastroPessoa(){
+	public String cadastroPessoa() throws Exception{
 		
-		return "sucesso";
+		
+		
+		//Tem que entrar algum tipo de validação aki se o js não funcionar
+		if(!objUsuarioDao.consultaEmail(usuario.getEmail())){
+			usuario.setPontuacao(0);
+			
+			
+			nivel = objNivelDAO.consulta(1);
+			patente = objPatenteDAO.consultaPatente(1);
+			usuario.setTipo(1);
+			usuario.setObjPatente(patente);
+			usuario.setObjNivel(nivel);
+			usuario.setObjInstituicao(objInstituicaoDAO.consulta(this.cod));
+			objUsuarioDao.inserirUsuario(usuario);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Usuário Cadastrado !."));
+			return "sucesso";
+		}
+		else{
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Erro!", "E-mail já cadastrado!"));
+			return "erro";
+		}
+			
 	}
 	
 	public boolean verificarEmail(){

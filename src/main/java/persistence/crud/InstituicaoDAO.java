@@ -66,6 +66,33 @@ public class InstituicaoDAO extends DAO {
 			return true;
 	}
 	
+public Instituicao consulta(int id) throws Exception {
+		
+		Instituicao instituicao = null;
+		String sql = "SELECT * from instituicao where instituicao.id_instituicao = '" + id + "';";
+		open();
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
+		
+		while(rs.next()){
+			
+			instituicao = new Instituicao();
+			
+			instituicao.setId_instituicao(rs.getInt("id_instituicao"));
+			instituicao.setNome(rs.getString("nome"));
+			instituicao.setAbreviacao(rs.getString("abreviacao"));
+			instituicao.setEstado(rs.getString("estado"));
+			instituicao.setTelefone(rs.getString("telefone"));
+			instituicao.setSite(rs.getString("site"));
+		
+		}
+		close();
+		
+		return instituicao;
+	}
+	
+	
+	
 	public void inserirInstituicao(Instituicao instituicao) throws Exception{
 		
 		open();

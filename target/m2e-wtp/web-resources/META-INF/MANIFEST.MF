@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: Italo
-Build-Jdk: 1.8.0_101
+Built-By: IGOR
+Build-Jdk: 1.8.0_102
 Created-By: Maven Integration for Eclipse
 
