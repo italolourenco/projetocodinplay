@@ -27,7 +27,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 				
 						<div class="CLASS_blocoLeft">
 							<div class="CLASS_blocoImg">
-								<h:graphicImage class="CLASS_tamanhoImg" value = "resources/img/avatar.png" alt="Perfil Imagem CodinPlay" />
+								<h:graphicImage class="CLASS_tamanhoImg" value = "../resources/img/avatar.png" alt="Perfil Imagem CodinPlay" />
 							</div>
 							<div class="CLASS_centraliza">
 								<a class="CLASS_linkPag" href="tela_editarPerfil.html">Editar Perfil</a>
@@ -37,15 +37,15 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 
 						<div class="CLASS_blocoRight">
 							<h5 class="CLASS_corTitulos"> Nome </h5>
-							<h3 class="CLASS_margin5">Igor Soares</h3> <br />
-							<h5 class="CLASS_corTitulos"> Instituição </h5>
-							<h4>Instituto Federal Do Espirito Santo</h4> <br/>
+							<h3 class="CLASS_margin5"> <h:outputText value = "#{loginBean.usuario.nome}" /> </h3> <br />
+							<h5 class="CLASS_corTitulos"> Instituição </h5> 
+							<h4> <h:outputText value = "#{loginBean.usuario.objInstituicao.nome}" /> </h4> <br/>
 							<h5 class="CLASS_corTitulos"> Nível </h5>
-							<h4>Calouro</h4> <br/>
+							<h4> <h:outputText value = "#{loginBean.usuario.objNivel.nome}" /></h4> <br/>
 							<h5 class="CLASS_corTitulos"> Pontuação </h5>
-							<h4>20 XP</h4><br />
-							<h5 class="CLASS_corTitulos"> Pontuação para o proximo nível </h5>
-							<h4>60 XP</h4>
+							<h4> <h:outputText value = "#{loginBean.usuario.pontuacao}" /> XP </h4><br />
+							<h5 class="CLASS_corTitulos"> Patente </h5>
+							<h4> <h:outputText value = "#{loginBean.usuario.objPatente.nome}" /> </h4>
 						</div>
 					</section>
 

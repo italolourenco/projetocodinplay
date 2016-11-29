@@ -5,14 +5,14 @@
 	version="2.5">
   	<display-name>Codinplay</display-name>
   	<welcome-file-list>
-	    <welcome-file>index.html</welcome-file>
-	    <welcome-file>index.htm</welcome-file>
-	    <welcome-file>index.jsp</welcome-file>
-	    <welcome-file>default.html</welcome-file>
-	    <welcome-file>default.htm</welcome-file>
-	    <welcome-file>default.jsp</welcome-file>
-	    <welcome-file>index.jsf</welcome-file>
-	    <welcome-file>default.jsf</welcome-file>
+	    <welcome-file>paginas/index.html</welcome-file>
+	    <welcome-file>paginas/index.htm</welcome-file>
+	    <welcome-file>paginas/index.jsp</welcome-file>
+	    <welcome-file>paginas/default.html</welcome-file>
+	    <welcome-file>paginas/default.htm</welcome-file>
+	    <welcome-file>paginas/default.jsp</welcome-file>
+	    <welcome-file>paginas/index.jsf</welcome-file>
+	    <welcome-file>paginas/default.jsf</welcome-file>
   	</welcome-file-list>
   	<servlet>
     	<servlet-name>Faces Servlet</servlet-name>

@@ -1,6 +1,8 @@
 package persistence.crud;
 
 import persistence.pojo.Instituicao;
+import persistence.pojo.Nivel;
+import persistence.pojo.Patente;
 import persistence.pojo.Usuario;
 
 
@@ -33,4 +35,43 @@ public class UsuarioDAO extends DAO {
 		close();
 		return hasResult;
 	}
+	
+	public Usuario consulta (String email) throws Exception{
+		
+		Usuario usuario = null;
+		Patente patente = null;
+		Instituicao instituicao = null;
+		Nivel nivel = null;
+		
+		PatenteDAO objPatenteDAO = new PatenteDAO();
+		InstituicaoDAO objInstituicaoDAO = new InstituicaoDAO();
+		NivelDAO objNivelDAO = new NivelDAO();
+		
+		String sql = "SELECT * from usuario where usuario.email = '" + email + "';";
+		open();
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
+		
+		while(rs.next()){
+			
+			usuario = new Usuario();
+			
+			usuario.setId_usuario(rs.getInt("id_usuario"));
+			usuario.setNome(rs.getString("nome"));
+			usuario.setTelefone(rs.getString("email"));
+			usuario.setDataNascimento(rs.getString("datanascimento"));
+			usuario.setTelefone(rs.getString("telefone"));
+			usuario.setTipo(rs.getInt("tipo"));
+			usuario.setSexo(rs.getInt("sexo"));
+			usuario.setSenha(rs.getString("senha"));
+			usuario.setPontuacao(rs.getInt("pontuacao"));
+			usuario.setObjInstituicao(objInstituicaoDAO.consulta(rs.getInt("id_instituicao")));
+			usuario.setObjNivel(objNivelDAO.consulta(rs.getInt("id_nivel")));
+			usuario.setObjPatente(objPatenteDAO.consultaPatente(rs.getInt("id_patente")));
+			
+		}
+		close();
+		return usuario;
+	}
+	
 }

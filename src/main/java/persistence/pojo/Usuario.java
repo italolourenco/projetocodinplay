@@ -3,7 +3,9 @@ package persistence.pojo;
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
+	
 	private static final long serialVersionUID = 1701238245897178967L;
+	
 	private Integer id_usuario;
 	private String nome;
 	private String email;
@@ -16,6 +18,8 @@ public class Usuario implements Serializable {
 	private Patente objPatente;
 	private Instituicao objInstituicao;
 	private Nivel objNivel;
+	
+	
 	public Integer getId_usuario() {
 		return id_usuario;
 	}

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
 
@@ -26,16 +27,18 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 				<h1 id="ID_cabecalhoLogin">Entrar</h1>
 			</header>
 			<h:form id="ID_formLogin">
+			
+				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
 
 				<h:outputLabel class="CLASS_labelLogin" value = "Email" for="email"></h:outputLabel>
-				<h:inputText class="CLASS_inputLogin" id="email" label= "Email"  autofocus="Login" placeholder="Login"></h:inputText>
+				<h:inputText class="CLASS_inputLogin" id="email" label= "Email"  value = "#{loginBean.email}"></h:inputText>
 				<br />
 
 				<h:outputLabel class="CLASS_labelLogin" value = "Senha" for="senha"></h:outputLabel>
-				<h:inputText class="CLASS_inputLogin" id="senha" label= "Senha" ></h:inputText>
+				<h:inputText class="CLASS_inputLogin" id="senha" label= "Senha" value = "#{loginBean.senha}" ></h:inputText>
 				<br />
 
-				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.entrar}" value = "Entrar" onclick="fazerLogin();"> </h:commandButton>
+				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.entrar}" value = "Entrar"> </h:commandButton>
 				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.cadastro}" value = "Cadastro"> </h:commandButton>
 
 			</h:form>
