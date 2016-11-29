@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<h:body>
+		
+		<ui:composition template="../resources/templates/pagina.xhtml">
+			
+			<ui:define name = "titulo_pagina"> CodinPlay - Contato </ui:define>
+
+			<ui:define name="pagina">
+				
+
+		<div id="ID_areaPrincipal">
+
+			<section class="CLASS_blocoPrincipal2">
+				<h2 class="CLASS_red"> Contato </h2>
+				<span class="CLASS_linhaSeparadora"></span>
+			    <h3 class="CLASS_red"> Envie a sua mensagem </h3>
+
+			    <div class="CLASS_blocoRight.descricao">
+					<h:form name="editar" id="ID_formContato">
+						<h:outputLabel class="ID_labelContato" for="email" value = "E-maail:"></h:outputLabel>
+						<h:inputText class="input" type="text" id="email" onblur="verificaEmail(this.value);" placeholder="E-mail">
+						</h:inputText>
+						<br />
+						<h:outputLabel class="ID_labelContato" value = "Dicas e sugestões:" for="email"></h:outputLabel>
+						<h:inputTextarea class= "input2" id="dicas"></h:inputTextarea>
+						<br />
+						<h:commandButton class="CLASS_bottonContato" value="Enviar"></h:commandButton>
+						<h:commandButton class="CLASS_bottonContato" value="Cancelar"></h:commandButton>	
+					</h:form>
+				</div>
+
+			</section>
+
+			</div>
+			</ui:define>
+		</ui:composition>
+	</h:body>
+
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<h:outputStylesheet library="css" name="estilo_telaPrincipal.css" />
+		<h:outputScript library="js" name="funcao.js" />
+		
+		<title> CodinPlay - Entrar </title>
+
+	</h:head>
+
+	<body>
+
+		<div>
+			<img id="ID_imgLogo" src="resources/img/logo.png" alt="CodinPlay Logo" />
+		</div>
+
+		<section id="ID_blocoPrincipalLogin">
+			<header class="CLASS_alinhaText">
+				<h1 id="ID_cabecalhoLogin">Entrar</h1>
+			</header>
+			<h:form id="ID_formLogin">
+
+				<h:outputLabel class="CLASS_labelLogin" value = "Email" for="email"></h:outputLabel>
+				<h:inputText class="CLASS_inputLogin" id="email" label= "Email"  autofocus="Login" placeholder="Login"></h:inputText>
+				<br />
+
+				<h:outputLabel class="CLASS_labelLogin" value = "Senha" for="senha"></h:outputLabel>
+				<h:inputText class="CLASS_inputLogin" id="senha" label= "Senha" ></h:inputText>
+				<br />
+
+				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.entrar}" value = "Entrar" onclick="fazerLogin();"> </h:commandButton>
+				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.cadastro}" value = "Cadastro"> </h:commandButton>
+
+			</h:form>
+		</section>
+
+	</body>
+</html>

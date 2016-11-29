@@ -1,8 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config
-    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-    version="2.2">
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+version="2.1">
 
+	<application>
+		<resource-bundle>
+			<base-name> recursos.messages</base-name>
+			<var>messages</var>
+		</resource-bundle>
+	</application>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>inicio</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>cadastro</from-outcome>
+			<to-view-id>/paginas/tela_cadastro.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>entrar</from-outcome>
+			<to-view-id>/paginas/tela_principal.xhtml</to-view-id>
+		</navigation-case>
+		
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/paginas/tela_cadastroInstituicao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>erro</from-outcome>
+			<to-view-id>/paginas/tela_cadastroInstituicao.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/paginas/tela_cadastroInstituicao.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cancelar</from-outcome>
+			<to-view-id>/paginas/tela_principalAdmin.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

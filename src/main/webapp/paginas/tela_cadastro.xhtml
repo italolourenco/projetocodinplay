@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<h:head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<h:outputStylesheet library="css" name="estilo_telaPrincipal.css" />
+		<script type="text/javascript" src="../resources/js/funcao.js"></script>
+		<title> CodinPlay - Cadastro </title>
+
+	</h:head>
+
+	<h:body>
+	
+		<div>
+			<h:graphicImage id="ID_imgLogo" value = "../resources/img/logo.png" alt="Logo CodinPlay" />
+		</div>
+		
+		<section id="ID_blocoPrincipalCadastro">
+
+			<h:form name="cadastro" id="ID_formCadastro">
+				<header class="CLASS_label">
+					<h1 id="ID_cabecalhoCadastro">Cadastro</h1>
+				</header>
+					
+				<h:outputLabel class="CLASS_label" value = "Nome" for="nome"></h:outputLabel>
+				<h:inputText class="input" id="nome" value="#{usuarioBean.pessoa.nome}"></h:inputText>
+				<br />
+						
+				<h:outputLabel class="CLASS_label" value = "Instituição" for="instituicao"></h:outputLabel>
+				<h:selectOneMenu class="input-gamb" id="instituicao"  value = "#{cadastroBean.cod}" >
+					<f:selectItems value = "#{cadastroBean.instituicoes}" var = "li" itemLabel = "#{li.abreviacao}" itemValue="#{li.id_instituicao}" />
+				</h:selectOneMenu>
+				<br />
+						
+				<h:outputLabel class="CLASS_label" value = "Sexo" for="sexo"></h:outputLabel>
+				<h:selectOneMenu class="input-gamb" id="sexo" value = "#{usuarioBean.pessoa.sexo}">
+					<f:selectItem itemValue="feminino" itemLabel = "Feminino"/>
+					<f:selectItem itemValue="masculino" itemLabel = "Masculino"/> 
+				</h:selectOneMenu>
+				<br />
+						
+				<h:outputLabel class="CLASS_label" value = "Data Nascimento"  for="data"></h:outputLabel>
+				<h:inputText class="input" id="data" onblur="validaData(this.value);" value="#{usuario.pessoa.data}"></h:inputText>
+				<br />
+						
+				<h:outputLabel  class="Class_label" value = "Email" for="email"></h:outputLabel>
+				<h:inputText class="input" id="email" onblur="verificaEmail(this.value);" placeholder="E-mail" value="#{usuario.pessoa.email}" ></h:inputText>
+				<br />
+						
+				<h:outputLabel  class="Class_label" value = "Telefone" for="telefone"></h:outputLabel>
+				<h:inputText class="input" id="telefone" placeholder="Telefone" value="#{usuario.pessoa.email}"></h:inputText>
+				<br />
+						
+				<h:outputLabel class="Class_label" value = "Senha"  for="senha"></h:outputLabel>
+				<h:inputText class="input" id="senha" placeholder="Senha" value="#{usuario.pessoa.senha}"> </h:inputText>
+				<br />
+						
+				<h:outputLabel class="Class_label" value = "Confirmar Senha"  for="con_senha"></h:outputLabel>
+				<h:inputText class="input" id="con_senha" onblur="validarSenhaIgual();" value="#{usuario.pessoa.senha}">  </h:inputText>
+				<br />
+						
+				<h:commandButton class="CLASS_bottonContato" value="Salvar"></h:commandButton>
+				<h:commandButton class="CLASS_bottonContato" value="Cancelar"></h:commandButton>
+						
+			</h:form>
+		</section>
+	</h:body>
+
+
+</html>

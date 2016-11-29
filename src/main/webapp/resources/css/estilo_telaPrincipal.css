@@ -256,7 +256,7 @@ a.CLASS_linkPag:hover{
 }
 
 .input2 {
-  height: 260px;
+  height: 160px;
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
@@ -401,7 +401,9 @@ a.CLASS_linkPag:hover{
 	height: 1100px;
 }
 
-
+.CLASS_corTitulos{
+	color: #E74C3C;
+}
 
 /*Color*/
 .CLASS_branco{
