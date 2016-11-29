@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+
+	<h:head>
+			
+	</h:head>
+
+	<h:body>
+		
+		<ui:composition template="../resources/templates/paginaAdmin.xhtml">
+
+			<ui:define name = "titulo_pagina"> CodinPlay - Home </ui:define>
+			
+			<ui:define name="pagina">
+			
+				<div id="ID_areaPrincipal">	
+			<h:form name="editar" id="ID_formPesquisa">
+	    		<p:dataTable var="usuario" value="#{rankingBean.usuarios}" 
+	                 emptyMessage="Usuário não encontrado" filteredValue="#{rankingBean.filteredUsuarios}">
+	 
+	        		<p:column filterBy="#{usuario.nome}" headerText="Nome" filterMatchMode="contains">
+	            	<h:outputText value="#{usuario.nome}" />
+	        		</p:column>
+	        		
+	        		<p:column filterBy="#{usuario.objPatente.nome}" headerText="Patente" filterMatchMode="contains">
+	            	<h:outputText value="#{usuario.objPatente.nome}" />
+	        		</p:column>
+	        		
+	        		<p:column filterBy="#{usuario.objNivel.nome}" headerText="Nível" filterMatchMode="contains">
+	            	<h:outputText value="#{usuario.objNivel.nome}" />
+	        		</p:column>
+	        		
+	        		<p:column filterBy="#{usuario.pontuacao}" headerText="Pontuação" filterMatchMode="contains">
+	            	<h:outputText value="#{usuario.pontuacao}" />
+	        		</p:column>
+	        		
+	        		<p:column filterBy="#{usuario.objInstituicao.nome}" headerText="Instituição" filterMatchMode="contains">
+	            	<h:outputText value="#{usuario.objInstituicao.nome}" />
+	        		</p:column>
+	        		
+	    		</p:dataTable>
+			</h:form>
+		
+		
+		</div>
+				
+			</ui:define>
+		</ui:composition>
+	</h:body>
+
+</html>
