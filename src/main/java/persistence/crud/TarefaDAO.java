@@ -72,7 +72,7 @@ public class TarefaDAO extends DAO {
 		
 		Tarefa tarefa = null;
 		
-		String sql = "SELECT * from tarefa where tarefa.pontuacao_min >= " + usuario.getPontuacao() + "and tarefa.pontuacao_max < " + usuario.getPontuacao() + "and tarefa.id_nivel = " + usuario.getObjNivel().getId_nivel() +";";
+		String sql = "SELECT * from tarefa where tarefa.pontuacao_min <= " + usuario.getPontuacao() + "and tarefa.pontuacao_max > " + usuario.getPontuacao() + "and tarefa.id_nivel = " + usuario.getObjNivel().getId_nivel() +";";
 		open();
 		
 		st = con.createStatement();

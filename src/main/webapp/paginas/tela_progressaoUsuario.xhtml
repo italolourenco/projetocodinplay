@@ -21,11 +21,16 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 			    		<h3 class="CLASS_red"> Perfil </h3>
 
 			    		<div class="CLASS_blocoRight">
-							<h3 class="CLASS_margin5"> <h:outputText value = "#{usuarioBean.usuario.nome}" /> </h3><br />
-							<h4>Instituto Federal Do Espirito Santo</h4><br />
-							<h4>Calouro</h4><br />
-							<h4>20 / 60 XP</h4><br />
-							<h4>Progressão : Nível 1 / 3 </h4>
+			    			<h5 class="CLASS_corTitulos"> Nome </h5>
+							<h4 class="CLASS_margin5"> <h:outputText value = "#{usuarioBean.usuario.nome}" /> </h4><br />
+							<h5 class="CLASS_corTitulos"> Instituição </h5> 
+							<h4><h:outputText value = "#{usuarioBean.usuario.objInstituicao.nome}" /></h4><br />
+							<h5 class="CLASS_corTitulos"> Patente </h5>
+							<h4><h:outputText value = "#{usuarioBean.usuario.objPatente.nome}" /></h4><br />
+							<h5 class="CLASS_corTitulos"> Pontuação Atual </h5>
+							<h4><h:outputText value = "#{usuarioBean.usuario.pontuacao}" /></h4><br />
+							<h5 class="CLASS_corTitulos"> Fase do Nível </h5>
+							<h4><h:outputText value = "#{usuarioBean.teste}" /></h4>
 						</div>
 					</section>
 

@@ -58,13 +58,13 @@ public class AtividadeDAO extends DAO {
 		return atividade;
 	}
 	
-	public ArrayList<Atividade> montaHistorico(Tarefa tarefa, Usuario usuario, int tipo) throws Exception{
+	public ArrayList<Atividade> montaHistorico(Tarefa tarefa, Usuario usuario, int tipo, int status) throws Exception{
 		
 		Atividade atividade = null;
 		ArrayList<Atividade> listAtividades = new ArrayList<Atividade>();
 		String sql = "SELECT * from atividade "
 				   + "INNER JOIN usuario_atividade ON atividade.id_atividade = usuario_atividade.id_atividade "
-				   + "WHERE usuario_atividade.id_usuario = " + usuario.getId_usuario() + "and usuario_atividade.status = 1 and atividade.tipo = " + tipo + ";";
+				   + "WHERE usuario_atividade.id_usuario = " + usuario.getId_usuario() + "and usuario_atividade.status = " + status + " and atividade.tipo = " + tipo + ";";
 		open();
 		st = con.createStatement();
 		rs = st.executeQuery(sql);

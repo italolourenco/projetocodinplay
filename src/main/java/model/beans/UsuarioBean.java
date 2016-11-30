@@ -41,6 +41,7 @@ public class UsuarioBean implements Serializable{
 	private Integer totalAtividades;
 	private Integer totalDesafios;
 	private Tarefa tarefa;
+	private String teste;
 	
 	
     @ManagedProperty(value = "#{usuario}")
@@ -57,20 +58,23 @@ public class UsuarioBean implements Serializable{
 			
 			objAtividadeDAO = new AtividadeDAO();
 			objTarefaDAO = new TarefaDAO();
-			defineTarefa(usuario);
-			listAtividades = objAtividadeDAO.montaHistorico(tarefa, usuario, 1);
-			listDesafios = objAtividadeDAO.montaHistorico(tarefa, usuario, 2);
+			tarefa = defineTarefa(usuario);
+			listAtividades = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 1);
+			listDesafios = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 2);
 			totalAtividades = listAtividades.size();
 			totalDesafios = listDesafios.size();
+			teste = tarefa.getNome();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public void defineTarefa(Usuario usuario) throws Exception{
+	public Tarefa defineTarefa(Usuario usuario) throws Exception{
 		
-		this.tarefa = objTarefaDAO.encontraTarefa(usuario);
+		tarefa = new Tarefa();
+		tarefa = objTarefaDAO.encontraTarefa(usuario);
+		return tarefa;
 	}
 
 	public ArrayList<Atividade> getListAtividades() {
@@ -120,6 +124,16 @@ public class UsuarioBean implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public String getTeste() {
+		return teste;
+	}
+
+	public void setTeste(String teste) {
+		this.teste = teste;
+	}
+	
+	
 	
 	
 }

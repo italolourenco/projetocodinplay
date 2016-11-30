@@ -31,7 +31,7 @@ xmlns:p="http://primefaces.org/ui">
 				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
 
 				<h:outputLabel class="CLASS_labelLogin" value = "Email" for="email"></h:outputLabel>
-				<h:inputText class="CLASS_inputLogin" id="email" label= "Email"  value = "#{loginBean.email}"></h:inputText>
+				<h:inputText class="CLASS_inputLogin" id="email" label= "Email"  value = "#{loginBean.email}" required="true"></h:inputText>
 				<br />
 
 				<h:outputLabel class="CLASS_labelLogin" value = "Senha" for="senha"></h:outputLabel>
