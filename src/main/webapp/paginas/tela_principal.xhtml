@@ -54,9 +54,9 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 			    		<h3 class="CLASS_red"> Progressão </h3> <br />
 						<div class="CLASS_blocoLeft">
 							<h4 class="CLASS_red"> Geral </h4><br />
-							<h4>Pontuação Geral: 20 XP</h4><br />
-							<h4>Atividades Realizadas: 1</h4><br />
-							<h4>Desafios Realizados: 0</h4>
+							<h4> <h:outputText value = "#{loginBean.usuario.pontuacao}" /> XP </h4><br />
+							<h4>Atividades Realizadas:<h:outputText value = "#{usuarioBean.totalAtividades}" /></h4><br />
+							<h4>Desafios Realizados: <h:outputText value = "#{usuarioBean.totalDesafios}" /></h4>
 						</div>
 
 						<div class="CLASS_blocoRight">

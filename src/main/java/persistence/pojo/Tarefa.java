@@ -12,8 +12,16 @@ public class Tarefa  implements Serializable{
 	private Integer id_tarefa;
 	private String nome;
 	private Integer pontuacao_max;
+	private Integer pontuacao_min;
 	private String descricao;
 	private Nivel objNivel;
+	
+	public Integer getPontuacao_min() {
+		return pontuacao_min;
+	}
+	public void setPontuacao_min(Integer pontuacao_min) {
+		this.pontuacao_min = pontuacao_min;
+	}
 	
 	public Integer getId_tarefa() {
 		return id_tarefa;

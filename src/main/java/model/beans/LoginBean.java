@@ -1,11 +1,13 @@
 package model.beans;
 
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import persistence.crud.UsuarioDAO;
 import persistence.pojo.Usuario;
@@ -75,6 +77,9 @@ public class LoginBean implements Serializable {
 			{
 				usuario = objUsuarioDAO.consulta(email);
 				if(this.senha.equals(usuario.getSenha())){
+			        FacesContext fc = FacesContext.getCurrentInstance();
+			        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+			        session.setAttribute("identificaUsuario", usuario);
 					if(usuario.getTipo() == 1)
 						return "entrar";
 					else
