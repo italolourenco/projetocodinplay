@@ -111,4 +111,8 @@ public class CadastroBean implements Serializable {
 	public boolean verificarEmail(){
 		return true;
 	}
+	
+	public String voltar(){
+		return "cancelar";
+	}
 }

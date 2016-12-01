@@ -13,10 +13,12 @@ import javax.servlet.http.HttpSession;
 
 import persistence.crud.AtividadeDAO;
 import persistence.crud.InstituicaoDAO;
+import persistence.crud.NivelDAO;
 import persistence.crud.TarefaDAO;
 import persistence.crud.UsuarioDAO;
 import persistence.pojo.Atividade;
 import persistence.pojo.Instituicao;
+import persistence.pojo.Nivel;
 import persistence.pojo.Tarefa;
 import persistence.pojo.Usuario;
 
@@ -38,10 +40,13 @@ public class UsuarioBean implements Serializable{
 	
 	private AtividadeDAO objAtividadeDAO;
 	private TarefaDAO objTarefaDAO;
+	private NivelDAO objNivel;
 	private Integer totalAtividades;
 	private Integer totalDesafios;
 	private Tarefa tarefa;
 	private String teste;
+	private String nomeBotao = "Continuar";
+	private boolean status = false;
 	
 	
     @ManagedProperty(value = "#{usuario}")
@@ -58,6 +63,7 @@ public class UsuarioBean implements Serializable{
 			
 			objAtividadeDAO = new AtividadeDAO();
 			objTarefaDAO = new TarefaDAO();
+			objNivel = new NivelDAO();
 			tarefa = defineTarefa(usuario);
 			listAtividades = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 1);
 			listDesafios = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 2);
@@ -70,11 +76,30 @@ public class UsuarioBean implements Serializable{
 		}
 	}
 	
+	public String configuraBotoes(int nivel) throws Exception{
+		
+		Nivel nivelCp = objNivel.consulta(nivel);
+		if(this.tarefa.getNivel().getId_nivel() == nivelCp.getId_nivel()){
+			return "Continuar";
+		}
+		return "Bloqueado";
+	}
+	
 	public Tarefa defineTarefa(Usuario usuario) throws Exception{
 		
 		tarefa = new Tarefa();
 		tarefa = objTarefaDAO.encontraTarefa(usuario);
 		return tarefa;
+	}
+	
+	public String irTelaMenuNivel(int nivel) throws Exception{
+		
+		String result = configuraBotoes(nivel);
+		if(result.equalsIgnoreCase("Continuar")){
+			
+			return "menunivel";
+		}
+		return "bloqueado";
 	}
 
 	public ArrayList<Atividade> getListAtividades() {
@@ -131,6 +156,22 @@ public class UsuarioBean implements Serializable{
 
 	public void setTeste(String teste) {
 		this.teste = teste;
+	}
+
+	public String getNomeBotao() {
+		return nomeBotao;
+	}
+
+	public void setNomeBotao(String nomeButao) {
+		this.nomeBotao = nomeButao;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	
 	

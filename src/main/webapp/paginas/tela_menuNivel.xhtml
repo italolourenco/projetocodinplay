@@ -21,15 +21,12 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 				<div id="ID_areaPrincipal">
 
 					<section class="CLASS_blocoPrincipal">
-						<h2 class="CLASS_red"> Nível 2 - Veterano </h2>
-						<br />
-						<h5 class="CLASS_red"> É hora do show! Birlll </h5>
+						<h2 class="CLASS_red"> <h:outputText value = "#{usuarioBean.usuario.objNivel.nome}" /> </h2> <br />
 						<span class="CLASS_linhaSeparadora"></span>
 			   			<h3 class="CLASS_red"> Detalhes do Nível </h3>
-
 			    		<div class="CLASS_blocoRight">
-							<h3 class="CLASS_margin5">Informações Sobre a Etapa</h3><br />
-							<h4>Nas atividades dessa etapa você .... </h4><br />
+							<h4 class="CLASS_margin5">Descrição do Nível</h4><br />
+							<h4> <h:outputText value = "#{usuarioBean.usuario.objNivel.descricaoTema}" />  </h4><br />
 							<h4>Pontuação: 40 XP</h4><br />
 						</div>
 					</section>

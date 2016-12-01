@@ -22,6 +22,7 @@ xmlns:p="http://primefaces.org/ui">
 			    		<h3 class="CLASS_red"> Perfil </h3>
 
 			    		<div class="CLASS_blocoRight">
+			    			<br />
 			    			<h5 class="CLASS_corTitulos"> Nome </h5>
 							<h4 class="CLASS_margin5"> <h:outputText value = "#{usuarioBean.usuario.nome}" /> </h4><br />
 							<h5 class="CLASS_corTitulos"> Instituição </h5> 
@@ -31,22 +32,23 @@ xmlns:p="http://primefaces.org/ui">
 							<h5 class="CLASS_corTitulos"> Pontuação Atual </h5>
 							<h4><h:outputText value = "#{usuarioBean.usuario.pontuacao}" /></h4><br />
 							<h5 class="CLASS_corTitulos"> Nível Atual </h5>
-							<h4><h:outputText value = "#{usuarioBean.usuario.objNivel.nome}" /></h4>
+							<h4> <h:outputText value = "#{usuarioBean.usuario.objNivel.nome}" /> </h4>
 						</div>
 					</section>
 
 					<section class="CLASS_blocoPrincipal">
 						<span class="CLASS_linhaSeparadora"></span>
 			   		 <h3 class="CLASS_red"> Níveis </h3>
-
+						
 			    		<div class="CLASS_blocoLeft">
 							<div class="CLASS_blocoImg">
 								<img class="CLASS_tamanhoImg" src="../resources/img/nivel1.jpg" alt="Nivel 1" />
 							</div>
+							<h:form>
 							<div class="CLASS_centraliza">
-								<a class="CLASS_linkPag" href="#">Nível 1<br />  </a> <br /> <p:commandButton value="Ajax Submit" styleClass="ui-priority-primary"/>  <br /><br />Status: Concluido!
+								<a class="CLASS_linkPag" href="#">Nível 1<br />  </a> <br /> <p:commandButton value="#{usuarioBean.configuraBotoes(1)}" action = "#{usuarioBean.irTelaMenuNivel(1)}" disabled = "#{usuarioBean.status}" styleClass=""/>  <br /><br /> 
 				   		 	</div>
-				
+							</h:form>
 						</div>
 
 						<div class="CLASS_blocoLeft">
@@ -54,7 +56,7 @@ xmlns:p="http://primefaces.org/ui">
 								<img class="CLASS_tamanhoImg" src="../resources/img/nivel2.jpg" alt="Nivel 2" />
 							</div>
 							<div class="CLASS_centraliza">
-								<a class="CLASS_linkPag" href="tela_menuNivel.html">Nível 2<br /> </a> <br />Status: Disponivel!
+								<a class="CLASS_linkPag" href="tela_menuNivel.html">Nível 2<br /> </a> <br /> <p:commandButton value="#{usuarioBean.configuraBotoes(2)}" action = "#{usuarioBean.irTelaMenuNivel(2)}" disabled = "#{usuarioBean.status}" styleClass=""/>
 				    		</div>
 				
 						</div>
@@ -64,7 +66,7 @@ xmlns:p="http://primefaces.org/ui">
 								<img class="CLASS_tamanhoImg" src="../resources/img/nivel3.jpg" alt="Nivel 3"/>
 							</div>
 							<div class="CLASS_centraliza">
-								<a class="CLASS_linkPag" href="#">Nível 3<br /> </a> <br />Status: Locked!
+								<a class="CLASS_linkPag" href="#">Nível 3<br /> </a> <br /> <p:commandButton value="#{usuarioBean.configuraBotoes(3)}" action = "#{usuarioBean.irTelaMenuNivel(3)}" disabled = "#{usuarioBean.status}" styleClass=""/>
 				    		</div>
 				
 						</div>

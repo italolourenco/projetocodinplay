@@ -39,8 +39,20 @@ version="2.1">
 			<to-view-id>paginas/index.xhtml</to-view-id>
 		</navigation-case>
 		
-		
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>paginas/tela_cadastro.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cancelar</from-outcome>
+			<to-view-id>paginas/tela_index.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>paginas/tela_cadastro.xhtml</to-view-id>
+		</navigation-case>		
+	</navigation-rule>
+		
 	
 	<navigation-rule>
 		<from-view-id>/paginas/tela_cadastroInstituicao.xhtml</from-view-id>
@@ -73,6 +85,18 @@ version="2.1">
 		<navigation-case>
 			<from-outcome>cancelar</from-outcome>
 			<to-view-id>/paginas/tela_principalAdmin.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>paginas/tela_progressaoUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>menunivel</from-outcome>
+			<to-view-id>paginas/tela_menuNivel.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>bloqueado</from-outcome>
+			<to-view-id>paginas/tela_progressaoUsuario.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
