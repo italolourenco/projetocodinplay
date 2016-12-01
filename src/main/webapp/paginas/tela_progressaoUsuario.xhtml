@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
 
 	<h:body>
 		
@@ -29,8 +30,8 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 							<h4><h:outputText value = "#{usuarioBean.usuario.objPatente.nome}" /></h4><br />
 							<h5 class="CLASS_corTitulos"> Pontuação Atual </h5>
 							<h4><h:outputText value = "#{usuarioBean.usuario.pontuacao}" /></h4><br />
-							<h5 class="CLASS_corTitulos"> Fase do Nível </h5>
-							<h4><h:outputText value = "#{usuarioBean.teste}" /></h4>
+							<h5 class="CLASS_corTitulos"> Nível Atual </h5>
+							<h4><h:outputText value = "#{usuarioBean.usuario.objNivel.nome}" /></h4>
 						</div>
 					</section>
 
@@ -43,7 +44,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 								<img class="CLASS_tamanhoImg" src="../resources/img/nivel1.jpg" alt="Nivel 1" />
 							</div>
 							<div class="CLASS_centraliza">
-								<a class="CLASS_linkPag" href="#">Nível 1<br />NewBie</a><br /><br />Status: Concluido!
+								<a class="CLASS_linkPag" href="#">Nível 1<br />  </a> <br /> <p:commandButton value="Ajax Submit" styleClass="ui-priority-primary"/>  <br /><br />Status: Concluido!
 				   		 	</div>
 				
 						</div>
@@ -53,7 +54,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 								<img class="CLASS_tamanhoImg" src="../resources/img/nivel2.jpg" alt="Nivel 2" />
 							</div>
 							<div class="CLASS_centraliza">
-								<a class="CLASS_linkPag" href="tela_menuNivel.html">Nível 2<br />Veterano</a><br /><br/>Status: Disponivel!
+								<a class="CLASS_linkPag" href="tela_menuNivel.html">Nível 2<br /> </a> <br />Status: Disponivel!
 				    		</div>
 				
 						</div>
@@ -63,7 +64,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 								<img class="CLASS_tamanhoImg" src="../resources/img/nivel3.jpg" alt="Nivel 3"/>
 							</div>
 							<div class="CLASS_centraliza">
-								<a class="CLASS_linkPag" href="#">Nível 3<br />Lenda<br /><br /></a>Status: Locked!
+								<a class="CLASS_linkPag" href="#">Nível 3<br /> </a> <br />Status: Locked!
 				    		</div>
 				
 						</div>
