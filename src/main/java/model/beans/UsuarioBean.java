@@ -101,6 +101,13 @@ public class UsuarioBean implements Serializable{
 		}
 		return "bloqueado";
 	}
+	
+	public String configurarBotoesNivel(String nome){
+		if(nome.equalsIgnoreCase(tarefa.getNome())){
+			return "Continuar";
+		}
+		return "Bloqueado";
+	}
 
 	public ArrayList<Atividade> getListAtividades() {
 		return listAtividades;
