@@ -58,7 +58,7 @@ public class AtividadeDAO extends DAO {
 		return atividade;
 	}
 	
-	public ArrayList<Atividade> montaHistorico(Tarefa tarefa, Usuario usuario, int tipo, int status) throws Exception{
+	public ArrayList<Atividade> montaHistorico(Tarefa tarefa, Usuario usuario, int status, int tipo) throws Exception{
 		
 		Atividade atividade = null;
 		ArrayList<Atividade> listAtividades = new ArrayList<Atividade>();
