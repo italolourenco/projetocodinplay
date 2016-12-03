@@ -19,11 +19,14 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 					<section class="CLASS_blocoPrincipal">
 						<h2 class="CLASS_red"> Resolução de Atividade </h2>
 						<span class="CLASS_linhaSeparadora"></span>
-			    		<h3 class="CLASS_red"> Atividade 2 </h3>
+			    		<h3 class="CLASS_red"> <h:outputText value = "#{resolucaoAtividadeBean.atividade.nome}" /> </h3> <br />
 
 						<div class="CLASS_blocoRight.descricao">
-							<h3 class="CLASS_margin5">Descrição</h3> <br />
-							<p> Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio Desafio </p>
+							<h5 class="CLASS_corTitulos"> Descrição do Problema </h5> <br />
+							<h:outputText value = "#{resolucaoAtividadeBean.atividade.descricaoProblema}" /> <br />
+							<br />
+							<h5 class="CLASS_corTitulos"> Pontuação </h5>
+							<h:outputText value = "#{resolucaoAtividadeBean.atividade.pontuacao}" /><br />
 						</div>
 					</section>
 
@@ -32,15 +35,15 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 			    		<h3 class="CLASS_red"> Respostas </h3> <br />
 			    		<h5 class="CLASS_red"> Escolha uma das Alternativas </h5>  <br />
 
-			    		<h:form class="CLASS_formRespostas">
+			    		<h:form>
 			    		
-			    			<h:selectOneRadio value="#{usuario.respostaAtividade}">
+			    			<h:selectOneRadio  value = "#{resolucaoAtividadeBean.resposta}">
 			    			
-			    				<f:selectItem class ="CLASS_respostas" itemValue="A" itemLabel="Resposta A"></f:selectItem>
-			    				<f:selectItem class ="CLASS_respostas" itemValue="B" itemLabel="Resposta B"></f:selectItem>
-			    				<f:selectItem class ="CLASS_respostas" itemValue="C" itemLabel="Resposta C"></f:selectItem>
-			    				<f:selectItem class ="CLASS_respostas" itemValue="D" itemLabel="Resposta D"></f:selectItem>
-			    				<f:selectItem class ="CLASS_respostas" itemValue="E" itemLabel="Resposta E"></f:selectItem>
+			    				<f:selectItem  itemValue = "1" itemLabel="#{resolucaoAtividadeBean.atividade.respostaA}"></f:selectItem>
+			    				<f:selectItem  itemValue = "2" itemLabel="#{resolucaoAtividadeBean.atividade.respostaB}"></f:selectItem>
+			    				<f:selectItem  itemValue = "3" itemLabel="#{resolucaoAtividadeBean.atividade.respostaC}"></f:selectItem>
+			    				<f:selectItem  itemValue = "4" itemLabel="#{resolucaoAtividadeBean.atividade.respostaD}"></f:selectItem>
+			    				<f:selectItem  itemValue = "5" itemLabel="#{resolucaoAtividadeBean.atividade.respostaE}"></f:selectItem>
 			    				
 							</h:selectOneRadio> <br />
 							

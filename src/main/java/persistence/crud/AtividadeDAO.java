@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import persistence.pojo.Atividade;
-import persistence.pojo.Instituicao;
-import persistence.pojo.Nivel;
 import persistence.pojo.Tarefa;
 import persistence.pojo.Usuario;
 
@@ -75,7 +73,7 @@ public class AtividadeDAO extends DAO {
 			
 			atividade.setId_atividade(rs.getInt("id_atividade"));
 			atividade.setNome(rs.getString("nome"));
-			atividade.setDescricaoProblema("descricaoproblema");
+			atividade.setDescricaoProblema(rs.getString("descricaoproblema"));
 			atividade.setPontuacao(rs.getInt("pontuacao"));
 			atividade.setRespostaA(rs.getString("respostaa"));
 			atividade.setRespostaB(rs.getString("respostab"));
@@ -93,5 +91,40 @@ public class AtividadeDAO extends DAO {
 		return listAtividades;
 	}
 	
+	public ArrayList<Atividade> preparaAtividadesSemHist(Tarefa tarefa) throws Exception{
+		
+		Atividade atividade = null;
+		ArrayList<Atividade> listAtividades = new ArrayList<Atividade>();
+		
+		String sql = "SELECT * from atividade where atividade.id_tarefa = " + tarefa.getId_tarefa() + ";";
+		
+		open();
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
+		
+		while(rs.next()){
+			
+			atividade = new Atividade();
+			
+			atividade.setId_atividade(rs.getInt("id_atividade"));
+			atividade.setNome(rs.getString("nome"));
+			atividade.setDescricaoProblema(rs.getString("descricaoproblema"));
+			atividade.setPontuacao(rs.getInt("pontuacao"));
+			atividade.setRespostaA(rs.getString("respostaa"));
+			atividade.setRespostaB(rs.getString("respostab"));
+			atividade.setRespostaC(rs.getString("respostac"));
+			atividade.setRespostaD(rs.getString("respostad"));
+			atividade.setRespostaE(rs.getString("respostae"));
+			atividade.setRespostaCerta(rs.getInt("respostaCerta"));
+			atividade.setObjTarefa(tarefa);
+			atividade.setObjNivel(tarefa.getNivel());
+			
+			listAtividades.add(atividade);
+		}
+		
+		
+		return listAtividades;
+	}
+		
 
 }

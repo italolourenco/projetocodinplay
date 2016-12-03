@@ -44,9 +44,11 @@ xmlns:p="http://primefaces.org/ui">
 								<div class="CLASS_blocoImg">
 									<img class="CLASS_tamanhoImg" src="../resources/img/nivel1.jpg" alt="Nivel 1" />
 								</div>
+								<h:form>
 								<div class="CLASS_centraliza">
-									<h4 class="CLASS_corTitulos">NewBie </h4> <br /> <p:commandButton value="#{usuarioBean.configurarBotoesNivel('NewBie')}" action = "#{usuarioBean.irTelaMenuNivel(1)}" disabled = "#{usuarioBean.status}" styleClass="" />
+									<h4 class="CLASS_corTitulos">NewBie </h4> <br /> <p:commandButton value="#{usuarioBean.configurarBotoesNivel('NewBie')}" action = "#{usuarioBean.irTelaResolucao('NewBie')}" disabled = "#{usuarioBean.status}" styleClass="" />
 				   				 </div>
+				   				 </h:form>
 				
 							</div>
 
@@ -55,7 +57,7 @@ xmlns:p="http://primefaces.org/ui">
 									<img class="CLASS_tamanhoImg" src="../resources/img/nivel2.jpg" alt="Nivel 2" />
 								</div>
 								<div class="CLASS_centraliza">
-									<h4 class="CLASS_corTitulos">Amador </h4> <br /> <p:commandButton value="#{usuarioBean.configurarBotoesNivel('Amador')}" action = "#{usuarioBean.irTelaMenuNivel(1)}" disabled = "#{usuarioBean.status}" styleClass=""/>
+									<h4 class="CLASS_corTitulos">Amador </h4> <br /> <p:commandButton value="#{usuarioBean.configurarBotoesNivel('Amador')}" action = "#{usuarioBean.irTelaResolucao('Amador')}" disabled = "#{usuarioBean.status}" styleClass=""/>
 				    			</div>
 				
 							</div>
@@ -65,7 +67,7 @@ xmlns:p="http://primefaces.org/ui">
 									<img class="CLASS_tamanhoImg" src="../resources/img/nivel3.jpg" alt="Nivel 3" />
 								</div>
 								<div class="CLASS_centraliza">
-									<h4 class="CLASS_corTitulos">Lenda </h4> <br /> <p:commandButton value="#{usuarioBean.configurarBotoesNivel('Lenda')}" action = "#{usuarioBean.irTelaMenuNivel(1)}" disabled = "#{usuarioBean.status}" styleClass=""/> 
+									<h4 class="CLASS_corTitulos">Lenda </h4> <br /> <p:commandButton value="#{usuarioBean.configurarBotoesNivel('Lenda')}" action = "#{usuarioBean.irTelaResolucao('Lenda')}" disabled = "#{usuarioBean.status}" styleClass=""/> 
 				    			</div>
 				
 							</div>

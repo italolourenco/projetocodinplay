@@ -11,7 +11,6 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import persistence.crud.AtividadeDAO;
-import persistence.crud.NivelDAO;
 import persistence.crud.TarefaDAO;
 import persistence.pojo.Atividade;
 import persistence.pojo.Tarefa;
@@ -30,8 +29,9 @@ public class ResolucaoAtividadeBean implements Serializable {
 	
 	private AtividadeDAO objAtividadeDAO;
 	private TarefaDAO objTarefaDAO;
-	private NivelDAO objNivel;
 	private Tarefa tarefa;
+	private Atividade atividade;
+	private int resposta;
 	
 	
     @ManagedProperty(value = "#{usuario}")
@@ -48,9 +48,10 @@ public class ResolucaoAtividadeBean implements Serializable {
 			
 			objAtividadeDAO = new AtividadeDAO();
 			objTarefaDAO = new TarefaDAO();
-			objNivel = new NivelDAO();
 			tarefa = defineTarefa(usuario);
-			listAtividades = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 1);
+			preparaAtividades();
+			defineAtividade();
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,6 +65,60 @@ public class ResolucaoAtividadeBean implements Serializable {
 		tarefa = new Tarefa();
 		tarefa = objTarefaDAO.encontraTarefa(usuario);
 		return tarefa;
+	}
+	
+	public void preparaAtividades() throws Exception{
+		
+		listAtividades = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 1);
+		if(listAtividades.size() == 0){
+			listAtividades = objAtividadeDAO.preparaAtividadesSemHist(tarefa);
+		}
+	}
+	
+	public void defineAtividade(){
+		
+		this.atividade = listAtividades.get(0);
+		listAtividades.remove(0);
+	}
+
+	public ArrayList<Atividade> getListAtividades() {
+		return listAtividades;
+	}
+
+	public void setListAtividades(ArrayList<Atividade> listAtividades) {
+		this.listAtividades = listAtividades;
+	}
+
+	public Atividade getAtividade() {
+		return atividade;
+	}
+
+	public void setAtividade(Atividade atividade) {
+		this.atividade = atividade;
+	}
+
+	public Tarefa getTarefa() {
+		return tarefa;
+	}
+
+	public void setTarefa(Tarefa tarefa) {
+		this.tarefa = tarefa;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public int getResposta() {
+		return resposta;
+	}
+
+	public void setResposta(int resposta) {
+		this.resposta = resposta;
 	}
 	
 	

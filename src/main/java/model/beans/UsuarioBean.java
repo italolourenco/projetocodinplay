@@ -108,6 +108,15 @@ public class UsuarioBean implements Serializable{
 		}
 		return "Bloqueado";
 	}
+	
+	public String irTelaResolucao(String nome){
+		
+		String result = configurarBotoesNivel(nome);
+		if(result.equalsIgnoreCase("Continuar")){
+			return "atividade";
+		}
+		return "bloqueado";
+	}
 
 	public ArrayList<Atividade> getListAtividades() {
 		return listAtividades;
