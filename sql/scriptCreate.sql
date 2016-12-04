@@ -73,10 +73,10 @@ CREATE TABLE IF NOT EXISTS usuario(
   FOREIGN KEY (id_nivel) REFERENCES nivel(id_nivel));
 
   CREATE TABLE IF NOT EXISTS usuario_atividade (
-  id_usuario SERIAL,
-  id_atividade SERIAL,
-  data_realizada DATE NULL,
+  id_usuario INT NOT NULL,
+  id_atividade INT NOT NULL,
+  data_realizada VARCHAR(45) NOT NULL,
   status INT NULL,
-  PRIMARY KEY (id_usuario, id_atividade),
+  PRIMARY KEY (id_usuario, id_atividade, data_realizada),
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
   FOREIGN KEY (id_atividade) REFERENCES atividade(id_atividade));

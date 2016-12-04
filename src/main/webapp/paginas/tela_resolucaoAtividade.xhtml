@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
 
 
 	<h:body>
@@ -35,8 +36,9 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 			    		<h3 class="CLASS_red"> Respostas </h3> <br />
 			    		<h5 class="CLASS_red"> Escolha uma das Alternativas </h5>  <br />
 
-			    		<h:form>
-			    		
+			    		<h:form name = "teste">
+			    			
+			    			<p:growl id="growl" showDetail="true" sticky="true" /> <br />
 			    			<h:selectOneRadio  value = "#{resolucaoAtividadeBean.resposta}">
 			    			
 			    				<f:selectItem  itemValue = "1" itemLabel="#{resolucaoAtividadeBean.atividade.respostaA}"></f:selectItem>
@@ -47,7 +49,7 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 			    				
 							</h:selectOneRadio> <br />
 							
-							<h:commandButton class="CLASS_bottonContato" value="Enviar"></h:commandButton>
+							<h:commandButton class="CLASS_bottonContato" action = "#{resolucaoAtividadeBean.verificaResposta}" value="Enviar" update="growl"></h:commandButton>
 						</h:form>
 					</section>
 				</div>

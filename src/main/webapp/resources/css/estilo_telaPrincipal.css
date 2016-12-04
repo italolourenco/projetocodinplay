@@ -472,3 +472,7 @@ td, th {
 tr:nth-child(even) {
     background-color: #f44336;
 }
+
+.CLASS_reset {
+	clear: none;
+}

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14802091723900" configfile="/Codinplay/src/main/webapp/WEB-INF/faces-config.xml">
   <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="562" id="pf14802146687770" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf148051862288814 pf148051865647716 pf148051865647717 pf148051865647718 pf148052119226628" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_cadastro.xhtml" x="122" y="2099" id="pf148021494895610" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf14804424348620 pf14804424348621 pf14804424348622" inlinks="pf14804424348621 pf14804424348622" path="/paginas/tela_cadastroAtividade.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="tela_cadastroInstituicao.xhtml" x="122" y="2483" id="pf14802748718064" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf148027518823011 pf148027518823012 pf148027939493914" inlinks="pf148027518823011 pf148027939493914" path="/paginas/tela_cadastroInstituicao.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_principalAdmin.xhtml" x="338" y="2291" id="pf148027518823013" referenceLink="//@navigationRule.3/@navigationCase.2/@toViewId|" inlinks="pf148027518823012 pf14804424348620" path="/paginas/tela_principalAdmin.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_cadastro.xhtml" x="122" y="1522" id="pf148021494895610" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf14804424348620 pf14804424348621 pf14804424348622" inlinks="pf14804424348621 pf14804424348622" path="/paginas/tela_cadastroAtividade.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="tela_cadastroInstituicao.xhtml" x="122" y="1906" id="pf14802748718064" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf148027518823011 pf148027518823012 pf148027939493914" inlinks="pf148027518823011 pf148027939493914" path="/paginas/tela_cadastroInstituicao.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_principalAdmin.xhtml" x="338" y="1714" id="pf148027518823013" referenceLink="//@navigationRule.3/@navigationCase.2/@toViewId|" inlinks="pf148027518823012 pf14804424348620" path="/paginas/tela_principalAdmin.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="paginas/index.xhtml" x="338" y="562" id="pf148051862288815" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf148051862288814 pf148052119226628" path="paginas/index.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="paginas/tela_principalAdmin.xhtml" x="338" y="946" id="pf148051865647719" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf148051865647716" path="paginas/tela_principalAdmin.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="paginas/tela_cadastro.xhtml" x="338" y="178" id="pf148051865647720" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf148062668645910 pf148062668645911" inlinks="pf148051865647717 pf148062668645911" path="paginas/tela_cadastro.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="paginas/tela_principal.xhtml" x="338" y="1330" id="pf148051865647721" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf148051865647718" path="paginas/tela_principal.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="paginas/tela_index.xhtml" x="554" y="178" id="pf148062668645912" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf148062668645910" path="paginas/tela_index.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_progressaoUsuario.xhtml" x="122" y="1715" id="pf148062930593333" referenceLink="//@navigationRule.4/@navigationCase.1/@toViewId|" outlinks="pf148062930593334 pf148062930593335" inlinks="pf148062930593335" path="paginas/tela_progressaoUsuario.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_menuNivel.xhtml" x="338" y="1715" id="pf148062930593336" referenceLink="//@navigationRule.5/@navigationCase.1/@toViewId|" outlinks="pf14807589913100 pf14807589913101" inlinks="pf148062930593334 pf14807589913101" path="paginas/tela_menuNivel.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_resolucaoAtividade.xhtml" x="554" y="1715" id="pf14807589913102" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf14807589913100" path="paginas/tela_resolucaoAtividade.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_progressaoUsuario.xhtml" x="122" y="2290" id="pf148062930593333" referenceLink="//@navigationRule.4/@navigationCase.1/@toViewId|" outlinks="pf148062930593334 pf148062930593335" inlinks="pf148062930593335" path="paginas/tela_progressaoUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_menuNivel.xhtml" x="338" y="2674" id="pf148062930593336" referenceLink="//@navigationRule.6/@navigationCase.1/@toViewId|" outlinks="pf14807589913100 pf14807589913101" inlinks="pf148062930593334 pf14807589913101 pf14807987386680" path="paginas/tela_menuNivel.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_resolucaoAtividade.xhtml" x="122" y="2674" id="pf14807589913102" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf14807987386681 pf14807987386680" inlinks="pf14807589913100 pf14807987386681" path="paginas/tela_resolucaoAtividade.xhtml"/>
   <links id="pf148027518823012" target="pf148027518823013" source="pf14802748718064" outcome="cancelar"/>
   <links id="pf14804424348620" target="pf148027518823013" source="pf148021494895610" outcome="cancelar"/>
   <links id="pf148051862288814" target="pf148051862288815" source="pf14802146687770" outcome="inicio"/>
@@ -22,6 +22,7 @@
   <links id="pf148062668645910" target="pf148062668645912" source="pf148051865647720" outcome="cancelar"/>
   <links id="pf148062930593334" target="pf148062930593336" source="pf148062930593333" outcome="menunivel"/>
   <links id="pf14807589913100" target="pf14807589913102" source="pf148062930593336" outcome="atividade"/>
+  <links id="pf14807987386680" target="pf148062930593336" source="pf14807589913102" outcome="bloqueado"/>
   <links id="pf148027518823011" target="pf14802748718064" source="pf14802748718064" outcome="erro">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
@@ -53,6 +54,11 @@
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
   <links id="pf14807589913101" target="pf148062930593336" source="pf148062930593336" outcome="bloqueado">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf14807987386681" target="pf14807589913102" source="pf14807589913102" outcome="correto">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>

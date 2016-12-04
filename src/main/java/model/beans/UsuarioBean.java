@@ -1,5 +1,6 @@
 package model.beans;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -109,13 +110,12 @@ public class UsuarioBean implements Serializable{
 		return "Bloqueado";
 	}
 	
-	public String irTelaResolucao(String nome){
+	public void irTelaResolucao(String nome) throws IOException{
 		
 		String result = configurarBotoesNivel(nome);
 		if(result.equalsIgnoreCase("Continuar")){
-			return "atividade";
+			FacesContext.getCurrentInstance().getExternalContext().redirect("tela_resolucaoAtividade.jsf");
 		}
-		return "bloqueado";
 	}
 
 	public ArrayList<Atividade> getListAtividades() {
