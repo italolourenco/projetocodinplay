@@ -14,6 +14,10 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import org.primefaces.context.RequestContext;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
 
 import persistence.crud.AtividadeDAO;
 import persistence.crud.InstituicaoDAO;
@@ -52,6 +56,8 @@ public class UsuarioBean implements Serializable{
 	private String nomeBotao = "Continuar";
 	private boolean status = false;
 	
+	private BarChartModel barModel;
+	
 	
     @ManagedProperty(value = "#{usuario}")
     private Usuario usuario; 
@@ -74,6 +80,7 @@ public class UsuarioBean implements Serializable{
 			totalAtividades = listAtividades.size();
 			totalDesafios = listDesafios.size();
 			teste = tarefa.getNome();
+			createBarModels();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -123,6 +130,46 @@ public class UsuarioBean implements Serializable{
 	        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Ainda Não !", "Esse nível esta bloqueado, continue jogando para desbloquear  !.");
 	        RequestContext.getCurrentInstance().showMessageInDialog(message);
 		}
+	}
+	
+	
+	private BarChartModel initBarModel(){
+		BarChartModel model = new BarChartModel();
+		
+		ChartSeries usuario = new ChartSeries();
+        usuario.set("Nível 1", 1);
+        usuario.set("Nível 2", 0);
+        usuario.set("Nível 3", 0);
+		model.addSeries(usuario);
+		return model;
+	}
+	
+	private void createBarModels(){
+		createBarModel();
+	}
+	
+	private void createBarModel(){
+		barModel = initBarModel();
+		
+        Axis xAxis = barModel.getAxis(AxisType.X);
+        xAxis.setLabel("Níveis");
+        
+        Axis yAxis = barModel.getAxis(AxisType.Y);
+        yAxis.setLabel("Numero de Atividades");
+        yAxis.setMin(0);
+        yAxis.setMax(totalAtividades);
+        
+        barModel.setSeriesColors("f44336");
+	}
+	
+	
+
+	public BarChartModel getBarModel() {
+		return barModel;
+	}
+
+	public void setBarModel(BarChartModel barModel) {
+		this.barModel = barModel;
 	}
 
 	public ArrayList<Atividade> getListAtividades() {

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
 
 
 	<h:head>
@@ -54,16 +55,16 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 			    		<h3 class="CLASS_red"> Progressão </h3> <br />
 						<div class="CLASS_blocoLeft">
 							<h4 class="CLASS_red"> Geral </h4><br />
-							<h4> <h:outputText value = "#{loginBean.usuario.pontuacao}" /> XP </h4><br />
+							<h4>Pontuação: <h:outputText value = "#{loginBean.usuario.pontuacao}" /> XP </h4><br />
 							<h4>Atividades Realizadas:<h:outputText value = "#{usuarioBean.totalAtividades}" /></h4><br />
 							<h4>Desafios Realizados: <h:outputText value = "#{usuarioBean.totalDesafios}" /></h4>
 						</div>
 
 						<div class="CLASS_blocoRight">
-							<h4 class="CLASS_red"> Semanal </h4> <br/>
-							<h4>Pontos Na Semana: 20 XP</h4> <br/>
-							<h4>Atividades Realizadas: 1</h4> <br/>
-							<h4>Desafio Semanal: Disponível !</h4>
+							<h4 class="CLASS_red"> Grafico de Progressão </h4> <br/>
+							
+							<p:chart type="bar" model="#{usuarioBean.barModel}" style="height:300px"/>
+							
 						</div>
 					</section>
 
@@ -77,27 +78,31 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 						</div>
 						<div class="CLASS_blocoRight">
 							<h4 class="CLASS_red"> Historico Desafios Semanais </h4> <br/>
-									 <!--retirar isso depois quando tiver o backend-->
-								<table>
-								  <tr>
-								    <th>Nome</th>
-								    <th>Nível</th>
-								    <th>Pontuação</th>
-								    <th>Status</th>
-								  </tr>
-								  <tr>
-								    <td>Desafio 1</td>
-								    <td>Calouro</td>
-								    <td>20 XP</td>
-								    <td>Não Realizado</td>
-								  </tr>
-								  <tr>
-								    <td>Desafio 2</td>
-								    <td>Calouro</td>
-								    <td>20 XP</td>
-								    <td>Disponível</td>
-								  </tr>  
-								</table>
+							
+							<p:dataTable var = "desafio" value = "#{usuarioBean.listDesafios}" styleClass ="CLASS_table">
+								
+								<p:column headerText = "Nome" styleClass = "CLASS_column">
+									<h:outputText  />
+								</p:column>
+								
+								<p:column headerText = "Tarefa" styleClass = "CLASS_column">
+									<h:outputText  />
+								</p:column>
+								
+								<p:column headerText = "Nivel" styleClass = "CLASS_column">
+									<h:outputText  />
+								</p:column>
+								
+							    <p:column headerText = "Pontos" styleClass = "CLASS_column">
+									<h:outputText  />
+								</p:column>
+								
+								<p:column headerText = "Status" styleClass = "CLASS_column">
+									<h:outputText  />
+								</p:column>
+							
+							</p:dataTable>
+							
 
 						</div>
 

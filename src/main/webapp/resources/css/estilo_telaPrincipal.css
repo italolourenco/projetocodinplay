@@ -116,7 +116,7 @@ body {
 }
 
 .CLASS_blocoRight{
-	width: 45%;
+	width: 60%;
 	margin-left: 5px;
 	margin-top: 5px;
 	float: left;
@@ -414,6 +414,21 @@ a.CLASS_linkPag:hover{
 	color: red;
 }
 
+.CLASS_column {
+	
+	color: #FFF;
+	background:#f44336;
+	border: 2px solid;
+	border-color: FFF;
+	font-size: 16px;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.CLASS_table{
+	background:#f44336;
+
+}
+
 
 /*Formatação do Menu*/
 a{
@@ -458,14 +473,11 @@ li{
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 95%;
 }
 
 td, th {
-    border: 1px solid red;
     text-align: left;
     height: 50px;
-
     text-align: center;
 }
 
