@@ -5,12 +5,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+
+import org.primefaces.context.RequestContext;
 
 import persistence.crud.AtividadeDAO;
 import persistence.crud.InstituicaoDAO;
@@ -115,6 +118,10 @@ public class UsuarioBean implements Serializable{
 		String result = configurarBotoesNivel(nome);
 		if(result.equalsIgnoreCase("Continuar")){
 			FacesContext.getCurrentInstance().getExternalContext().redirect("tela_resolucaoAtividade.jsf");
+		}
+		else{
+	        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Ainda Não !", "Esse nível esta bloqueado, continue jogando para desbloquear  !.");
+	        RequestContext.getCurrentInstance().showMessageInDialog(message);
 		}
 	}
 

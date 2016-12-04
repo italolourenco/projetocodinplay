@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS atividade (
   id_atividade SERIAL,
   nome VARCHAR(45) NULL,
   descricaoproblema TEXT NULL,
-  pontuacao VARCHAR(45) NULL,
+  pontuacao INTEGER NOT NULL,
   respostaA VARCHAR(45) NULL,
   respostaB VARCHAR(45) NULL,
   respostaC VARCHAR(45) NULL,

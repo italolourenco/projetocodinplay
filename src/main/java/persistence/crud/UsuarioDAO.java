@@ -74,4 +74,12 @@ public class UsuarioDAO extends DAO {
 		return usuario;
 	}
 	
+	public void updatePontuacao(Usuario usuario) throws Exception{
+		
+		open();
+		stmt = con.prepareStatement("UPDATE usuario SET pontuacao = " + usuario.getPontuacao() + " WHERE usuario.id_usuario = " + usuario.getId_usuario() + ";");
+		stmt.execute();
+	
+	}
+	
 }
