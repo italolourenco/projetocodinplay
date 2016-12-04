@@ -52,9 +52,11 @@ public class UsuarioBean implements Serializable{
 	private Integer totalAtividades;
 	private Integer totalDesafios;
 	private Tarefa tarefa;
+	private Tarefa tarefaHist;
 	private String teste;
 	private String nomeBotao = "Continuar";
 	private boolean status = false;
+	private int seguraAki;
 	
 	private BarChartModel barModel;
 	
@@ -98,6 +100,7 @@ public class UsuarioBean implements Serializable{
 	
 	public Tarefa defineTarefa(Usuario usuario) throws Exception{
 		
+		
 		tarefa = new Tarefa();
 		tarefa = objTarefaDAO.encontraTarefa(usuario);
 		return tarefa;
@@ -133,22 +136,22 @@ public class UsuarioBean implements Serializable{
 	}
 	
 	
-	private BarChartModel initBarModel(){
+	private BarChartModel initBarModel() throws Exception{
 		BarChartModel model = new BarChartModel();
 		
 		ChartSeries usuario = new ChartSeries();
-        usuario.set("Nível 1", 1);
-        usuario.set("Nível 2", 0);
-        usuario.set("Nível 3", 0);
+        usuario.set("Nível 1", objAtividadeDAO.preparaAtividadesNivel(1));
+        usuario.set("Nível 2", objAtividadeDAO.preparaAtividadesNivel(2));
+        usuario.set("Nível 3", objAtividadeDAO.preparaAtividadesNivel(3));
 		model.addSeries(usuario);
 		return model;
 	}
 	
-	private void createBarModels(){
+	private void createBarModels() throws Exception{
 		createBarModel();
 	}
 	
-	private void createBarModel(){
+	private void createBarModel() throws Exception{
 		barModel = initBarModel();
 		
         Axis xAxis = barModel.getAxis(AxisType.X);
@@ -157,12 +160,10 @@ public class UsuarioBean implements Serializable{
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("Numero de Atividades");
         yAxis.setMin(0);
-        yAxis.setMax(totalAtividades);
+        yAxis.setMax(10);
         
         barModel.setSeriesColors("f44336");
 	}
-	
-	
 
 	public BarChartModel getBarModel() {
 		return barModel;
@@ -242,6 +243,14 @@ public class UsuarioBean implements Serializable{
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public Tarefa getTarefaHist() {
+		return tarefaHist;
+	}
+
+	public void setTarefaHist(Tarefa tarefaHist) {
+		this.tarefaHist = tarefaHist;
 	}
 	
 	

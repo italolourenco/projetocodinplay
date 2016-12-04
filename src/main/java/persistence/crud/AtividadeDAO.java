@@ -125,6 +125,28 @@ public class AtividadeDAO extends DAO {
 		
 		return listAtividades;
 	}
+	
+	
+	public Integer preparaAtividadesNivel (int nivel) throws Exception{
 		
+
+		int total = 0;
+		String sql = "SELECT COUNT(*) from atividade INNER JOIN usuario_atividade ON atividade.id_atividade = usuario_atividade.id_atividade WHERE atividade.id_nivel = " + nivel + ";";
+		
+
+		
+		open();
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
+		if(rs.next()){
+			total = rs.getInt("count");
+		}
+
+		
+		
+		return total;
+		
+		
+	}
 
 }

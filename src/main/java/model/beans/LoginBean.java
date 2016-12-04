@@ -69,7 +69,7 @@ public class LoginBean implements Serializable {
 		}
 		else{
 			if(!objUsuarioDAO.consultaEmail(this.email)) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Erro!", "Usuario não encotrado!"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Erro!", "Usuario não encontrado!"));
 				return "erro";
 			}
 			else

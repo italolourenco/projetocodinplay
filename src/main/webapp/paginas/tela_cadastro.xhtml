@@ -25,15 +25,16 @@ xmlns:p="http://primefaces.org/ui">
 		
 		<section id="ID_blocoPrincipalCadastro">
 
-			<h:form name="cadastro" id="ID_formCadastro">
-				<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+			<h:form name="cadastro" id="ID_formCadastro" autoUpdate="true">
+			
+				<p:growl id="growl" showDetail="true" sticky="true" />  
 			
 				<header class="CLASS_label">
 					<h1 id="ID_cabecalhoCadastro">Cadastro</h1>
 				</header>
 					
 				<h:outputLabel class="CLASS_label" value = "Nome" for="nome"></h:outputLabel>
-				<h:inputText class="input" id="nome" value="#{cadastroBean.usuario.nome}"></h:inputText>
+				<p:inputText styleClass="input" id="nome" value="#{cadastroBean.usuario.nome}" required="true" converterMessage="Informe o nome"></p:inputText>
 				<br />
 						
 				<h:outputLabel class="CLASS_label" value = "Instituição" for="instituicao"></h:outputLabel>
@@ -50,29 +51,28 @@ xmlns:p="http://primefaces.org/ui">
 				<br />
 						
 				<h:outputLabel class="CLASS_label" value = "Data Nascimento"  for="data"></h:outputLabel>
-				<h:inputText class="input" id="data" onblur="validaData(this.value);" value="#{cadastroBean.usuario.dataNascimento}"></h:inputText>
+				<p:inputMask styleClass="input" id="data"  value="#{cadastroBean.usuario.dataNascimento}" mask="99/99/9999" required="true"/>
 				<br />
 						
 				<h:outputLabel  class="Class_label" value = "Email" for="email"></h:outputLabel>
-				<h:inputText class="input" id="email" onblur="verificaEmail(this.value);" placeholder="E-mail" value="#{cadastroBean.usuario.email}" ></h:inputText>
+				<p:inputText styleClass="input" id="email" value="#{cadastroBean.usuario.email}" required="true"></p:inputText>
 				<br />
 						
 				<h:outputLabel  class="Class_label" value = "Telefone" for="telefone"></h:outputLabel>
-				<h:inputText class="input" id="telefone" placeholder="Telefone" value="#{cadastroBean.usuario.telefone}"></h:inputText>
+				<p:inputMask styleClass="input" id="telefone" value="#{cadastroBean.usuario.telefone}" required = "true" mask="(999) 999-9999"></p:inputMask>
 				<br />
 						
 				<h:outputLabel class="Class_label" value = "Senha"  for="senha"></h:outputLabel>
-				<h:inputText class="input" id="senha" placeholder="Senha" value="#{cadastroBean.usuario.senha}"> </h:inputText>
+				<h:inputSecret styleClass="input" id="senha"  value="#{cadastroBean.usuario.senha}" required = "true"> </h:inputSecret>
 				<br />
 						
 				<h:outputLabel class="Class_label" value = "Confirmar Senha"  for="con_senha"></h:outputLabel>
-				<h:inputText class="input" id="con_senha" onblur="validarSenhaIgual();" value="#{cadastroBean.usuario.senha}">  </h:inputText>
+				<h:inputSecret styleClass="input" id="con_senha" value="#{cadastroBean.usuario.senha}" required = "true">  </h:inputSecret>
 				<br />
 						
-				<h:commandButton class="CLASS_bottonContato" action="#{cadastroBean.cadastroPessoa}" value = "Salvar"> </h:commandButton>
+				<h:commandButton class="CLASS_bottonContato" action="#{cadastroBean.cadastroPessoa}" value = "Salvar" update="growl"> </h:commandButton>
 				<h:commandButton class="CLASS_bottonContato" action="#{cadastroBean.voltar}" value="Cancelar"></h:commandButton>
-						
-			</h:form>
+			</h:form>		
 		</section>
 	</h:body>
 

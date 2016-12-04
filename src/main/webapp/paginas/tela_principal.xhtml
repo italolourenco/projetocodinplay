@@ -47,6 +47,8 @@ xmlns:p="http://primefaces.org/ui">
 							<h4> <h:outputText value = "#{loginBean.usuario.pontuacao}" /> XP </h4><br />
 							<h5 class="CLASS_corTitulos"> Patente </h5>
 							<h4> <h:outputText value = "#{loginBean.usuario.objPatente.nome}" /> </h4>
+							<h4> <h:outputText value = "#{usuarioBean.tarefa.nome}" /> </h4><br />
+							<h4> <h:outputText value = "#{usuarioBean.tarefaHist.nome}" /> </h4><br />
 						</div>
 					</section>
 
@@ -70,14 +72,17 @@ xmlns:p="http://primefaces.org/ui">
 
 					<section class="CLASS_blocoPrincipal">
 						<span class="CLASS_linhaSeparadora"></span>
-			    		<h3 class="CLASS_red"> Desafio Semanal </h3> <br />
+			    		<h3 class="CLASS_red"> Desafios</h3> <br />
 						<div class="CLASS_blocoLeft">
+						
 							<h4>Nome Desafio</h4> <br />
-							<h4>Status: Disponível !</h4>
-							<button id="ID_bottonEnviar" onclick="ir_telaDesafio();">Iniciar</button>
+							<h4>Status: Disponível !</h4> <br />
+							<h4>Pontuação</h4>
+							
+							<button id="ID_bottonEnviar" >Iniciar</button>
 						</div>
 						<div class="CLASS_blocoRight">
-							<h4 class="CLASS_red"> Historico Desafios Semanais </h4> <br/>
+							<h4 class="CLASS_red"> Historico Desafios</h4> <br/>
 							
 							<p:dataTable var = "desafio" value = "#{usuarioBean.listDesafios}" styleClass ="CLASS_table">
 								

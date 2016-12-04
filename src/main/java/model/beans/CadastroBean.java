@@ -88,9 +88,8 @@ public class CadastroBean implements Serializable {
 		
 		//Tem que entrar algum tipo de validação aki se o js não funcionar
 		if(!objUsuarioDao.consultaEmail(usuario.getEmail())){
+			
 			usuario.setPontuacao(0);
-			
-			
 			nivel = objNivelDAO.consulta(1);
 			patente = objPatenteDAO.consultaPatente(1);
 			usuario.setTipo(1);
@@ -98,6 +97,7 @@ public class CadastroBean implements Serializable {
 			usuario.setObjNivel(nivel);
 			usuario.setObjInstituicao(objInstituicaoDAO.consulta(this.cod));
 			objUsuarioDao.inserirUsuario(usuario);
+			
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Usuário Cadastrado !."));
 			return "sucesso";
 		}

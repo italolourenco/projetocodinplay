@@ -19,7 +19,7 @@ xmlns:p="http://primefaces.org/ui">
 	<body>
 
 		<div>
-			<img id="ID_imgLogo" src="resources/img/logo.png" alt="CodinPlay Logo" />
+			<img id="ID_imgLogo" src="../resources/img/logo.png" alt="CodinPlay Logo" />
 		</div>
 
 		<section id="ID_blocoPrincipalLogin">
@@ -35,7 +35,7 @@ xmlns:p="http://primefaces.org/ui">
 				<br /> <br />
 
 				<h:outputLabel class="CLASS_labelLogin" value = "Senha" for="senha"></h:outputLabel>
-        		<h:inputSecret  id="senha" label= "Senha" value = "#{loginBean.senha}" styleClass = "CLASS_inputLogin" />
+				<h:inputText class="CLASS_inputLogin" id="senha" label= "Senha" value = "#{loginBean.senha}" ></h:inputText>
 				<br /> <br />
 
 				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.entrar}" value = "Entrar" update="growl"> </h:commandButton>
