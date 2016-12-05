@@ -39,34 +39,34 @@ xmlns:p="http://primefaces.org/ui">
 					<section class="CLASS_blocoPrincipal">
 						<span class="CLASS_linhaSeparadora"></span>
 			   		 <h3 class="CLASS_red"> Níveis </h3>
-						
+						<p:growl id="growl" showDetail="true" sticky="true" />  
 			    		<div class="CLASS_blocoLeft">
 							<div class="CLASS_blocoImg">
-								<img class="CLASS_tamanhoImg" src="../resources/img/nivel1.jpg" alt="Nivel 1" />
+								<img class="CLASS_tamanhoImg" src="../resources/img/progressao1.jpg" alt="Nivel 1" />
 							</div>
 							<h:form>
 							<div class="CLASS_centraliza">
-								<h4 class="CLASS_corTitulos">Nível 1 </h4> <br /> <p:commandButton value="#{usuarioBean.configuraBotoes(1)}" action = "#{usuarioBean.irTelaMenuNivel(1)}" disabled = "#{usuarioBean.status}" styleClass=""/>   
+								<h4 class="CLASS_corTitulos">Nível 1 </h4> <br /> <p:commandButton value="#{usuarioBean.configuraBotoes(1)}" action = "#{usuarioBean.irTelaMenuNivel(1)}" disabled = "#{usuarioBean.status}" styleClass="CLASS_botaoEscolhas" update="growl"/>   
 				   		 	</div>
 							</h:form>
 						</div>
 
 						<div class="CLASS_blocoLeft">
 							<div class="CLASS_blocoImg">
-								<img class="CLASS_tamanhoImg" src="../resources/img/nivel2.jpg" alt="Nivel 2" />
+								<img class="CLASS_tamanhoImg" src="../resources/img/progresao3.jpg" alt="Nivel 2" />
 							</div>
 							<div class="CLASS_centraliza">
-								<h4 class="CLASS_corTitulos">Nível 2 </h4> <br /> <p:commandButton value="#{usuarioBean.configuraBotoes(2)}" action = "#{usuarioBean.irTelaMenuNivel(2)}" disabled = "#{usuarioBean.status}" styleClass=""/>
+								<h4 class="CLASS_corTitulos">Nível 2 </h4> <br /> <p:commandButton value="#{usuarioBean.configuraBotoes(2)}" action = "#{usuarioBean.irTelaMenuNivel(2)}" disabled = "#{usuarioBean.status}" styleClass="CLASS_botaoEscolhas" update="growl"/>
 				    		</div>
 				
 						</div>
 
 						<div class="CLASS_blocoLeftNoBorder">
 							<div class="CLASS_blocoImg">
-								<img class="CLASS_tamanhoImg" src="../resources/img/nivel3.jpg" alt="Nivel 3"/>
+								<img class="CLASS_tamanhoImg" src="../resources/img/progressao2jpg.jpg" alt="Nivel 3"/>
 							</div>
 							<div class="CLASS_centraliza">
-								<h4 class="CLASS_corTitulos">Nível 3 </h4> <br /> <p:commandButton value="#{usuarioBean.configuraBotoes(3)}" action = "#{usuarioBean.irTelaMenuNivel(3)}" disabled = "#{usuarioBean.status}" styleClass=""/>
+								<h4 class="CLASS_corTitulos">Nível 3 </h4> <br /> <p:commandButton value="#{usuarioBean.configuraBotoes(3)}" action = "#{usuarioBean.irTelaMenuNivel(3)}" disabled = "#{usuarioBean.status}" styleClass="CLASS_botaoEscolhas" update="growl"/>
 				    		</div>
 				
 						</div>

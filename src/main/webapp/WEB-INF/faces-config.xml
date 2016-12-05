@@ -149,12 +149,28 @@ version="2.1">
 	<navigation-rule>
 		<from-view-id>paginas/tela_resolucaoAtividade.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>correto</from-outcome>
+			<from-outcome>continuar</from-outcome>
 			<to-view-id>paginas/tela_resolucaoAtividade.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>bloqueado</from-outcome>
+			<from-outcome>menuNivel</from-outcome>
 			<to-view-id>paginas/tela_menuNivel.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>progressaoUsuario</from-outcome>
+			<to-view-id>paginas/tela_progressaoUsuario.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>paginas/tela_editarPerfil.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>paginas/tela_principal.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>erro</from-outcome>
+			<to-view-id>paginas/tela_editarPerfil.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

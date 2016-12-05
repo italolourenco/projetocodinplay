@@ -1,8 +1,10 @@
 package persistence.crud;
 
+import persistence.pojo.Atividade;
 import persistence.pojo.Instituicao;
 import persistence.pojo.Nivel;
 import persistence.pojo.Patente;
+import persistence.pojo.Tarefa;
 import persistence.pojo.Usuario;
 
 
@@ -82,4 +84,29 @@ public class UsuarioDAO extends DAO {
 	
 	}
 	
+	public void updateNivel(Usuario usuario) throws Exception{
+		
+		open();
+		stmt = con.prepareStatement("UPDATE usuario SET id_nivel = " + usuario.getObjNivel().getId_nivel() + " WHERE usuario.id_usuario = " + usuario.getId_usuario() + ";");
+		stmt.execute();
+	
+	}
+	
+	public void updateUsuario(Usuario usuario) throws Exception{
+		
+		open();
+		stmt = con.prepareStatement("UPDATE usuario SET nome = '"+usuario.getNome()+"',email='"+usuario.getEmail()+"',datanascimento='"+usuario.getDataNascimento()+"',telefone='"+usuario.getTelefone()+"',sexo="+usuario.getSexo()+",senha='"+usuario.getSenha()+"',id_instituicao="+usuario.getObjInstituicao().getId_instituicao()+"WHERE usuario.id_usuario = " + usuario.getId_usuario() + ";");
+		stmt.execute();
+	}
+	
+	public boolean verificaRegistro(Usuario usuario, Atividade atividade) throws Exception {
+		
+		String sql = "SELECT * from usuario INNER JOIN usuario_atividade ON usuario_atividade.id_usuario = usuario.id_usuario WHERE usuario_atividade.id_usuario =" + usuario.getId_usuario() +  " and usuario_atividade.id_atividade = " +atividade.getId_atividade() +";" ;
+		open();
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
+		boolean hasResult = rs.next();
+		close();
+		return hasResult;
+	}
 }

@@ -24,12 +24,10 @@ xmlns:p="http://primefaces.org/ui">
 
 						<div class="CLASS_blocoRight.descricao">
 							<h5 class="CLASS_corTitulos"> Descrição do Problema </h5> <br />
-							<h:outputText value = "#{resolucaoAtividadeBean.atividade.descricaoProblema}" /> <br />
+							<h:outputText escape="false" value = "#{resolucaoAtividadeBean.atividade.descricaoProblema}" /> <br />
 							<br />
 							<h5 class="CLASS_corTitulos"> Pontuação </h5>
 							<h:outputText value = "#{resolucaoAtividadeBean.atividade.pontuacao}" /><br />
-							<h:outputText value = "#{resolucaoAtividadeBean.tarefa.nome}" /><br />
-							<h:outputText value = "#{resolucaoAtividadeBean.tarefa2.nome}" /><br />
 						</div>
 					</section>
 
@@ -40,16 +38,18 @@ xmlns:p="http://primefaces.org/ui">
 
 			    		<h:form name = "teste">
 			    			
-			    			<p:growl id="growl" showDetail="true" sticky="true" /> <br />
-			    			<h:selectOneRadio  value = "#{resolucaoAtividadeBean.resposta}">
+			    			<p:growl id="growl" showDetail="true" sticky="true" />
+			    			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+			    			<p:selectOneRadio  value = "#{resolucaoAtividadeBean.resposta}" layout="grid" columns="1">
 			    			
-			    				<f:selectItem  itemValue = "1" itemLabel="#{resolucaoAtividadeBean.atividade.respostaA}"></f:selectItem>
-			    				<f:selectItem  itemValue = "2" itemLabel="#{resolucaoAtividadeBean.atividade.respostaB}"></f:selectItem>
-			    				<f:selectItem  itemValue = "3" itemLabel="#{resolucaoAtividadeBean.atividade.respostaC}"></f:selectItem>
-			    				<f:selectItem  itemValue = "4" itemLabel="#{resolucaoAtividadeBean.atividade.respostaD}"></f:selectItem>
-			    				<f:selectItem  itemValue = "5" itemLabel="#{resolucaoAtividadeBean.atividade.respostaE}"></f:selectItem>
+			    				<f:selectItem  itemValue = "1" itemLabel= "  A) #{resolucaoAtividadeBean.atividade.respostaA}"></f:selectItem>
+			    				<f:selectItem  itemValue = "2" itemLabel= "  B) #{resolucaoAtividadeBean.atividade.respostaB}"></f:selectItem>
+			    				<f:selectItem  itemValue = "3" itemLabel= "  C) #{resolucaoAtividadeBean.atividade.respostaC}"></f:selectItem>
+			    				<f:selectItem  itemValue = "4" itemLabel= "  D) #{resolucaoAtividadeBean.atividade.respostaD}"></f:selectItem>
+			    				<f:selectItem  itemValue = "5" itemLabel= "  E) #{resolucaoAtividadeBean.atividade.respostaE}"></f:selectItem>
 			    				
-							</h:selectOneRadio> <br />
+							</p:selectOneRadio> <br />
+							</h:panelGrid>
 							
 							<h:commandButton class="CLASS_bottonContato" action = "#{resolucaoAtividadeBean.verificaResposta}" value="Enviar" update="growl"></h:commandButton>
 						</h:form>

@@ -31,7 +31,7 @@ xmlns:p="http://primefaces.org/ui">
 								<h:graphicImage class="CLASS_tamanhoImg" value = "../resources/img/avatar.png" alt="Perfil Imagem CodinPlay" />
 							</div>
 							<div class="CLASS_centraliza">
-								<a class="CLASS_linkPag" href="tela_editarPerfil.html">Editar Perfil</a>
+								<a class="CLASS_linkPag" href="tela_editarPerfil.jsf">Editar Perfil</a>
 							</div>
 				
 						</div>
@@ -43,12 +43,14 @@ xmlns:p="http://primefaces.org/ui">
 							<h4> <h:outputText value = "#{loginBean.usuario.objInstituicao.nome}" /> </h4> <br/>
 							<h5 class="CLASS_corTitulos"> Nível </h5>
 							<h4> <h:outputText value = "#{loginBean.usuario.objNivel.nome}" /></h4> <br/>
+							<h5 class="CLASS_corTitulos"> Tarefa </h5>
+							<h4> <h:outputText value = "#{usuarioBean.tarefa.nome}" /> </h4><br />
 							<h5 class="CLASS_corTitulos"> Pontuação </h5>
 							<h4> <h:outputText value = "#{loginBean.usuario.pontuacao}" /> XP </h4><br />
 							<h5 class="CLASS_corTitulos"> Patente </h5>
 							<h4> <h:outputText value = "#{loginBean.usuario.objPatente.nome}" /> </h4>
-							<h4> <h:outputText value = "#{usuarioBean.tarefa.nome}" /> </h4><br />
-							<h4> <h:outputText value = "#{usuarioBean.tarefaHist.nome}" /> </h4><br />
+			
+							
 						</div>
 					</section>
 
@@ -84,7 +86,7 @@ xmlns:p="http://primefaces.org/ui">
 						<div class="CLASS_blocoRight">
 							<h4 class="CLASS_red"> Historico Desafios</h4> <br/>
 							
-							<p:dataTable var = "desafio" value = "#{usuarioBean.listDesafios}" styleClass ="CLASS_table">
+							<p:dataTable var = "desafio" value = "#{usuarioBean.listDesafios}" styleClass ="CLASS_table" emptyMessage="Sem dados de Desafios">
 								
 								<p:column headerText = "Nome" styleClass = "CLASS_column">
 									<h:outputText  />

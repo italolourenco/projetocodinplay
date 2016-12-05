@@ -52,11 +52,9 @@ public class UsuarioBean implements Serializable{
 	private Integer totalAtividades;
 	private Integer totalDesafios;
 	private Tarefa tarefa;
-	private Tarefa tarefaHist;
 	private String teste;
 	private String nomeBotao = "Continuar";
 	private boolean status = false;
-	private int seguraAki;
 	
 	private BarChartModel barModel;
 	
@@ -79,8 +77,8 @@ public class UsuarioBean implements Serializable{
 			tarefa = defineTarefa(usuario);
 			listAtividades = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 1);
 			listDesafios = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 2);
-			totalAtividades = listAtividades.size();
-			totalDesafios = listDesafios.size();
+			totalAtividades = objAtividadeDAO.contAtividadesDesafios(usuario, 1);
+			totalDesafios =  objAtividadeDAO.contAtividadesDesafios(usuario, 2);
 			teste = tarefa.getNome();
 			createBarModels();
 		} catch (Exception e) {
@@ -139,11 +137,11 @@ public class UsuarioBean implements Serializable{
 	private BarChartModel initBarModel() throws Exception{
 		BarChartModel model = new BarChartModel();
 		
-		ChartSeries usuario = new ChartSeries();
-        usuario.set("Nível 1", objAtividadeDAO.preparaAtividadesNivel(1));
-        usuario.set("Nível 2", objAtividadeDAO.preparaAtividadesNivel(2));
-        usuario.set("Nível 3", objAtividadeDAO.preparaAtividadesNivel(3));
-		model.addSeries(usuario);
+		ChartSeries usuarioGraph = new ChartSeries();
+		usuarioGraph.set("Nível 1", objAtividadeDAO.contAtividades(usuario, 1));
+		usuarioGraph.set("Nível 2", objAtividadeDAO.contAtividades(usuario, 2));
+		usuarioGraph.set("Nível 3", objAtividadeDAO.contAtividades(usuario, 3));
+		model.addSeries(usuarioGraph);
 		return model;
 	}
 	
@@ -164,6 +162,7 @@ public class UsuarioBean implements Serializable{
         
         barModel.setSeriesColors("f44336");
 	}
+	
 
 	public BarChartModel getBarModel() {
 		return barModel;
@@ -245,14 +244,13 @@ public class UsuarioBean implements Serializable{
 		this.status = status;
 	}
 
-	public Tarefa getTarefaHist() {
-		return tarefaHist;
+	public void sair() throws IOException{
+		
+		FacesContext facesContext = FacesContext.getCurrentInstance();  
+		HttpSession session = (HttpSession) facesContext .getExternalContext().getSession(false);  
+		session.invalidate(); 
+		FacesContext.getCurrentInstance().getExternalContext().redirect("erroIndex.jsf");
 	}
-
-	public void setTarefaHist(Tarefa tarefaHist) {
-		this.tarefaHist = tarefaHist;
-	}
-	
 	
 	
 	

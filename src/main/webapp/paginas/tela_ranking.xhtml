@@ -14,7 +14,12 @@ xmlns:p="http://primefaces.org/ui">
 		<ui:define name="pagina">
 
 		<div id="ID_areaPrincipal">	
-			<h:form name="editar" id="ID_formPesquisa">
+		<section class = "CLASS_blocoPrincipal2">
+				<h2 class="CLASS_red"> Ranking </h2>
+				<span class="CLASS_linhaSeparadora"></span>
+			    <h3 class="CLASS_red"> Top 5 - Usuários </h3><br />
+			    
+				<h:form name="editar" id="ID_formPesquisa">
 	    		<p:dataTable var="usuario" value="#{rankingBean.usuarios}" 
 	                 emptyMessage="Usuário não encontrado" filteredValue="#{rankingBean.filteredUsuarios}">
 	 
@@ -35,12 +40,12 @@ xmlns:p="http://primefaces.org/ui">
 	        		</p:column>
 	        		
 	        		<p:column filterBy="#{usuario.objInstituicao.nome}" headerText="Instituição" filterMatchMode="contains">
-	            	<h:outputText value="#{usuario.objInstituicao.nome}" />
+	            	<h:outputText value="#{usuario.objInstituicao.abreviacao}" />
 	        		</p:column>
 	        		
 	    		</p:dataTable>
 			</h:form>
-		
+		</section>
 		
 		</div>
 		</ui:define>

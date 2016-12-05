@@ -32,7 +32,6 @@ xmlns:p="http://primefaces.org/ui">
 							<h4><h:outputText value = "#{usuarioBean.usuario.objNivel.pontuacaoTotal}" /></h4><br />
 							<h5 class="CLASS_corTitulos"> Tarefa Atual </h5>
 							<h4><h:outputText value = "#{usuarioBean.teste}" /></h4><br />
-							<h4><h:outputText value = "#{usuarioBean.tarefaHist.nome}" /></h4><br />
 						</div>
 					</section>
 
@@ -48,7 +47,7 @@ xmlns:p="http://primefaces.org/ui">
 								</div>
 								<h:form>
 								<div class="CLASS_centraliza">
-									<h4 class="CLASS_corTitulos">NewBie </h4> <br /> <p:commandButton value="#{usuarioBean.configurarBotoesNivel('NewBie')}" action = "#{usuarioBean.irTelaResolucao('NewBie')}" disabled = "#{usuarioBean.status}" styleClass="" />
+									<h4 class="CLASS_corTitulos">NewBie </h4> <br /> <p:commandButton value="#{usuarioBean.configurarBotoesNivel('NewBie')}" action = "#{usuarioBean.irTelaResolucao('NewBie')}" disabled = "#{usuarioBean.status}" styleClass="CLASS_botaoEscolhas" update="growl" />
 				   				 </div>
 				   				 </h:form>
 				
@@ -58,9 +57,11 @@ xmlns:p="http://primefaces.org/ui">
 								<div class="CLASS_blocoImg">
 									<img class="CLASS_tamanhoImg" src="../resources/img/nivel2.jpg" alt="Nivel 2" />
 								</div>
+								<h:form>
 								<div class="CLASS_centraliza">
-									<h4 class="CLASS_corTitulos">Amador </h4> <br /> <p:commandButton value="#{usuarioBean.configurarBotoesNivel('Amador')}" action = "#{usuarioBean.irTelaResolucao('Amador')}" disabled = "#{usuarioBean.status}" styleClass=""/>
+									<h4 class="CLASS_corTitulos">Amador </h4> <br /> <p:commandButton value="#{usuarioBean.configurarBotoesNivel('Amador')}" action = "#{usuarioBean.irTelaResolucao('Amador')}" disabled = "#{usuarioBean.status}" styleClass="CLASS_botaoEscolhas" update="growl"/>
 				    			</div>
+				    			</h:form>
 				
 							</div>
 
@@ -68,9 +69,11 @@ xmlns:p="http://primefaces.org/ui">
 								<div class="CLASS_blocoImg">
 									<img class="CLASS_tamanhoImg" src="../resources/img/nivel3.jpg" alt="Nivel 3" />
 								</div>
+								<h:form>
 								<div class="CLASS_centraliza">
-									<h4 class="CLASS_corTitulos">Lenda </h4> <br /> <p:commandButton value="#{usuarioBean.configurarBotoesNivel('Lenda')}" action = "#{usuarioBean.irTelaResolucao('Lenda')}" disabled = "#{usuarioBean.status}" styleClass=""/> 
+									<h4 class="CLASS_corTitulos">Lenda </h4> <br /> <p:commandButton value="#{usuarioBean.configurarBotoesNivel('Lenda')}" action = "#{usuarioBean.irTelaResolucao('Lenda')}" disabled = "#{usuarioBean.status}" styleClass="CLASS_botaoEscolhas" update="growl"/> 
 				    			</div>
+				    			</h:form>
 				
 							</div>
 					</section>

@@ -127,13 +127,11 @@ public class AtividadeDAO extends DAO {
 	}
 	
 	
-	public Integer preparaAtividadesNivel (int nivel) throws Exception{
+	public Integer contAtividades (Usuario usuario ,int nivel) throws Exception{
 		
 
 		int total = 0;
-		String sql = "SELECT COUNT(*) from atividade INNER JOIN usuario_atividade ON atividade.id_atividade = usuario_atividade.id_atividade WHERE atividade.id_nivel = " + nivel + ";";
-		
-
+		String sql = "SELECT COUNT(*) from atividade INNER JOIN usuario_atividade ON atividade.id_atividade = usuario_atividade.id_atividade WHERE atividade.id_nivel = " + nivel + " and usuario_atividade.id_usuario = " + usuario.getId_usuario() + ";";
 		
 		open();
 		st = con.createStatement();
@@ -142,11 +140,41 @@ public class AtividadeDAO extends DAO {
 			total = rs.getInt("count");
 		}
 
-		
-		
 		return total;
 		
 		
 	}
+	
+	public Integer contAtividadesDesafios (Usuario usuario, int tipo) throws Exception{
+		
+
+		int total = 0;
+		String sql = "SELECT COUNT(*) from atividade INNER JOIN usuario_atividade ON atividade.id_atividade = usuario_atividade.id_atividade WHERE atividade.tipo = " + tipo + " and usuario_atividade.id_usuario = " + usuario.getId_usuario() + ";";
+		
+		open();
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
+		if(rs.next()){
+			total = rs.getInt("count");
+		}
+
+		return total;
+		
+		
+	}
+	
+	public boolean verificaAcerto(Usuario usuario, Atividade atividade, int tipo, int status) throws Exception {
+		
+		String sql = "SELECT * from atividade "
+				   + "INNER JOIN usuario_atividade ON atividade.id_atividade = usuario_atividade.id_atividade "
+				   + "WHERE usuario_atividade.id_usuario = " + usuario.getId_usuario() + "and usuario_atividade.status = " + status + " and atividade.tipo = " + tipo + ";";
+		open();
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
+		boolean hasResult = rs.next();
+		close();
+		return hasResult;
+	}
+
 
 }
