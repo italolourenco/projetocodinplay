@@ -91,7 +91,7 @@ public class CadastroAtividadeBean implements Serializable {
 		if(!objAtividadeDAO.consulta(this.atividade)){
 			
 			objAtividadeDAO.inserir(this.atividade);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Atividade Cadastrada !."));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Atividade Cadastrada "));
 			return "sucesso";
 					
 				}

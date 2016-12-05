@@ -92,5 +92,35 @@ public class TarefaDAO extends DAO {
 		return tarefa;
 		 
 	}
+	
+	public ArrayList<Tarefa> tarefasNivel(Nivel nivelL) throws Exception {
+		
+	    NivelDAO objNivelDAO = new NivelDAO();
+		ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
+		Tarefa tarefa;
+
+		String sql = "SELECT * from tarefa WHERE tarefa.id_nivel = " + nivelL.getId_nivel() +";";
+		
+		open();
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
+		
+		while(rs.next()){
+			
+			tarefa = new Tarefa();
+			
+			tarefa.setId_tarefa(rs.getInt("id_tarefa"));
+			tarefa.setNome(rs.getString("nome"));
+			tarefa.setPontuacao_max(rs.getInt("pontuacao_max"));
+			tarefa.setPontuacao_min(rs.getInt("pontuacao_min"));
+			tarefa.setDescricao(rs.getString("descricao"));
+			tarefa.setNivel(objNivelDAO.consulta(rs.getInt("id_nivel")));
+			tarefas.add(tarefa);
+		}
+		close();
+		return tarefas;
+		
+		
+	}
 
 }

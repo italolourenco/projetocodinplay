@@ -21,6 +21,7 @@ import java.util.Date;
 import persistence.crud.AtividadeDAO;
 import persistence.crud.HistoricoDAO;
 import persistence.crud.NivelDAO;
+import persistence.crud.PatenteDAO;
 import persistence.crud.TarefaDAO;
 import persistence.crud.UsuarioDAO;
 import persistence.pojo.Atividade;
@@ -29,7 +30,7 @@ import persistence.pojo.Tarefa;
 import persistence.pojo.Usuario;
 
 @ManagedBean(name = "resolucaoAtividadeBean")
-@SessionScoped
+@RequestScoped
 public class ResolucaoAtividadeBean implements Serializable {
 	/**
 	 * 
@@ -44,6 +45,7 @@ public class ResolucaoAtividadeBean implements Serializable {
 	private TarefaDAO objTarefaDAO;
 	private UsuarioDAO objUsuarioDAO;
 	private NivelDAO objNivelDAO;
+	private PatenteDAO objPatenteDAO;
 	private Tarefa tarefa;
 	private Atividade atividade;
 	private int resposta;
@@ -70,6 +72,7 @@ public class ResolucaoAtividadeBean implements Serializable {
 			objTarefaDAO = new TarefaDAO();
 			objUsuarioDAO = new UsuarioDAO();
 			objNivelDAO = new NivelDAO();
+			objPatenteDAO = new PatenteDAO();
 			
 			tarefa = defineTarefa(usuario);
 			preparaAtividades();
@@ -113,13 +116,10 @@ public class ResolucaoAtividadeBean implements Serializable {
 	
 	public void defineAtividade() throws Exception{
 		
-			if(listAtividades.size() > 0){
-				this.atividade = listAtividades.get(0);
-				listAtividades.remove(0);
-			}
-			else{
-				preparaAtividades();
-			}
+		if(listAtividades.size() > 0){
+			atividade = listAtividades.get(0);
+			listAtividades.remove(0);
+		}
 	}
 	
 	public String verificaResposta() throws Exception{
@@ -129,39 +129,55 @@ public class ResolucaoAtividadeBean implements Serializable {
 		if(resposta == atividade.getRespostaCerta()){
 			
 		   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Resposta Correta "));
-		   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Voce Recebeu", atividade.getPontuacao() + "Pontos"));
+		   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Você Recebeu", atividade.getPontuacao() + " Pontos"));
 	       status = 1;
 	       //salvar a pontuacao nova do usuario;
 	       novaPontuacao = usuario.getPontuacao() + atividade.getPontuacao();
 	       usuario.setPontuacao(novaPontuacao);
 	       objUsuarioDAO.updatePontuacao(usuario);
+	       
+	       if(usuario.getPontuacao() >= usuario.getObjPatente().getPontuacao_max()){
+	    	   usuario.setObjPatente(objPatenteDAO.consultaPatente(usuario));
+	    	   objUsuarioDAO.updatePatente(usuario);
+	    	   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Você Evoluiu a sua Patente "));
+	    	   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Agora você é " +usuario.getObjPatente().getNome()));
+	       }
 		   
 		}
 		else {
+			
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Ops ...", "Resposta Incorreta, não desista!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Resposta Da Questão", ""+ atividade.getRespostaCerta()));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Resposta Enviada", "" + resposta));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado para", "Atividade " + atividade.getNome()));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Total", "Atividade " + listAtividades.size()));
 	        status = 0;
+	        
+	        listAtividades.add(atividade);
 	        
 		}
 		
 		data = new Date();
 		sData = transformaDate(data);
 		objHistorico.inserir(usuario, atividade, sData, status);
+		atividade = new Atividade();
 		
 		//Verificando se o usuario vai passar para o proximo nivel
 		listNiveis = objNivelDAO.consulta();
 		if(usuario.getObjNivel().getPontuacaoTotal() <= usuario.getPontuacao()){
-			usuario.setObjNivel(listNiveis.get(usuario.getObjNivel().getId_nivel()));
-			objUsuarioDAO.updateNivel(usuario);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Você foi para o " + usuario.getObjNivel().getNome()));
-			//FacesContext.getCurrentInstance().getExternalContext().redirect("tela_progressaoUsuario.jsf");
-			return "progressaoUsuario";
+			if(usuario.getObjNivel().getId_nivel() < 3){
+				usuario.setObjNivel(listNiveis.get(usuario.getObjNivel().getId_nivel() + 1));
+				objUsuarioDAO.updateNivel(usuario);
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Você foi para o " + usuario.getObjNivel().getNome()));
+				return "progressaoUsuario";
+			}
+			return "telaPrincipal";
 			
 		}
 		else{
 			if(usuario.getPontuacao() >= tarefa.getPontuacao_max()){
 			
 				this.tarefa = defineTarefa(usuario);
-				listAtividades.clear();
 				preparaAtividades();
 				defineAtividade();
 				//Mensagem informando a conclusão de uma tarefa do nível, mas n funfa
@@ -171,12 +187,8 @@ public class ResolucaoAtividadeBean implements Serializable {
 				//FacesContext.getCurrentInstance().getExternalContext().redirect("tela_menuNivel.jsf");
 			}
 			else{
-				
-				preparaAtividades();
 				defineAtividade();
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado para", "Atividade " + atividade.getNome()));
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado para", "Atividade " + resposta));
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado para", "Atividade " + atividade.getRespostaCerta()));
 				return "continuar";
 				}
 			}

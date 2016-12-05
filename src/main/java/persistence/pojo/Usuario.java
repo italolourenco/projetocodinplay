@@ -1,6 +1,7 @@
 package persistence.pojo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Usuario implements Serializable {
 	
@@ -18,6 +19,7 @@ public class Usuario implements Serializable {
 	private Patente objPatente;
 	private Instituicao objInstituicao;
 	private Nivel objNivel;
+	private ArrayList<Atividade> listAtividades;
 	
 	
 	public Integer getId_usuario() {
@@ -95,6 +97,13 @@ public class Usuario implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	public ArrayList<Atividade> getListAtividades() {
+		return listAtividades;
+	}
+	public void setListAtividades(ArrayList<Atividade> listAtividades) {
+		this.listAtividades = listAtividades;
+	}
+	
 	
 	
 }

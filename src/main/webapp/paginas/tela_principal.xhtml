@@ -44,7 +44,7 @@ xmlns:p="http://primefaces.org/ui">
 							<h5 class="CLASS_corTitulos"> Nível </h5>
 							<h4> <h:outputText value = "#{loginBean.usuario.objNivel.nome}" /></h4> <br/>
 							<h5 class="CLASS_corTitulos"> Tarefa </h5>
-							<h4> <h:outputText value = "#{usuarioBean.tarefa.nome}" /> </h4><br />
+							<h4> <h:outputText value = "#{usuarioBean.tarefa.nome}" /></h4><br />
 							<h5 class="CLASS_corTitulos"> Pontuação </h5>
 							<h4> <h:outputText value = "#{loginBean.usuario.pontuacao}" /> XP </h4><br />
 							<h5 class="CLASS_corTitulos"> Patente </h5>
@@ -77,11 +77,17 @@ xmlns:p="http://primefaces.org/ui">
 			    		<h3 class="CLASS_red"> Desafios</h3> <br />
 						<div class="CLASS_blocoLeft">
 						
-							<h4>Nome Desafio</h4> <br />
-							<h4>Status: Disponível !</h4> <br />
-							<h4>Pontuação</h4>
+							<h:form id="teste">
+							<p:growl id="growl" showDetail="true" sticky="true" /> 
+							<h5 class="CLASS_corTitulos"> Nome Desafio </h5> 
+							<h4> <h:outputText value = "#{usuarioBean.desafio.nome}" /> </h4> <br/>
+							<h5 class="CLASS_corTitulos"> Status </h5> 
+							<h4> <h:outputText value = "#{usuarioBean.msgDesafio}" /> </h4> <br/>
+							<h5 class="CLASS_corTitulos"> Pontos </h5> 
+							<h4> <h:outputText value = "#{usuarioBean.desafio.pontuacao}" /> </h4> <br/>
 							
-							<button id="ID_bottonEnviar" >Iniciar</button>
+							<p:commandButton styleClass="CLASS_botaoEscolhas" value="#{usuarioBean.verificaDesafio()}"  update="growl" ></p:commandButton>
+							</h:form>
 						</div>
 						<div class="CLASS_blocoRight">
 							<h4 class="CLASS_red"> Historico Desafios</h4> <br/>

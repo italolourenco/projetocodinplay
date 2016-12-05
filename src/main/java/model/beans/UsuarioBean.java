@@ -45,6 +45,7 @@ public class UsuarioBean implements Serializable{
 	
 	private ArrayList<Atividade> listAtividades = new ArrayList<Atividade>();
 	private ArrayList<Atividade> listDesafios = new ArrayList<Atividade>();
+	private ArrayList<Tarefa> listTarefas = new ArrayList<Tarefa>();
 	
 	private AtividadeDAO objAtividadeDAO;
 	private TarefaDAO objTarefaDAO;
@@ -55,6 +56,9 @@ public class UsuarioBean implements Serializable{
 	private String teste;
 	private String nomeBotao = "Continuar";
 	private boolean status = false;
+	private Atividade desafio;
+	private String msgDesafio;
+	private String msgBotao;
 	
 	private BarChartModel barModel;
 	
@@ -75,12 +79,15 @@ public class UsuarioBean implements Serializable{
 			objTarefaDAO = new TarefaDAO();
 			objNivel = new NivelDAO();
 			tarefa = defineTarefa(usuario);
+			desafio = null;
 			listAtividades = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 1);
 			listDesafios = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 2);
 			totalAtividades = objAtividadeDAO.contAtividadesDesafios(usuario, 1);
 			totalDesafios =  objAtividadeDAO.contAtividadesDesafios(usuario, 2);
 			teste = tarefa.getNome();
 			createBarModels();
+			listTarefas = objTarefaDAO.tarefasNivel(usuario.getObjNivel());
+			verificaDesafio();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -161,6 +168,38 @@ public class UsuarioBean implements Serializable{
         yAxis.setMax(10);
         
         barModel.setSeriesColors("f44336");
+	}
+	
+	public String verificaDesafio() throws Exception{
+		
+		ArrayList<Atividade> listDesafios = new ArrayList<Atividade>();
+		
+		int x;
+		int y;
+		for(x = 0; x < listTarefas.size(); x++){
+			if(usuario.getPontuacao() >= listTarefas.get(x).getPontuacao_max()){
+				listDesafios = objAtividadeDAO.preparaAtividadesSemHist(listTarefas.get(x), 2);
+				y = 0;
+				for(y = 0; y < listDesafios.size(); y++ ){
+					if(!objAtividadeDAO.verificaHist(usuario,listDesafios.get(y))){
+						desafio = listDesafios.get(y);					}
+				}	
+		}
+		
+		if(desafio != null){
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atenção !", "Você Possui um Novo Desafio"));
+			msgDesafio = "Disponivel !";
+			msgBotao = "Iniciar ";
+			return "Iniciar";
+		}
+		else{
+			msgDesafio ="Indisponivel";
+			msgBotao = "Bloqueado";
+			return "Bloqueado";
+			}
+		}
+		msgDesafio ="Não Encontrado";
+		return "Bloqueado";
 	}
 	
 
@@ -250,6 +289,46 @@ public class UsuarioBean implements Serializable{
 		HttpSession session = (HttpSession) facesContext .getExternalContext().getSession(false);  
 		session.invalidate(); 
 		FacesContext.getCurrentInstance().getExternalContext().redirect("erroIndex.jsf");
+	}
+
+	public ArrayList<Tarefa> getListTarefas() {
+		return listTarefas;
+	}
+
+	public void setListTarefas(ArrayList<Tarefa> listTarefas) {
+		this.listTarefas = listTarefas;
+	}
+
+	public Atividade getDesafio() {
+		return desafio;
+	}
+
+	public void setDesafio(Atividade desafio) {
+		this.desafio = desafio;
+	}
+
+	public String getMsgDesafio() {
+		return msgDesafio;
+	}
+
+	public void setMsgDesafio(String msgDesafio) {
+		this.msgDesafio = msgDesafio;
+	}
+
+	public String getMsgBotao() {
+		return msgBotao;
+	}
+
+	public void setMsgBotao(String msgBotao) {
+		this.msgBotao = msgBotao;
+	}
+
+	public NivelDAO getObjNivel() {
+		return objNivel;
+	}
+
+	public void setObjNivel(NivelDAO objNivel) {
+		this.objNivel = objNivel;
 	}
 	
 	

@@ -99,6 +99,13 @@ public class UsuarioDAO extends DAO {
 		stmt.execute();
 	}
 	
+	public void updatePatente(Usuario usuario) throws Exception{
+		
+		open();
+		stmt = con.prepareStatement("UPDATE usuario SET id_patente = " + usuario.getObjPatente().getId_patente() + " WHERE usuario.id_usuario = " + usuario.getId_usuario() + ";");
+		stmt.execute();
+	}
+	
 	public boolean verificaRegistro(Usuario usuario, Atividade atividade) throws Exception {
 		
 		String sql = "SELECT * from usuario INNER JOIN usuario_atividade ON usuario_atividade.id_usuario = usuario.id_usuario WHERE usuario_atividade.id_usuario =" + usuario.getId_usuario() +  " and usuario_atividade.id_atividade = " +atividade.getId_atividade() +";" ;

@@ -26,9 +26,10 @@ xmlns:p="http://primefaces.org/ui">
 				<h2 class="CLASS_red"> Cadastro Instituição </h2>
 				<span class="CLASS_linhaSeparadora"></span>
 				<div class="CLASS_blocoRight.descricao">
-				<p:tooltip />
+				
 					<h:form name="editar" id="ID_form">
 						
+						<p:growl id="growl" showDetail="true" sticky="true" /> 
 						<h:outputLabel value="Nome:" for="nome"> </h:outputLabel>	
 						<h:inputText class="input" id="nome" placeholder="Nome" value="#{cadastroInstituicaoBean.instituicao.nome}"> </h:inputText>
 						<br /><br />
@@ -49,7 +50,7 @@ xmlns:p="http://primefaces.org/ui">
 						<h:inputText class="input" id="site" placeholder="Site" value="#{cadastroInstituicaoBean.instituicao.site}"></h:inputText>
 						<br /><br />	
 						
-						<h:commandButton class="CLASS_bottonContato" action="#{cadastroInstituicaoBean.inserir}" value = "Salvar"> </h:commandButton>
+						<h:commandButton class="CLASS_bottonContato" action="#{cadastroInstituicaoBean.inserir}" value = "Salvar" update="growl"> </h:commandButton>
 						<h:commandButton class="CLASS_bottonContato" action="#{cadastroInstituicaoBean.cancelar}" value = "Cancelar"> </h:commandButton>
 						
 					</h:form>

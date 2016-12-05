@@ -35,7 +35,7 @@ xmlns:p="http://primefaces.org/ui">
 				<br /> <br />
 
 				<h:outputLabel class="CLASS_labelLogin" value = "Senha" for="senha"></h:outputLabel>
-				<h:inputText class="CLASS_inputLogin" id="senha" label= "Senha" value = "#{loginBean.senha}" ></h:inputText>
+				<h:inputSecret class="CLASS_inputLogin" id="senha" label= "Senha" value = "#{loginBean.senha}" />
 				<br /> <br />
 
 				<h:commandButton class="CLASS_bottonLogin" action="#{loginBean.entrar}" value = "Entrar" update="growl"> </h:commandButton>

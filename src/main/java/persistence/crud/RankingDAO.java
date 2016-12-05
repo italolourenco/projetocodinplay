@@ -14,7 +14,7 @@ public class RankingDAO extends DAO{
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 		Usuario usuario;
 	
-		String sql = "SELECT * from usuario";
+		String sql = "SELECT * from usuario WHERE usuario.tipo = 1 ORDER BY usuario.pontuacao DESC LIMIT 5;";
 		
 		open();
 		st = con.createStatement();
