@@ -82,7 +82,7 @@ public class AtividadeDAO extends DAO {
 			atividade.setRespostaE(rs.getString("respostae"));
 			atividade.setRespostaCerta(rs.getInt("respostaCerta"));
 			atividade.setObjTarefa(tarefa);
-			//atividade.setObjNivel(tarefa.getNivel());
+			atividade.setObjNivel(tarefa.getNivel());
 			
 			listAtividades.add(atividade);
 		}
@@ -223,6 +223,56 @@ public class AtividadeDAO extends DAO {
 		
 		return listAtividades;
 	}
+	
+	public ArrayList<Atividade> montaHistoricoDesafio(Tarefa tarefa, Usuario usuario, int tipo) throws Exception{
+		
+		Atividade atividade = null;
+		ArrayList<Atividade> listAtividades = new ArrayList<Atividade>();
+		String sql = "SELECT * from atividade "
+				   + "INNER JOIN usuario_atividade ON atividade.id_atividade = usuario_atividade.id_atividade "
+				   + "WHERE usuario_atividade.id_usuario = " + usuario.getId_usuario() + "and atividade.tipo = " + tipo + " limit 3;";
+		open();
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
+		
+		while(rs.next()){
+			
+			atividade = new Atividade();
+			
+			atividade.setId_atividade(rs.getInt("id_atividade"));
+			atividade.setNome(rs.getString("nome"));
+			atividade.setDescricaoProblema(rs.getString("descricaoproblema"));
+			atividade.setPontuacao(rs.getInt("pontuacao"));
+			atividade.setRespostaA(rs.getString("respostaa"));
+			atividade.setRespostaB(rs.getString("respostab"));
+			atividade.setRespostaC(rs.getString("respostac"));
+			atividade.setRespostaD(rs.getString("respostad"));
+			atividade.setRespostaE(rs.getString("respostae"));
+			atividade.setRespostaCerta(rs.getInt("respostaCerta"));
+			atividade.setObjTarefa(tarefa);
+			atividade.setObjNivel(tarefa.getNivel());
+			
+			listAtividades.add(atividade);
+		}
+		
+		
+		return listAtividades;
+	}
 
+	public String RetornaStatus(Usuario usuario, Atividade atividade) throws Exception{
+		
+		String status = null;
+		String sql = "SELECT status from atividade "
+				   + "INNER JOIN usuario_atividade ON atividade.id_atividade = usuario_atividade.id_atividade "
+				   + "WHERE usuario_atividade.id_usuario = " + usuario.getId_usuario() + "and usuario_atividade.id_atividade = " + atividade.getId_atividade() + ";";
+	
+		open();
+		st = con.createStatement();
+		rs = st.executeQuery(sql);
+		while(rs.next()){
+			status = rs.getString("status");
+		}
+		return status;
+}
 
 }

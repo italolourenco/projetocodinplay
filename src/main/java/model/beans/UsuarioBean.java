@@ -21,6 +21,7 @@ import org.primefaces.model.chart.ChartSeries;
 
 import persistence.crud.AtividadeDAO;
 import persistence.crud.InstituicaoDAO;
+import persistence.crud.MensagemDAO;
 import persistence.crud.NivelDAO;
 import persistence.crud.TarefaDAO;
 import persistence.crud.UsuarioDAO;
@@ -46,10 +47,12 @@ public class UsuarioBean implements Serializable{
 	private ArrayList<Atividade> listAtividades = new ArrayList<Atividade>();
 	private ArrayList<Atividade> listDesafios = new ArrayList<Atividade>();
 	private ArrayList<Tarefa> listTarefas = new ArrayList<Tarefa>();
+	private ArrayList<Atividade> listHistoricoDesafio = new ArrayList<Atividade>();
 	
 	private AtividadeDAO objAtividadeDAO;
 	private TarefaDAO objTarefaDAO;
 	private NivelDAO objNivel;
+	private MensagemDAO objMensagem;
 	private Integer totalAtividades;
 	private Integer totalDesafios;
 	private Tarefa tarefa;
@@ -87,6 +90,7 @@ public class UsuarioBean implements Serializable{
 			teste = tarefa.getNome();
 			createBarModels();
 			listTarefas = objTarefaDAO.tarefasNivel(usuario.getObjNivel());
+			listHistoricoDesafio = objAtividadeDAO.montaHistoricoDesafio(tarefa, usuario, 2);
 			verificaDesafio();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -200,6 +204,30 @@ public class UsuarioBean implements Serializable{
 		}
 		msgDesafio ="Não Encontrado";
 		return "Bloqueado";
+	}
+	
+	public String irTelaResolucaoDesafio(){
+		if(msgDesafio.equalsIgnoreCase("Disponivel !")){
+			return "telaDesafio";
+			
+		}
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Ainda Não !", "Você Não possui Desafios Disponiveis"));
+		return "telaPrincipal";
+	}
+	
+	public String voltaNomeStatus(Atividade atividade1) throws Exception{
+		
+		String status = objAtividadeDAO.RetornaStatus(usuario, atividade1);
+		if(status.equals("1")){
+			return "Acertou";
+		}
+		
+		return "Errou";
+	}
+	
+	public String enviarMensagem(){
+		
+		return null;
 	}
 	
 
@@ -330,6 +358,15 @@ public class UsuarioBean implements Serializable{
 	public void setObjNivel(NivelDAO objNivel) {
 		this.objNivel = objNivel;
 	}
+
+	public ArrayList<Atividade> getListHistoricoDesafio() {
+		return listHistoricoDesafio;
+	}
+
+	public void setListHistoricoDesafio(ArrayList<Atividade> listHistoricoDesafio) {
+		this.listHistoricoDesafio = listHistoricoDesafio;
+	}
+	
 	
 	
 	

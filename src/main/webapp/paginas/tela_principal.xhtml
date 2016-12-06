@@ -86,7 +86,7 @@ xmlns:p="http://primefaces.org/ui">
 							<h5 class="CLASS_corTitulos"> Pontos </h5> 
 							<h4> <h:outputText value = "#{usuarioBean.desafio.pontuacao}" /> </h4> <br/>
 							
-							<p:commandButton styleClass="CLASS_botaoEscolhas" value="#{usuarioBean.verificaDesafio()}"  update="growl" ></p:commandButton>
+							<p:commandButton styleClass="CLASS_botaoEscolhas" value="#{usuarioBean.verificaDesafio()}" action = "#{usuarioBean.irTelaResolucaoDesafio}" update="growl" ></p:commandButton>
 							</h:form>
 						</div>
 						<div class="CLASS_blocoRight">
@@ -95,23 +95,23 @@ xmlns:p="http://primefaces.org/ui">
 							<p:dataTable var = "desafio" value = "#{usuarioBean.listDesafios}" styleClass ="CLASS_table" emptyMessage="Sem dados de Desafios">
 								
 								<p:column headerText = "Nome" styleClass = "CLASS_column">
-									<h:outputText  />
+									<h:outputText value="#{desafio.nome}"  />
 								</p:column>
 								
 								<p:column headerText = "Tarefa" styleClass = "CLASS_column">
-									<h:outputText  />
+									<h:outputText  value="#{desafio.objTarefa.nome}"/>
 								</p:column>
 								
 								<p:column headerText = "Nivel" styleClass = "CLASS_column">
-									<h:outputText  />
+									<h:outputText  value="#{desafio.objNivel.nome}"/>
 								</p:column>
 								
 							    <p:column headerText = "Pontos" styleClass = "CLASS_column">
-									<h:outputText  />
+									<h:outputText  value="#{desafio.pontuacao}"/>
 								</p:column>
 								
 								<p:column headerText = "Status" styleClass = "CLASS_column">
-									<h:outputText  />
+									<h:outputText  value="#{usuarioBean.voltaNomeStatus(desafio)}"/>
 								</p:column>
 							
 							</p:dataTable>

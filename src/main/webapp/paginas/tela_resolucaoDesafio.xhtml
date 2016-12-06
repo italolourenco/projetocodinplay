@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+
+	<h:body>
+		
+		<ui:composition template="../resources/templates/pagina.xhtml">
+
+			<ui:define name = "titulo_pagina"> CodinPlay - Atividade </ui:define>
+			
+			<ui:define name="pagina">
+			
+				<div id="ID_areaPrincipal">
+
+					<section class="CLASS_blocoPrincipal">
+						<h2 class="CLASS_red"> Resolução do Desafio </h2>
+						<span class="CLASS_linhaSeparadora"></span>
+			    		<h3 class="CLASS_red"> <h:outputText value = "#{resolucaoDesafioBean.atividade.nome}" /> </h3> <br />
+
+						<div class="CLASS_blocoRight.descricao">
+							<h5 class="CLASS_corTitulos"> Descrição do Problema </h5> <br />
+							<h:outputText escape="false" value = "#{resolucaoDesafioBean.atividade.descricaoProblema}" /> <br />
+							<br />
+							<h5 class="CLASS_corTitulos"> Pontuação </h5>
+							<h:outputText value = "#{resolucaoDesafioBean.atividade.pontuacao}" /><br />
+						</div>
+					</section>
+
+					<section class="CLASS_blocoPrincipal">
+						<span class="CLASS_linhaSeparadora"></span>
+			    		<h3 class="CLASS_red"> Respostas </h3> <br />
+			    		<h5 class="CLASS_red"> Escolha uma das Alternativas </h5>  <br />
+
+			    		<h:form name = "teste">
+			    			<p:growl id="growl" showDetail="true" sticky="true" />
+			    			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+			    			<p:selectOneRadio  value = "#{resolucaoDesafioBean.resposta}" layout="grid" columns="1"  id="teste">
+			    			
+			    				<f:selectItem  itemValue = "1" itemLabel= "  A) #{resolucaoDesafioBean.atividade.respostaA}"></f:selectItem>
+			    				<f:selectItem  itemValue = "2" itemLabel= "  B) #{resolucaoDesafioBean.atividade.respostaB}"></f:selectItem>
+			    				<f:selectItem  itemValue = "3" itemLabel= "  C) #{resolucaoDesafioBean.atividade.respostaC}"></f:selectItem>
+			    				<f:selectItem  itemValue = "4" itemLabel= "  D) #{resolucaoDesafioBean.atividade.respostaD}"></f:selectItem>
+			    				<f:selectItem  itemValue = "5" itemLabel= "  E) #{resolucaoDesafioBean.atividade.respostaE}"></f:selectItem>
+			    				
+							</p:selectOneRadio> <br />
+							</h:panelGrid>
+							
+							<h:commandButton class="CLASS_bottonContato" action = "#{resolucaoDesafioBean.verificaResposta}" value="Enviar" update="growl" upadate ="teste"></h:commandButton>
+						</h:form>
+					</section>
+				</div>
+				
+			</ui:define>
+		</ui:composition>
+	</h:body>
+
+</html>

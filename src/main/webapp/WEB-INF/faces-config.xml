@@ -173,5 +173,25 @@ version="2.1">
 			<to-view-id>paginas/tela_editarPerfil.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>paginas/tela_principal.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>telaDesafio</from-outcome>
+			<to-view-id>paginas/tela_resolucaoDesafio.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>telaPrincipal</from-outcome>
+			<to-view-id>paginas/tela_principal.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>paginas/tela_resolucaoDesafio.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>telaPrincipal</from-outcome>
+			<to-view-id>paginas/tela_principal.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 
 </faces-config>
