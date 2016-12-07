@@ -1,0 +1,670 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: atividade; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE atividade (
+    id_atividade integer NOT NULL,
+    nome character varying(45),
+    descricaoproblema text,
+    pontuacao integer NOT NULL,
+    respostaa character varying(45),
+    respostab character varying(45),
+    respostac character varying(45),
+    respostad character varying(45),
+    respostae character varying(45),
+    respostacerta integer,
+    tipo integer,
+    id_tarefa integer NOT NULL,
+    id_nivel integer NOT NULL
+);
+
+
+ALTER TABLE public.atividade OWNER TO postgres;
+
+--
+-- Name: atividade_id_atividade_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE atividade_id_atividade_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.atividade_id_atividade_seq OWNER TO postgres;
+
+--
+-- Name: atividade_id_atividade_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE atividade_id_atividade_seq OWNED BY atividade.id_atividade;
+
+
+--
+-- Name: instituicao; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE instituicao (
+    id_instituicao integer NOT NULL,
+    nome character varying(45),
+    abreviacao character varying(45),
+    estado character varying(45),
+    telefone character varying(45),
+    site character varying(45)
+);
+
+
+ALTER TABLE public.instituicao OWNER TO postgres;
+
+--
+-- Name: instituicao_id_instituicao_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE instituicao_id_instituicao_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.instituicao_id_instituicao_seq OWNER TO postgres;
+
+--
+-- Name: instituicao_id_instituicao_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE instituicao_id_instituicao_seq OWNED BY instituicao.id_instituicao;
+
+
+--
+-- Name: mensagem; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE mensagem (
+    id_mensagem integer NOT NULL,
+    data character varying(45) NOT NULL,
+    mensagem character varying(250),
+    id_usuario integer
+);
+
+
+ALTER TABLE public.mensagem OWNER TO postgres;
+
+--
+-- Name: mensagem_id_mensagem_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE mensagem_id_mensagem_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.mensagem_id_mensagem_seq OWNER TO postgres;
+
+--
+-- Name: mensagem_id_mensagem_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE mensagem_id_mensagem_seq OWNED BY mensagem.id_mensagem;
+
+
+--
+-- Name: nivel; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE nivel (
+    id_nivel integer NOT NULL,
+    nome character varying(45),
+    pontuacaototal integer,
+    descricaotema text
+);
+
+
+ALTER TABLE public.nivel OWNER TO postgres;
+
+--
+-- Name: nivel_id_nivel_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE nivel_id_nivel_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.nivel_id_nivel_seq OWNER TO postgres;
+
+--
+-- Name: nivel_id_nivel_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE nivel_id_nivel_seq OWNED BY nivel.id_nivel;
+
+
+--
+-- Name: patente; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE patente (
+    id_patente integer NOT NULL,
+    nome character varying(45),
+    pontuacao_min integer,
+    pontuacao_max integer
+);
+
+
+ALTER TABLE public.patente OWNER TO postgres;
+
+--
+-- Name: patente_id_patente_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE patente_id_patente_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.patente_id_patente_seq OWNER TO postgres;
+
+--
+-- Name: patente_id_patente_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE patente_id_patente_seq OWNED BY patente.id_patente;
+
+
+--
+-- Name: tarefa; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tarefa (
+    id_tarefa integer NOT NULL,
+    nome character varying(45),
+    pontuacao_max integer,
+    pontuacao_min integer,
+    descricao text,
+    id_nivel integer NOT NULL
+);
+
+
+ALTER TABLE public.tarefa OWNER TO postgres;
+
+--
+-- Name: tarefa_id_tarefa_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE tarefa_id_tarefa_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tarefa_id_tarefa_seq OWNER TO postgres;
+
+--
+-- Name: tarefa_id_tarefa_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE tarefa_id_tarefa_seq OWNED BY tarefa.id_tarefa;
+
+
+--
+-- Name: usuario; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE usuario (
+    id_usuario integer NOT NULL,
+    nome character varying(45),
+    email character varying(45),
+    datanascimento character varying(45),
+    telefone character varying(45),
+    tipo integer,
+    sexo integer,
+    senha character varying(45),
+    id_patente integer NOT NULL,
+    pontuacao integer,
+    id_instituicao integer NOT NULL,
+    id_nivel integer NOT NULL
+);
+
+
+ALTER TABLE public.usuario OWNER TO postgres;
+
+--
+-- Name: usuario_atividade; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE usuario_atividade (
+    id_usuario integer NOT NULL,
+    id_atividade integer NOT NULL,
+    data_realizada character varying(45) NOT NULL,
+    status integer
+);
+
+
+ALTER TABLE public.usuario_atividade OWNER TO postgres;
+
+--
+-- Name: usuario_id_usuario_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE usuario_id_usuario_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.usuario_id_usuario_seq OWNER TO postgres;
+
+--
+-- Name: usuario_id_usuario_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE usuario_id_usuario_seq OWNED BY usuario.id_usuario;
+
+
+--
+-- Name: id_atividade; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY atividade ALTER COLUMN id_atividade SET DEFAULT nextval('atividade_id_atividade_seq'::regclass);
+
+
+--
+-- Name: id_instituicao; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY instituicao ALTER COLUMN id_instituicao SET DEFAULT nextval('instituicao_id_instituicao_seq'::regclass);
+
+
+--
+-- Name: id_mensagem; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mensagem ALTER COLUMN id_mensagem SET DEFAULT nextval('mensagem_id_mensagem_seq'::regclass);
+
+
+--
+-- Name: id_nivel; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY nivel ALTER COLUMN id_nivel SET DEFAULT nextval('nivel_id_nivel_seq'::regclass);
+
+
+--
+-- Name: id_patente; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY patente ALTER COLUMN id_patente SET DEFAULT nextval('patente_id_patente_seq'::regclass);
+
+
+--
+-- Name: id_tarefa; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tarefa ALTER COLUMN id_tarefa SET DEFAULT nextval('tarefa_id_tarefa_seq'::regclass);
+
+
+--
+-- Name: id_usuario; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario ALTER COLUMN id_usuario SET DEFAULT nextval('usuario_id_usuario_seq'::regclass);
+
+
+--
+-- Data for Name: atividade; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY atividade (id_atividade, nome, descricaoproblema, pontuacao, respostaa, respostab, respostac, respostad, respostae, respostacerta, tipo, id_tarefa, id_nivel) FROM stdin;
+1	Você conhece as Variáveis?	Qual das seguintes variáveis só aceita números inteiros?	15	Single	String	Integer	Double	Long	3	1	1	1
+2	Você conhece essa propriedade?	Qual das seguintes variáveis só aceita valores verdadeiro ou falso?	15	Boolean	String	Integer	Double	Long	1	1	1	1
+3	Você conhece o tamanho desse tipo?	Qual é o tamanho de um inteiro?	15	1	5	4	6	12	1	1	1	1
+4	Manja das Variáveis?	Qual nome de variável abaixo não é valido ?	20	Tempo	nota_fiscal	vetTeste	char	OlA MuNdO	4	1	2	1
+5	Então você conhece as constantes ...	Indique qual número abaixo é uma constante inteira válida ?	20	100	3.0	-234	0L	2 345 24	4	1	2	1
+6	Então você conhece as constantes 2	Indique qual número abaixo é uma constante inteira errada ?	20	0L	0L	-234	0L	0L	3	1	2	1
+7	Hora do teste	Qual a saída esperada para o codigo abaixo ? <br /> a = 10 <br /> b = 7 <br /> c = a <br /> a = a + b + c <br /> print(a)" 	30	27	30	5	7	10	1	1	3	1
+8	Hora do teste	Qual a saída esperada para o codigo abaixo ? <br /> a = 20 <br /> b = 5 <br /> c = a - (a + b) <br /> print(c)" 	20	20	30	5	7	10	1	1	4	2
+9	Hora do teste	Qual a saída esperada para o codigo abaixo ? <br /> a = 10 <br /> b = 5 <br /> c = a - (a + b) <br /> print(c)" 	20	20	30	15	7	10	1	1	4	2
+10	Hora do teste	Qual a saída esperada para o codigo abaixo ? <br /> a = 5 <br /> b = 10 <br /> c = a <br /> c = b <br /> print(c)" 	5	10	15	5	30	25	1	2	1	1
+\.
+
+
+--
+-- Name: atividade_id_atividade_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('atividade_id_atividade_seq', 10, true);
+
+
+--
+-- Data for Name: instituicao; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY instituicao (id_instituicao, nome, abreviacao, estado, telefone, site) FROM stdin;
+1	Instituto Federal do Espirito Santo	IFES	ES	2732458769	www.ifes.edu.br
+2	Universidade Federal do Espirito Santo	UFES	ES	2732458607	www.ufes.edu.br
+3	Universidade Federal de Minas Gerais	UFMG	MG	2732458678	www.ufmg.edu.br
+4	Faesa	FAESA	ES	2732458690	www.faesa.com.br
+\.
+
+
+--
+-- Name: instituicao_id_instituicao_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('instituicao_id_instituicao_seq', 4, true);
+
+
+--
+-- Data for Name: mensagem; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY mensagem (id_mensagem, data, mensagem, id_usuario) FROM stdin;
+\.
+
+
+--
+-- Name: mensagem_id_mensagem_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('mensagem_id_mensagem_seq', 1, false);
+
+
+--
+-- Data for Name: nivel; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY nivel (id_nivel, nome, pontuacaototal, descricaotema) FROM stdin;
+1	Nível 1	80	Programação Básica
+2	Nível 2	140	Programação Intermediária
+3	Nível 3	250	Programação Avançada
+\.
+
+
+--
+-- Name: nivel_id_nivel_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('nivel_id_nivel_seq', 3, true);
+
+
+--
+-- Data for Name: patente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY patente (id_patente, nome, pontuacao_min, pontuacao_max) FROM stdin;
+1	Júnior	0	80
+2	Pleno	80	130
+3	Senior	130	200
+\.
+
+
+--
+-- Name: patente_id_patente_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('patente_id_patente_seq', 3, true);
+
+
+--
+-- Data for Name: tarefa; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY tarefa (id_tarefa, nome, pontuacao_max, pontuacao_min, descricao, id_nivel) FROM stdin;
+1	Newbie	30	0	Nesta Etapa você vai encontra atividades que abordam conceitos gerais sobre a programação	1
+2	Amador	50	30	Nesta Etapa você vai encontra atividades sobre operadores lógicos	1
+3	Lenda	80	50	Nesta etapa você colocará seu conhecimento em prova com exercícios das tarefas anteriores ! 	1
+4	Newbie	100	80	Nesta Etapa você vai encontrar desafios envolvendo testes de mesa	2
+5	Amador	120	100	Agora é hora de solucionar algumas questões de lógica !	2
+6	Lenda	150	120	Esta preparado para resolver questões mais dificies sobre teste de mesa e lógica ?	2
+7	Newbie	180	150	Nesta etapa você encontrara questões sobre estruturas de condicionais	3
+8	Amador	200	180	Nesta etapa você encontrara questões sobre estruturas de repetição	3
+9	Lenda	250	200	Nesta etapa é hora de provar que é a Lenda do CodinPlay! 	3
+\.
+
+
+--
+-- Name: tarefa_id_tarefa_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('tarefa_id_tarefa_seq', 9, true);
+
+
+--
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuario (id_usuario, nome, email, datanascimento, telefone, tipo, sexo, senha, id_patente, pontuacao, id_instituicao, id_nivel) FROM stdin;
+1	Paulo	paulo@kdeanota	24/04/1990	99990909	0	2	123	1	0	1	1
+2	Italo	italo.com	51/54/5454	(154) 5444-4544	1	0	123	2	80	1	3
+3	teste	teste	56/45/4454	(656) 5656-5565	1	0	123	2	80	1	3
+4	teste2	teste2	45/64/4454	(564) 5645-4545	1	0	123	2	80	1	3
+5	olaaaaaaaaaaa	olaaaaaaaaaaa	74/87/4867	(644) 6444-4564	1	0	122	1	0	1	1
+6	asdsadsadsa	sdjkas	45/65/6454	(456) 5465-4654	1	0	12	1	0	1	1
+\.
+
+
+--
+-- Data for Name: usuario_atividade; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY usuario_atividade (id_usuario, id_atividade, data_realizada, status) FROM stdin;
+2	1	06/12/2016  00:50:39	1
+2	2	06/12/2016  00:50:43	1
+2	4	06/12/2016  00:50:53	1
+2	7	06/12/2016  00:51:31	1
+3	1	06/12/2016  00:54:35	1
+3	2	06/12/2016  00:54:41	1
+3	4	06/12/2016  00:54:50	1
+3	7	06/12/2016  00:54:58	1
+4	1	06/12/2016  00:59:10	1
+4	2	06/12/2016  00:59:14	1
+4	4	06/12/2016  00:59:21	1
+4	7	06/12/2016  00:59:28	1
+\.
+
+
+--
+-- Name: usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('usuario_id_usuario_seq', 6, true);
+
+
+--
+-- Name: atividade_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY atividade
+    ADD CONSTRAINT atividade_pkey PRIMARY KEY (id_atividade);
+
+
+--
+-- Name: instituicao_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY instituicao
+    ADD CONSTRAINT instituicao_pkey PRIMARY KEY (id_instituicao);
+
+
+--
+-- Name: mensagem_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY mensagem
+    ADD CONSTRAINT mensagem_pkey PRIMARY KEY (id_mensagem, data);
+
+
+--
+-- Name: nivel_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY nivel
+    ADD CONSTRAINT nivel_pkey PRIMARY KEY (id_nivel);
+
+
+--
+-- Name: patente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY patente
+    ADD CONSTRAINT patente_pkey PRIMARY KEY (id_patente);
+
+
+--
+-- Name: tarefa_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tarefa
+    ADD CONSTRAINT tarefa_pkey PRIMARY KEY (id_tarefa);
+
+
+--
+-- Name: usuario_atividade_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY usuario_atividade
+    ADD CONSTRAINT usuario_atividade_pkey PRIMARY KEY (id_usuario, id_atividade, data_realizada);
+
+
+--
+-- Name: usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (id_usuario);
+
+
+--
+-- Name: atividade_id_nivel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY atividade
+    ADD CONSTRAINT atividade_id_nivel_fkey FOREIGN KEY (id_nivel) REFERENCES nivel(id_nivel);
+
+
+--
+-- Name: atividade_id_tarefa_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY atividade
+    ADD CONSTRAINT atividade_id_tarefa_fkey FOREIGN KEY (id_tarefa) REFERENCES tarefa(id_tarefa);
+
+
+--
+-- Name: mensagem_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY mensagem
+    ADD CONSTRAINT mensagem_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario);
+
+
+--
+-- Name: tarefa_id_nivel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tarefa
+    ADD CONSTRAINT tarefa_id_nivel_fkey FOREIGN KEY (id_nivel) REFERENCES nivel(id_nivel);
+
+
+--
+-- Name: usuario_atividade_id_atividade_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario_atividade
+    ADD CONSTRAINT usuario_atividade_id_atividade_fkey FOREIGN KEY (id_atividade) REFERENCES atividade(id_atividade);
+
+
+--
+-- Name: usuario_atividade_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario_atividade
+    ADD CONSTRAINT usuario_atividade_id_usuario_fkey FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario);
+
+
+--
+-- Name: usuario_id_instituicao_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT usuario_id_instituicao_fkey FOREIGN KEY (id_instituicao) REFERENCES instituicao(id_instituicao);
+
+
+--
+-- Name: usuario_id_nivel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT usuario_id_nivel_fkey FOREIGN KEY (id_nivel) REFERENCES nivel(id_nivel);
+
+
+--
+-- Name: usuario_id_patente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY usuario
+    ADD CONSTRAINT usuario_id_patente_fkey FOREIGN KEY (id_patente) REFERENCES patente(id_patente);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
