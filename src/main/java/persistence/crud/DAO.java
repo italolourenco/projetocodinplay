@@ -19,7 +19,7 @@ public class DAO {
 	
 	String url="jdbc:postgresql://localhost:5432,postgresql-94-centos7:5432/codinplayBD";
 	String usuario="postgres";
-	String senha= "123";
+	String senha= "123456";
 	
 	protected void open()throws Exception {
 		
