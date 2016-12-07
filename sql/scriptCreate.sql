@@ -80,3 +80,12 @@ CREATE TABLE IF NOT EXISTS usuario(
   PRIMARY KEY (id_usuario, id_atividade, data_realizada),
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
   FOREIGN KEY (id_atividade) REFERENCES atividade(id_atividade));
+  
+  CREATE TABLE IF NOT EXISTS mensagem (
+  id_mensagem SERIAL,
+  data VARCHAR(45) NULL,
+  mensagem VARCHAR(250),
+  id_usuario INT NULL,
+  PRIMARY KEY (id_mensagem,data),
+  FOREIGN KEY (id_usuario)
+  REFERENCES usuario(id_usuario));

@@ -82,7 +82,7 @@ public class AtividadeDAO extends DAO {
 			atividade.setRespostaE(rs.getString("respostae"));
 			atividade.setRespostaCerta(rs.getInt("respostaCerta"));
 			atividade.setObjTarefa(tarefa);
-			atividade.setObjNivel(tarefa.getNivel());
+			//atividade.setObjNivel(tarefa.getNivel());
 			
 			listAtividades.add(atividade);
 		}

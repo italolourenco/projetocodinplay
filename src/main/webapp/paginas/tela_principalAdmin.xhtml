@@ -25,11 +25,31 @@ xmlns:p="http://primefaces.org/ui">
 						<p:growl id="growl" showDetail="true" sticky="true" /> 
 						<h2 class="CLASS_red"> Painel do Administrador </h2>
 						<span class="CLASS_linhaSeparadora"></span>
-			    		<h3 class="CLASS_red"> Perfil </h3>
+			    		<h3 class="CLASS_red"> Perfil </h3> <br />
 			   			<br />
 						<div class="CLASS_blocoRight">
-							<br />
 							<h3 class="CLASS_margin5"> #{loginBean.usuario.nome} </h3><br />
+							<h2 class="CLASS_red"> Mensagens </h2>
+							
+						    <h:form name="editar" id="ID_formPesquisa">
+	    						<p:dataTable var="mensagem" value="#{usuarioBean.listMensagens}" 
+	                 			emptyMessage="Não possui Mensagens Novas">
+	 
+	        					<p:column  headerText="Nome Usuario">
+	            				<h:outputText value="#{mensagem.objUsuario.nome}" />
+	        					</p:column>
+	        		
+	        					<p:column headerText="Mensagem" >
+	            				<h:outputText value="#{mensagem.mensagem}" />
+	        					</p:column>
+	        		
+	        					<p:column headerText="Data">
+	            				<h:outputText value="#{mensagem.data}" />
+	        					</p:column>
+	        		
+	    						</p:dataTable>
+							</h:form>
+							
 						</div>
 					</section>
 				</div>

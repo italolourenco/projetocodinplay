@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html"
 xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
 
 
 	<h:body>
@@ -24,10 +26,11 @@ xmlns:ui="http://java.sun.com/jsf/facelets">
 
 			    <div class="CLASS_blocoRight.descricao">
 					<h:form name="editar" id="ID_formContato">
+						<p:growl id="growl" showDetail="true" sticky="true" /> 
 						<h:outputLabel class="ID_labelContato" value = "Dicas e sugestões:" for="email"></h:outputLabel>
-						<h:inputTextarea class= "input2" id="dicas"></h:inputTextarea>
+						<h:inputTextarea class= "input2" id="dicas" value="#{usuarioBean.mensagem.mensagem}"></h:inputTextarea>
 						<br />
-						<h:commandButton class="CLASS_bottonContato" value="Enviar"></h:commandButton>	
+						<h:commandButton class="CLASS_bottonContato" value="Enviar" action="#{usuarioBean.enviarMensagem}" update="growl"></h:commandButton>	
 					</h:form>
 				</div>
 

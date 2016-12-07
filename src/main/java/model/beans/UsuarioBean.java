@@ -2,7 +2,10 @@ package model.beans;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -27,6 +30,7 @@ import persistence.crud.TarefaDAO;
 import persistence.crud.UsuarioDAO;
 import persistence.pojo.Atividade;
 import persistence.pojo.Instituicao;
+import persistence.pojo.Mensagem;
 import persistence.pojo.Nivel;
 import persistence.pojo.Tarefa;
 import persistence.pojo.Usuario;
@@ -48,11 +52,13 @@ public class UsuarioBean implements Serializable{
 	private ArrayList<Atividade> listDesafios = new ArrayList<Atividade>();
 	private ArrayList<Tarefa> listTarefas = new ArrayList<Tarefa>();
 	private ArrayList<Atividade> listHistoricoDesafio = new ArrayList<Atividade>();
+	private ArrayList<Mensagem> listMensagens = new ArrayList<Mensagem>();
 	
 	private AtividadeDAO objAtividadeDAO;
 	private TarefaDAO objTarefaDAO;
 	private NivelDAO objNivel;
-	private MensagemDAO objMensagem;
+	private MensagemDAO objMensagemDAO;
+	private Mensagem mensagem;
 	private Integer totalAtividades;
 	private Integer totalDesafios;
 	private Tarefa tarefa;
@@ -81,7 +87,10 @@ public class UsuarioBean implements Serializable{
 			objAtividadeDAO = new AtividadeDAO();
 			objTarefaDAO = new TarefaDAO();
 			objNivel = new NivelDAO();
+			objMensagemDAO = new MensagemDAO();
 			tarefa = defineTarefa(usuario);
+			mensagem = new Mensagem();
+			listMensagens = objMensagemDAO.consulta();
 			desafio = null;
 			listAtividades = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 1);
 			listDesafios = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 2);
@@ -101,8 +110,10 @@ public class UsuarioBean implements Serializable{
 	public String configuraBotoes(int nivel) throws Exception{
 		
 		Nivel nivelCp = objNivel.consulta(nivel);
-		if(this.tarefa.getNivel().getId_nivel() == nivelCp.getId_nivel()){
-			return "Continuar";
+		if(nivelCp != null){
+			if(this.tarefa.getNivel().getId_nivel() == nivelCp.getId_nivel()){
+				return "Continuar";
+			}
 		}
 		return "Bloqueado";
 	}
@@ -225,12 +236,22 @@ public class UsuarioBean implements Serializable{
 		return "Errou";
 	}
 	
-	public String enviarMensagem(){
+	public String enviarMensagem() throws Exception{
 		
+		Date date = new Date();
+		mensagem.setData(transformaDate(date));
+		mensagem.setObjUsuario(usuario);
+		objMensagemDAO.inserir(mensagem);
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Obrigado!", "Sua mensagem foi enviada ao Admin"));
 		return null;
 	}
 	
-
+	public String transformaDate(Date data){
+		
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy  HH:mm:ss");
+		return dateFormat.format(data);
+	}
+	
 	public BarChartModel getBarModel() {
 		return barModel;
 	}
@@ -365,6 +386,22 @@ public class UsuarioBean implements Serializable{
 
 	public void setListHistoricoDesafio(ArrayList<Atividade> listHistoricoDesafio) {
 		this.listHistoricoDesafio = listHistoricoDesafio;
+	}
+
+	public Mensagem getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(Mensagem mensagem) {
+		this.mensagem = mensagem;
+	}
+
+	public ArrayList<Mensagem> getListMensagens() {
+		return listMensagens;
+	}
+
+	public void setListMensagens(ArrayList<Mensagem> listMensagens) {
+		this.listMensagens = listMensagens;
 	}
 	
 	

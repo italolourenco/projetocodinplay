@@ -1,12 +1,27 @@
 package persistence.pojo;
 
-public class Mensagem {
+import java.io.Serializable;
+
+public class Mensagem implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3391821390458997431L;
 	private Integer id_mensagem;
 	private String data;
+	private String mensagem;
 	private Usuario objUsuario;
 	
 	
+	
+	
+	public String getMensagem() {
+		return mensagem;
+	}
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
 	public Integer getId_mensagem() {
 		return id_mensagem;
 	}
