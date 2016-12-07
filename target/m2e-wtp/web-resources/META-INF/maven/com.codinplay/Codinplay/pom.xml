@@ -3,6 +3,8 @@
   <groupId>com.codinplay</groupId>
   <artifactId>Codinplay</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <name>codinplay Maven Webapp</name>
+  <url>http://maven.apache.org</url>
   <packaging>war</packaging>
   
   <properties>
