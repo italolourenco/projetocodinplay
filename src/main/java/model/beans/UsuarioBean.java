@@ -88,12 +88,13 @@ public class UsuarioBean implements Serializable{
 			objTarefaDAO = new TarefaDAO();
 			objNivel = new NivelDAO();
 			objMensagemDAO = new MensagemDAO();
+			
 			tarefa = defineTarefa(usuario);
 			mensagem = new Mensagem();
 			listMensagens = objMensagemDAO.consulta();
 			desafio = null;
-			listAtividades = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 1);
-			listDesafios = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 2);
+			//listAtividades = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 1);
+			//listDesafios = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 2);
 			totalAtividades = objAtividadeDAO.contAtividadesDesafios(usuario, 1);
 			totalDesafios =  objAtividadeDAO.contAtividadesDesafios(usuario, 2);
 			teste = tarefa.getNome();

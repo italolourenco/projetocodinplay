@@ -137,12 +137,14 @@ public class ResolucaoAtividadeBean implements Serializable {
 	       objUsuarioDAO.updatePontuacao(usuario);
 	       
 	       if(usuario.getPontuacao() >= usuario.getObjPatente().getPontuacao_max()){
+	    	   
 	    	   usuario.setObjPatente(objPatenteDAO.consultaPatente(usuario));
 	    	   objUsuarioDAO.updatePatente(usuario);
 	    	   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Você Evoluiu a sua Patente "));
 	    	   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Agora você é " +usuario.getObjPatente().getNome()));
 	       }
 		   
+	      
 		}
 		else {
 			
@@ -166,10 +168,12 @@ public class ResolucaoAtividadeBean implements Serializable {
 		listNiveis = objNivelDAO.consulta();
 		if(usuario.getObjNivel().getPontuacaoTotal() <= usuario.getPontuacao()){
 			if(usuario.getObjNivel().getId_nivel() < 3){
-				usuario.setObjNivel(listNiveis.get(usuario.getObjNivel().getId_nivel() + 1));
+				
+				usuario.setObjNivel(listNiveis.get(usuario.getObjNivel().getId_nivel()));
 				objUsuarioDAO.updateNivel(usuario);
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Você foi para o " + usuario.getObjNivel().getNome()));
 				return "progressaoUsuario";
+				
 			}
 			return "telaPrincipal";
 			
