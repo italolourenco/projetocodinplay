@@ -98,11 +98,11 @@ public class CadastroBean implements Serializable {
 			usuario.setObjInstituicao(objInstituicaoDAO.consulta(this.cod));
 			objUsuarioDao.inserirUsuario(usuario);
 			
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Usuário Cadastrado !."));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Usuario Cadastrado !."));
 			return "sucesso";
 		}
 		else{
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Erro!", "E-mail já cadastrado!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Erro!", "E-mail ja cadastrado!"));
 			return "erro";
 		}
 			

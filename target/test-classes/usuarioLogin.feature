@@ -6,10 +6,9 @@ Feature: Testar o login do usuario no sistema
 
 @tag1
 Scenario: Testar Login Valido
-Given  Usuario esta na pagina incial
-When  Preenche os campos login com <login>, senha com <senha> e clica em entrar
-And   login e senha são validos
-Then  Deve ser exibida a página principal usuario
+Given Usuario entra com "Italo" e senha "123" validos
+When  Usuario clica na opção entrar
+Then  Usuario deve estar logado no sistema
   
 @tag2
 Scenario: Testar Login Invalido
