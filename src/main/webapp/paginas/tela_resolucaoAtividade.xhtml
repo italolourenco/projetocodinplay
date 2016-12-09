@@ -37,9 +37,10 @@ xmlns:p="http://primefaces.org/ui">
 			    		<h5 class="CLASS_red"> Escolha uma das Alternativas </h5>  <br />
 
 			    		<h:form name = "teste">
+			    		
 			    			<p:growl id="growl" showDetail="true" sticky="true" />
-			    			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-			    			<p:selectOneRadio  value = "#{resolucaoAtividadeBean.resposta}" layout="grid" columns="1"  id="teste">
+			    			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" id="teste">
+			    			<p:selectOneRadio  value = "#{resolucaoAtividadeBean.resposta}" layout="grid" columns="1" >
 			    			
 			    				<f:selectItem  itemValue = "1" itemLabel= "  A) #{resolucaoAtividadeBean.atividade.respostaA}"></f:selectItem>
 			    				<f:selectItem  itemValue = "2" itemLabel= "  B) #{resolucaoAtividadeBean.atividade.respostaB}"></f:selectItem>

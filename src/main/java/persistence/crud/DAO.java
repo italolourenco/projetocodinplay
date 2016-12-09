@@ -17,9 +17,9 @@ public class DAO {
 	protected ResultSet rs;
 	protected Statement st;
 	
-	String url="jdbc:postgresql://localhost:5432,postgresql-94-centos7:5432/codinplaybd";
+	String url="jdbc:postgresql://localhost:5432,postgresql-94-centos7:5432/codinplayBD";
 	String usuario="postgres";
-	String senha= "123456";
+	String senha= "123";
 	
 	protected void open()throws Exception {
 		

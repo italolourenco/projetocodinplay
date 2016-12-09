@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -18,6 +19,8 @@ import javax.servlet.http.HttpSession;
 import org.primefaces.context.RequestContext;
 
 import java.util.Date;
+import java.util.Random;
+
 import persistence.crud.AtividadeDAO;
 import persistence.crud.HistoricoDAO;
 import persistence.crud.NivelDAO;
@@ -39,6 +42,7 @@ public class ResolucaoAtividadeBean implements Serializable {
 	
 	private ArrayList<Atividade> listAtividades = new ArrayList<Atividade>();
 	private ArrayList<Nivel> listNiveis = new ArrayList<Nivel>();
+	private ArrayList<Atividade> listAtvFazer = new ArrayList<Atividade>();
 	
 	private AtividadeDAO objAtividadeDAO;
 	private HistoricoDAO objHistorico;
@@ -62,6 +66,7 @@ public class ResolucaoAtividadeBean implements Serializable {
 		
 		try {
 			
+			//Pegando a sessão atual do usuário
 			FacesContext fc = FacesContext.getCurrentInstance();
 			HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 			usuario = (Usuario)session.getAttribute("identificaUsuario"); 
@@ -74,9 +79,12 @@ public class ResolucaoAtividadeBean implements Serializable {
 			objNivelDAO = new NivelDAO();
 			objPatenteDAO = new PatenteDAO();
 			
+			
+			
 			tarefa = defineTarefa(usuario);
+			listAtividades = objAtividadeDAO.preparaAtividadesSemHist(tarefa, 1);
 			preparaAtividades();
-			defineAtividade();
+			//defineAtividade();
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -95,39 +103,40 @@ public class ResolucaoAtividadeBean implements Serializable {
 	
 	public void preparaAtividades() throws Exception{
 		
-		ArrayList<Atividade> list = new ArrayList<Atividade>();
+		//ArrayList<Atividade> list = new ArrayList<Atividade>();
 		 
-		int x = 0;
-		list = objAtividadeDAO.preparaAtividadesSemHist(tarefa);
-		while(list.size() != x){
+		int x;
+		//list = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 0);
+		this.atividade = null;
+		x = 0;
+		//Verificando se existe registro para essa atividade
+		while(listAtividades.size() != x && atividade == null){
 			
-			if(objUsuarioDAO.verificaRegistro(usuario, list.get(x))){
-				if(objAtividadeDAO.verificaAcerto(usuario, list.get(x), 1, 0)){
-					listAtividades.add(list.get(x));
+			if(objUsuarioDAO.verificaRegistro(usuario, listAtividades.get(x))){
+				if(!objAtividadeDAO.verificaAcerto(usuario, listAtividades.get(x), 1, 1)){
+					this.atividade = listAtividades.get(x);
 				}
 			}
 			else{
-				listAtividades.add(list.get(x));
+				this.atividade = listAtividades.get(x);
 			}
-			x++;
-		}
-		
+		x++;
 	}
 	
+}
 	public void defineAtividade() throws Exception{
 		
-		if(listAtividades.size() > 0){
-			atividade = listAtividades.get(0);
-			listAtividades.remove(0);
-		}
+			atividade = new Atividade();
+			atividade = listAtvFazer.get(0);
+			listAtvFazer.remove(0);
 	}
 	
 	public String verificaResposta() throws Exception{
 		
 		int novaPontuacao;
-		
 		if(resposta == atividade.getRespostaCerta()){
-			
+		
+		   
 		   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Resposta Correta "));
 		   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Você Recebeu", atividade.getPontuacao() + " Pontos"));
 	       status = 1;
@@ -149,20 +158,16 @@ public class ResolucaoAtividadeBean implements Serializable {
 		else {
 			
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Ops ...", "Resposta Incorreta, não desista!"));
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Resposta Da Questão", ""+ atividade.getRespostaCerta()));
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Resposta Enviada", "" + resposta));
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado para", "Atividade " + atividade.getNome()));
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Total", "Atividade " + listAtividades.size()));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atual", "Atividade " + atividade.getNome()));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "List", "Atividade " + listAtividades.size()));
 	        status = 0;
-	        
-	        listAtividades.add(atividade);
 	        
 		}
 		
 		data = new Date();
 		sData = transformaDate(data);
 		objHistorico.inserir(usuario, atividade, sData, status);
-		atividade = new Atividade();
+		resposta = 0;
 		
 		//Verificando se o usuario vai passar para o proximo nivel
 		listNiveis = objNivelDAO.consulta();
@@ -181,9 +186,9 @@ public class ResolucaoAtividadeBean implements Serializable {
 		else{
 			if(usuario.getPontuacao() >= tarefa.getPontuacao_max()){
 			
-				this.tarefa = defineTarefa(usuario);
-				preparaAtividades();
-				defineAtividade();
+				//this.tarefa = defineTarefa(usuario);
+				//preparaAtividades();
+				//defineAtividade();
 				//Mensagem informando a conclusão de uma tarefa do nível, mas n funfa
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Você foi promovido para " + tarefa.getNome()));
 				return "menuNivel";
@@ -191,9 +196,13 @@ public class ResolucaoAtividadeBean implements Serializable {
 				//FacesContext.getCurrentInstance().getExternalContext().redirect("tela_menuNivel.jsf");
 			}
 			else{
-				defineAtividade();
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado para", "Atividade " + atividade.getNome()));
+				
+			
+				preparaAtividades();
+				//defineAtividade();
+				//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado para", "Atividade " + atividade.getNome()));
 				return "continuar";
+				
 				}
 			}
 		}

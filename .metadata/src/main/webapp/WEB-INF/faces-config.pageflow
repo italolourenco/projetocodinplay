@@ -10,11 +10,11 @@
   <nodes xsi:type="pageflow:PFPage" name="paginas/tela_resolucaoAtividade.xhtml" x="122" y="2301" id="pf14807589913102" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf14807987386681 pf14809168524835 pf14809168524834" inlinks="pf14807589913100 pf14807987386681" path="paginas/tela_resolucaoAtividade.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" x="122" y="2685" id="pf148087571740321" referenceLink="//@navigationRule.0/@fromViewId|"/>
   <nodes xsi:type="pageflow:PFPage" name="paginas/index.xhtml" x="338" y="381" id="pf148087571740322" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf148087571740215" path="paginas/index.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_principal.xhtml" x="770" y="988" id="pf148087571740324" referenceLink="//@navigationRule.10/@navigationCase.0/@toViewId|" outlinks="pf14809774521994 pf14809799937530" inlinks="pf148087571740217 pf148087571740325 pf14809148933971 pf14809799937530 pf14809799998041" path="paginas/tela_principal.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_principal.xhtml" x="770" y="988" id="pf148087571740324" referenceLink="//@navigationRule.10/@navigationCase.0/@toViewId|" outlinks="pf14809774521994 pf14809799937530" inlinks="pf148087571740217 pf148087571740325 pf14809148933971 pf14809799937530 pf14811657183910" path="paginas/tela_principal.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="paginas/tela_principalAdmin.xhtml" x="770" y="178" id="pf148087571740326" referenceLink="//@navigationRule.1/@navigationCase.3/@toViewId|" inlinks="pf148087571740218 pf148087571740327" path="paginas/tela_principalAdmin.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="paginas/erroIndex.xhtml" x="554" y="765" id="pf148087571740328" referenceLink="//@navigationRule.2/@navigationCase.1/@toViewId|" outlinks="pf148087571740320 pf148087571740325 pf148087571740327 pf148087571740329 pf148087573824331" inlinks="pf148087571740219 pf148087571740329 pf148087573824331 pf148087573824330 pf14809148933960" path="paginas/erroIndex.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="paginas/tela_editarPerfil.xhtml" x="554" y="1191" id="pf14809148933972" referenceLink="//@navigationRule.8/@navigationCase.1/@toViewId|" outlinks="pf14809148933971 pf14809148933973" inlinks="pf14809148933973" path="paginas/tela_editarPerfil.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_resolucaoDesafio.xhtml" id="pf14809774521995" referenceLink="//@navigationRule.10/@fromViewId|" outlinks="pf14809799998041" inlinks="pf14809774521994" path="paginas/tela_resolucaoDesafio.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="paginas/tela_resolucaoDesafio.xhtml" id="pf14809774521995" referenceLink="//@navigationRule.10/@fromViewId|" outlinks="pf14811657183910" inlinks="pf14809774521994" path="paginas/tela_resolucaoDesafio.xhtml"/>
   <links id="pf148027518823012" target="pf148027518823013" source="pf14802748718064" outcome="cancelar"/>
   <links id="pf14804424348620" target="pf148027518823013" source="pf148021494895610" outcome="cancelar"/>
   <links id="pf148062930593334" target="pf148062930593336" source="pf148062930593333" outcome="menunivel"/>
@@ -84,5 +84,5 @@
   <links id="pf14809168524834" target="pf148062930593333" source="pf14807589913102" outcome="progressaoUsuario"/>
   <links id="pf14809774521994" target="pf14809774521995" source="pf148087571740324" outcome="telaDesafio"/>
   <links id="pf14809799937530" target="pf148087571740324" source="pf148087571740324" outcome="telaPrincipal"/>
-  <links id="pf14809799998041" target="pf148087571740324" source="pf14809774521995" outcome="telaPrincipal"/>
+  <links id="pf14811657183910" target="pf148087571740324" source="pf14809774521995" outcome="telaPrincipal"/>
 </pageflow:Pageflow>
