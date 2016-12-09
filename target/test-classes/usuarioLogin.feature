@@ -6,8 +6,8 @@ Feature: Testar o login do usuario no sistema
 
 @tag1
 Scenario: Testar Login Valido
-Given Usuario entra com "Italo" e senha "123" validos
-When  Usuario clica na opção entrar
+Given Usuario entra com "paulojr" e senha "123" validos
+When  Usuario clica na opcao entrar
 Then  Usuario deve estar logado no sistema
   
 @tag2

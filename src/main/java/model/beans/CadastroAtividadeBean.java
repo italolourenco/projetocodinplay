@@ -14,6 +14,7 @@ import persistence.crud.NivelDAO;
 import persistence.crud.TarefaDAO;
 import persistence.pojo.Atividade;
 import persistence.pojo.Nivel;
+import persistence.pojo.Tarefa;
 
 @ManagedBean(name = "cadastroAtividadeBean")
 @ViewScoped
@@ -29,6 +30,8 @@ public class CadastroAtividadeBean implements Serializable {
 	private Integer codNivel = null;
 	private Integer codTarefa = null;
 	private Atividade atividade;
+	
+	private ArrayList<Tarefa> tarefas = new ArrayList<Tarefa>();
 	
 	AtividadeDAO objAtividadeDAO = new AtividadeDAO();
 	TarefaDAO objTarefaDAO = new TarefaDAO();
@@ -71,6 +74,16 @@ public class CadastroAtividadeBean implements Serializable {
 	public void setCodTarefa(Integer codTarefa) {
 		this.codTarefa = codTarefa;
 	}
+	
+
+	public ArrayList<Tarefa> getTarefas() {
+		return tarefas;
+	}
+
+
+	public void setTarefas(ArrayList<Tarefa> tarefas) {
+		this.tarefas = tarefas;
+	}
 
 
 	@PostConstruct
@@ -100,6 +113,12 @@ public class CadastroAtividadeBean implements Serializable {
 				
 				return "erro";
 			}
+	
+	public void encontraTarefas() throws Exception{
+		
+		tarefas = objTarefaDAO.tarefasNivel(codNivel);
+		
+	}
 	
 	public String cancelar(){
 		return "cancelar";

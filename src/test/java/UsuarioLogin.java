@@ -21,16 +21,17 @@ public class UsuarioLogin {
 		loginBean.setSenha(arg2);
 	}
 
-	@When("^Usuario clica na op??o entrar$")
+	@When("^Usuario clica na opcao entrar$")
 	public void usuarioClicaNaOpOEntrar() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	    loginBean.entrar();
+	    assertThat(loginBean.entrar(), is("entrar"));
 	}
 
 	@Then("^Usuario deve estar logado no sistema$")
 	public void usuarioDeveEstarLogadoNoSistema() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-		assertThat(loginBean.getUsuario().getNome(), is("Italo"));
+		usuario = loginBean.getUsuario();
+		assertThat(usuario.getNome(), is("Paulo Jr"));
 	}
 
 }

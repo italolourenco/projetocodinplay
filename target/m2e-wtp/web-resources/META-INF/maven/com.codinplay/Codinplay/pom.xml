@@ -8,7 +8,7 @@
   <packaging>war</packaging>
   
   <properties>
-        <cucumber.version>1.2.0</cucumber.version>
+        <cucumber.version>1.2.4</cucumber.version>
         <junit.version>4.11</junit.version>
         <picocontainer.version>2.14.2</picocontainer.version>
     </properties>
@@ -93,6 +93,13 @@
     		<groupId>org.primefaces.themes</groupId>  
     		<artifactId>bootstrap</artifactId>  
     		<version>1.0.10</version>  
+		</dependency>
+		
+		
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>9.3-1100-jdbc41</version>
 		</dependency>
 		
        </dependencies>

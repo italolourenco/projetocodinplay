@@ -76,9 +76,13 @@ public class LoginBean implements Serializable {
 			{
 				usuario = objUsuarioDAO.consulta(email);
 				if(this.senha.equals(usuario.getSenha())){
+					
 			        FacesContext fc = FacesContext.getCurrentInstance();
-			        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-			        session.setAttribute("identificaUsuario", usuario);
+			        if(fc != null){
+			        	HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+			        	session.setAttribute("identificaUsuario", usuario);
+			        }
+			        
 					if(usuario.getTipo() == 1)
 						return "entrar";
 					else

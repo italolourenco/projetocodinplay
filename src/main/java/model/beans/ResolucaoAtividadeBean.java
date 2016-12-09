@@ -104,23 +104,28 @@ public class ResolucaoAtividadeBean implements Serializable {
 	public void preparaAtividades() throws Exception{
 		
 		//ArrayList<Atividade> list = new ArrayList<Atividade>();
-		 
+		
 		int x;
 		//list = objAtividadeDAO.montaHistorico(tarefa, usuario, 1, 0);
 		this.atividade = null;
 		x = 0;
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "X Inicio !",  x +""));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Primeira Atividade",  listAtividades.get(x).getId_atividade() +""));
 		//Verificando se existe registro para essa atividade
 		while(listAtividades.size() != x && atividade == null){
 			
 			if(objUsuarioDAO.verificaRegistro(usuario, listAtividades.get(x))){
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Verificando",  listAtividades.get(x).getId_atividade() +""));
 				if(!objAtividadeDAO.verificaAcerto(usuario, listAtividades.get(x), 1, 1)){
 					this.atividade = listAtividades.get(x);
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AKI !",  ""));
 				}
 			}
 			else{
 				this.atividade = listAtividades.get(x);
 			}
 		x++;
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "X Final !",  x +""));
 	}
 	
 }

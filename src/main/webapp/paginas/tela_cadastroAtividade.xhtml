@@ -53,6 +53,7 @@ xmlns:p="http://primefaces.org/ui">
 						<br />
 						
 						<h:selectOneMenu class="input-gamb" id="nivel"  value = "#{cadastroAtividadeBean.codNivel}" >
+							<p:ajax listener="#{cadastroAtividadeBean.encontraTarefas}" update="tarefa" />
 							<f:selectItems value = "#{cadastroAtividadeBean.niveis}" var = "n" itemLabel = "#{n.nome}" itemValue="#{n.id_nivel}" />
 						</h:selectOneMenu>
 						<br />
@@ -60,9 +61,7 @@ xmlns:p="http://primefaces.org/ui">
 						<h:outputLabel value = "Tarefa:" for="nivel"> </h:outputLabel>
 						<br />
 						<h:selectOneMenu class="input-gamb" id="tarefa" value = "#{cadastroAtividadeBean.codTarefa}" >
-							<f:selectItem itemValue = "1" itemLabel = "NewBie"/>
-							<f:selectItem itemValue = "2" itemLabel = "Amador"/> 
-							<f:selectItem itemValue = "3" itemLabel = "Lenda"/> 
+							<f:selectItems value="#{cadastroAtividadeBean.tarefas}" var = "t" itemLabel="#{t.nome}" itemValue="#{t.id_tarefa}"> </f:selectItems>
 						</h:selectOneMenu>
 						<br />
 						
