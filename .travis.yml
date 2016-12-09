@@ -6,12 +6,23 @@ jdk:
 
 addons:
   sonarqube: true
+  postgresql: "9.3"
+  
+before_install:
+  - sudo /etc/init.d/postgresql stop
+  - sudo apt-get -y remove --purge postgresql-9.1
+  - sudo apt-get -y remove --purge postgresql-9.2
+  - sudo apt-get update
+  - sudo apt-get install postgresql-9.3
+  - sudo service postgresql start 9.3
 env:
   global:
     - secure: SONAR_TOKEN=2f777ce5faa3651de36bc6ed889e637c205b1187
 
 before_script:
  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+ - psql -c 'create database codinplaybd;' -U postgres
+ - psql -U postgres -d codinplaybd < dump
 
 
 script:
