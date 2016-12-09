@@ -151,7 +151,7 @@ public class UsuarioBean implements Serializable{
 			FacesContext.getCurrentInstance().getExternalContext().redirect("tela_resolucaoAtividade.jsf");
 		}
 		else{
-	        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Ainda Não !", "Esse nível esta bloqueado, continue jogando para desbloquear  !.");
+	        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Calma ai !", "Esse nivel esta bloqueado ... ");
 	        RequestContext.getCurrentInstance().showMessageInDialog(message);
 		}
 	}
@@ -161,9 +161,9 @@ public class UsuarioBean implements Serializable{
 		BarChartModel model = new BarChartModel();
 		
 		ChartSeries usuarioGraph = new ChartSeries();
-		usuarioGraph.set("Nível 1", objAtividadeDAO.contAtividades(usuario, 1));
-		usuarioGraph.set("Nível 2", objAtividadeDAO.contAtividades(usuario, 2));
-		usuarioGraph.set("Nível 3", objAtividadeDAO.contAtividades(usuario, 3));
+		usuarioGraph.set("Nivel 1", objAtividadeDAO.contAtividades(usuario, 1));
+		usuarioGraph.set("Nivel 2", objAtividadeDAO.contAtividades(usuario, 2));
+		usuarioGraph.set("Nivel 3", objAtividadeDAO.contAtividades(usuario, 3));
 		model.addSeries(usuarioGraph);
 		return model;
 	}
@@ -176,7 +176,7 @@ public class UsuarioBean implements Serializable{
 		barModel = initBarModel();
 		
         Axis xAxis = barModel.getAxis(AxisType.X);
-        xAxis.setLabel("Níveis");
+        xAxis.setLabel("Niveis");
         
         Axis yAxis = barModel.getAxis(AxisType.Y);
         yAxis.setLabel("Numero de Atividades");
@@ -203,7 +203,7 @@ public class UsuarioBean implements Serializable{
 		}
 		
 		if(desafio != null){
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atenção !", "Você Possui um Novo Desafio"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Alerta", "Novo Desafio Disponivel"));
 			msgDesafio = "Disponivel !";
 			msgBotao = "Iniciar ";
 			return "Iniciar";
@@ -223,7 +223,7 @@ public class UsuarioBean implements Serializable{
 			return "telaDesafio";
 			
 		}
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Ainda Não !", "Você Não possui Desafios Disponiveis"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Ainda Nao !", "Voce Nao possui Desafios Disponiveis"));
 		return "telaPrincipal";
 	}
 	
@@ -243,7 +243,7 @@ public class UsuarioBean implements Serializable{
 		mensagem.setData(transformaDate(date));
 		mensagem.setObjUsuario(usuario);
 		objMensagemDAO.inserir(mensagem);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Obrigado!", "Sua mensagem foi enviada ao Admin"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Obrigado", "Sua mensagem foi enviada ao Admin"));
 		return null;
 	}
 	
