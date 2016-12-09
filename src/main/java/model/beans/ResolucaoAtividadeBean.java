@@ -137,8 +137,8 @@ public class ResolucaoAtividadeBean implements Serializable {
 		if(resposta == atividade.getRespostaCerta()){
 		
 		   
-		   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Resposta Correta "));
-		   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Você Recebeu", atividade.getPontuacao() + " Pontos"));
+		   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso !", "Resposta Correta "));
+		   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aumentando ", atividade.getPontuacao() + " Pontos"));
 	       status = 1;
 	       //salvar a pontuacao nova do usuario;
 	       novaPontuacao = usuario.getPontuacao() + atividade.getPontuacao();
@@ -149,17 +149,15 @@ public class ResolucaoAtividadeBean implements Serializable {
 	    	   
 	    	   usuario.setObjPatente(objPatenteDAO.consultaPatente(usuario));
 	    	   objUsuarioDAO.updatePatente(usuario);
-	    	   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Você Evoluiu a sua Patente "));
-	    	   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Agora você é " +usuario.getObjPatente().getNome()));
+	    	   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Nova Patente "));
+	    	   FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Patante", "" + usuario.getObjPatente().getNome()));
 	       }
 		   
 	      
 		}
 		else {
 			
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Ops ...", "Resposta Incorreta, não desista!"));
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atual", "Atividade " + atividade.getNome()));
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "List", "Atividade " + listAtividades.size()));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Ops ...", "Resposta Incorreta"));
 	        status = 0;
 	        
 		}
@@ -176,7 +174,8 @@ public class ResolucaoAtividadeBean implements Serializable {
 				
 				usuario.setObjNivel(listNiveis.get(usuario.getObjNivel().getId_nivel()));
 				objUsuarioDAO.updateNivel(usuario);
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Você foi para o " + usuario.getObjNivel().getNome()));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Nova Nivel "));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Agora o seu nivel e ", usuario.getObjNivel().getNome() + ""));
 				return "progressaoUsuario";
 				
 			}
@@ -190,7 +189,7 @@ public class ResolucaoAtividadeBean implements Serializable {
 				//preparaAtividades();
 				//defineAtividade();
 				//Mensagem informando a conclusão de uma tarefa do nível, mas n funfa
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Parabéns", "Você foi promovido para " + tarefa.getNome()));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Promovido de tarefa " + ""));
 				return "menuNivel";
 				//Nesse ponto o usuario concluiu a etapa, vai ser redirecionado para o menu do nível
 				//FacesContext.getCurrentInstance().getExternalContext().redirect("tela_menuNivel.jsf");
