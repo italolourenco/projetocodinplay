@@ -491,8 +491,8 @@ SELECT pg_catalog.setval('tarefa_id_tarefa_seq', 9, true);
 --
 
 COPY usuario (id_usuario, nome, email, datanascimento, telefone, tipo, sexo, senha, id_patente, pontuacao, id_instituicao, id_nivel) FROM stdin;
-1	Paulo	paulo@kdeanota.com	24/04/1990	99990909	0	2	123	1	0	1	1
-2	Italo Lourenço	italotog_@hotmail.com	30/03/1994	(027) 9999-8888	1	1	123	2	120	1	2
+1	Paulo 	paulo@kdeanota.com	24/04/1990	99990909	0	2	123	1	0	1	1
+20	Italo Lourenco	italotog_@hotmail.com	30/30/1994	(027) 9998-9898	1	1	123	1	0	1	1
 \.
 
 
@@ -508,7 +508,7 @@ COPY usuario_atividade (id_usuario, id_atividade, data_realizada, status) FROM s
 -- Name: usuario_id_usuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('usuario_id_usuario_seq', 19, true);
+SELECT pg_catalog.setval('usuario_id_usuario_seq', 20, true);
 
 
 --
