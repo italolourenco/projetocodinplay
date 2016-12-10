@@ -14,6 +14,7 @@ public class UsuarioLogin {
 	
 	private Usuario usuario = new Usuario();
 	private LoginBean loginBean = new LoginBean();
+	private String msg;
 	
 	@Given("^Usuario entra com \"([^\"]*)\" e senha \"([^\"]*)\" validos$")
 	public void usuarioEntraComESenhaValidos(String arg1, String arg2) throws Throwable {
@@ -36,10 +37,23 @@ public class UsuarioLogin {
 	}
 
 	
-	//@Then("^Deve ser exibida uma mensagem de erro para o usu?rio$")
-	//public void deveSerExibidaUmaMensagemDeErroParaOUsuRio() throws Throwable {
+	@Given("^Usuario entra com \"([^\"]*)\" e senha \"([^\"]*)\" invalidos$")
+	public void usuarioEntraComESenhaInvalidos(String arg1, String arg2) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	//    throw new PendingException();
-	//}
+		loginBean.setEmail(arg1);
+		loginBean.setSenha(arg2);
+	}
+
+	@When("^Usuario seleciona na opcao entrar$")
+	public void usuarioSelecionaNaOpcaoEntrar() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+		msg = loginBean.entrar();
+	}
+
+	@Then("^Deve ser exibida uma mensagem de erro para o usuario$")
+	public void deveSerExibidaUmaMensagemDeErroParaOUsuRio() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+		assertThat(msg, is("erro"));
+	}
 
 }

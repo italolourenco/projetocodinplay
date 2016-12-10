@@ -89,7 +89,11 @@ public class LoginBean implements Serializable {
 						return "admin";
 				}
 				else {
-					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Erro!", "Usuario ou senha incorretos!"));
+					FacesContext fc = FacesContext.getCurrentInstance();
+					if(fc != null){
+						fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Erro!", "Usuario ou senha incorretos!"));
+						return "erro";
+					}
 					return "erro";
 				}
 				

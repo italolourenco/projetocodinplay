@@ -14,4 +14,4 @@ Then  Usuario deve estar logado no sistema
 Scenario: Testar Login Invalido
 Given Usuario entra com "italotog_@hotmail.com" e senha "1234" invalidos
 When  Usuario seleciona na opcao entrar
-Then Deve ser exibida uma mensagem de erro para o usuário
+Then Deve ser exibida uma mensagem de erro para o usuario
