@@ -22,7 +22,7 @@ env:
 before_script:
  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
  - psql -c 'create database codinplayBD;' -U postgres
- - psql -U postgres -d codinplayBD < dump
+ - psql -U postgres -d codinplaybd < dump
 
 
 script:
