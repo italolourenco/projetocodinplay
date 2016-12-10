@@ -2,4 +2,4 @@ postgresql:
   adapter: postgresql
   username: postgres
   password: 123
-  database: codinplayBD
+  database: codinplaybd
