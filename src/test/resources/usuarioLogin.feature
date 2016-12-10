@@ -12,7 +12,6 @@ Then  Usuario deve estar logado no sistema
   
 @tag2
 Scenario: Testar Login Invalido
-Given Usuario esta na pagina incial
-When Preenche os campos login com <login>, senha com <senha> e clica em entrar
-And   login ou senha são invalidos
+Given Usuario entra com "italotog_@hotmail.com" e senha "1234" invalidos
+When  Usuario seleciona na opcao entrar
 Then Deve ser exibida uma mensagem de erro para o usuário
