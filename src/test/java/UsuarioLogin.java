@@ -31,7 +31,7 @@ public class UsuarioLogin {
 	public void usuarioDeveEstarLogadoNoSistema() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 		usuario = loginBean.getUsuario();
-		assertThat(usuario.getNome(), is("Italo Lourenço"));
+		assertThat(usuario.getNome(), is("Italo Lourenco"));
 	}
 
 }
