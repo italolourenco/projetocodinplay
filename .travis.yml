@@ -21,6 +21,7 @@ env:
 
 before_script:
  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+ - cp config/database.yml.travis config/database.yml
  - psql -c 'create database codinplayBD;' -U postgres
  - psql -U postgres -d codinplaybd < dump
 
